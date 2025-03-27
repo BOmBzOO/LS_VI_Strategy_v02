@@ -1,0 +1,19 @@
+2025-03-27 23:19:07 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() missing 1 required positional argument: 'token'
+2025-03-27 23:20:05 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() missing 1 required positional argument: 'token'
+2025-03-27 23:21:45 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() got an unexpected keyword argument 'max_subscriptions'
+2025-03-27 23:25:13 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:26:22 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:26:33 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:28:35 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:29:46 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:40:12 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:42:24 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:47:33 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-27 23:48:53 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
+2025-03-27 23:50:12 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-27 23:50:16 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
+2025-03-27 23:50:22 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-27 23:50:27 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
+2025-03-27 23:53:51 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-27 23:53:59 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
+2025-03-27 23:56:50 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
