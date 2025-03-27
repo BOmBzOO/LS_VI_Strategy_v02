@@ -127,9 +127,11 @@ class VIMonitorService:
             header = message.get("header", {})
             body = message.get("body", {})
             
+            # VI 메시지인지 확인
             if header.get("tr_cd") != TRCode.VI_OCCUR:
                 return
                 
+            # VI 데이터 파싱
             vi_data = self._parse_vi_data(body)
             if not vi_data:
                 return
@@ -160,6 +162,9 @@ class VIMonitorService:
             Optional[Dict[str, Any]]: 파싱된 VI 데이터
         """
         try:
+            if not body:
+                return None
+                
             current_time = datetime.now()
             return {
                 "vi_gubun": body.get("vi_gubun", ""),

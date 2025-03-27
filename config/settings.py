@@ -39,6 +39,7 @@ TOKEN_REFRESH_MARGIN = 300  # 토큰 갱신 여유 시간 (초)
 # 웹소켓 설정
 WS_RECONNECT_INTERVAL = int(os.getenv("WS_RECONNECT_INTERVAL", "5"))
 WS_MAX_RECONNECT_ATTEMPTS = 5  # 최대 재연결 시도 횟수
+WS_DEBUG_MODE = False  # 웹소켓 디버그 모드 (기본값: False)
 
 # VI 모니터링 설정
 VI_MONITORING_INTERVAL = 180  # VI 모니터링 시간 (초)

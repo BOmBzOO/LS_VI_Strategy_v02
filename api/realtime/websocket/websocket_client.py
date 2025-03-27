@@ -13,6 +13,7 @@ import time
 from .websocket_base import BaseWebSocket, WebSocketState, WebSocketConfig, WebSocketMessage, DEFAULT_CONFIG
 from api.errors import WebSocketError
 from config.logging_config import setup_logger
+from config.settings import WS_DEBUG_MODE
 
 class MessageQueue:
     """메시지 큐 관리 클래스"""
@@ -114,7 +115,7 @@ class WebSocketClient(BaseWebSocket):
             self.logger.info(f"웹소켓 연결 시도 중... URL: {self.config['url']}")
             
             # SSL 검증 비활성화
-            websocket.enableTrace(True)  # 디버깅을 위해 활성화
+            websocket.enableTrace(WS_DEBUG_MODE)  # settings.py의 설정 사용
             
             # 헤더 설정
             headers = {
@@ -198,10 +199,37 @@ class WebSocketClient(BaseWebSocket):
         """웹소켓 메시지 수신 핸들러"""
         try:
             data = json.loads(message)
+            self.logger.debug(f"수신된 메시지: {data}")
+            
+            # 응답 메시지 처리
+            if "header" in data and "rsp_cd" in data["header"]:
+                rsp_cd = data["header"]["rsp_cd"]
+                rsp_msg = data["header"].get("rsp_msg", "")
+                
+                if rsp_cd != "00000":
+                    self.logger.error(f"서버 응답 오류: {rsp_msg}")
+                    return
+                    
+                self.logger.info(f"서버 응답 성공: {rsp_msg}")
+                return
+                
+            # 일반 메시지 처리
             for handler in self.event_handlers.get("message", []):
-                asyncio.create_task(handler(data))
+                try:
+                    if asyncio.iscoroutinefunction(handler):
+                        # 새로운 이벤트 루프 생성
+                        loop = asyncio.new_event_loop()
+                        asyncio.set_event_loop(loop)
+                        loop.run_until_complete(handler(data))
+                        loop.close()
+                    else:
+                        handler(data)
+                except Exception as e:
+                    self.logger.error(f"메시지 핸들러 실행 중 오류: {str(e)}")
+                    
         except Exception as e:
             self.logger.error(f"메시지 처리 중 오류: {str(e)}")
+            self.logger.error(f"문제가 발생한 메시지: {message}")
 
     def _handle_ping(self, ws: websocket.WebSocketApp, message: str) -> None:
         """Ping 메시지 처리"""
@@ -249,9 +277,20 @@ class WebSocketClient(BaseWebSocket):
             self.state = WebSocketState.CONNECTED
             self.logger.info("웹소켓 연결이 열렸습니다.")
             
-            # 연결 성공 이벤트 발생
+            # 연결 성공 이벤트를 동기적으로 처리
             for handler in self.event_handlers.get("open", []):
-                asyncio.create_task(handler(None))
+                try:
+                    if asyncio.iscoroutinefunction(handler):
+                        # 새로운 이벤트 루프 생성
+                        loop = asyncio.new_event_loop()
+                        asyncio.set_event_loop(loop)
+                        loop.run_until_complete(handler(None))
+                        loop.close()
+                    else:
+                        handler(None)
+                except Exception as e:
+                    self.logger.error(f"연결 성공 이벤트 핸들러 실행 중 오류: {str(e)}")
+                    
         except Exception as e:
             self.logger.error(f"연결 성공 핸들러 처리 중 오류: {str(e)}")
             

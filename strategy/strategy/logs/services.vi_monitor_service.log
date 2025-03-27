@@ -1,0 +1,44 @@
+2025-03-28 00:26:34,302 - services.vi_monitor_service - INFO - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\services\vi_monitor_service.py:67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:27:18,058 - services.vi_monitor_service - ERROR - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\services\vi_monitor_service.py:99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:27:21,399 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:34:18,699 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:34:21,619 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:36:55,137 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:36:58,022 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:40:19,546 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:45:36,048 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:48:55,759 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:48:58,600 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:50:52,936 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:50:55,640 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:51:33,880 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:51:36,636 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:54:14,830 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:54:45,106 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:56:22,481 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:56:25,046 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:57:38,042 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:57:40,473 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:58:41,152 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:58:43,662 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 00:59:10,167 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 00:59:12,529 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:00:29,542 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:00:32,017 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:02:14,528 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:02:17,016 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:04:57,592 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:05:04,445 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:05:10,311 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:05:21,876 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:06:35,863 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:06:38,377 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:07:17,116 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:07:20,367 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:08:23,594 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:08:25,883 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:14:08,714 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:14:11,279 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:17:23,935 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:17:26,399 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:17:46,622 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED

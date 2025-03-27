@@ -1,0 +1,273 @@
+2025-03-28 00:26:34,189 - api.realtime.websocket.websocket_client - INFO - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:114 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:26:34,214 - api.realtime.websocket.websocket_client - INFO - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:250 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:26:34,218 - api.realtime.websocket.websocket_client - ERROR - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:256 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:26:34,301 - api.realtime.websocket.websocket_client - INFO - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:189 - 웹소켓이 연결되었습니다.
+2025-03-28 00:26:34,309 - api.realtime.websocket.websocket_client - ERROR - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:204 - 메시지 처리 중 오류: no running event loop
+2025-03-28 00:27:14,224 - api.realtime.websocket.websocket_client - DEBUG - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:216 - Pong 메시지 수신
+2025-03-28 00:27:18,058 - api.realtime.websocket.websocket_client - ERROR - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:317 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:27:18,066 - api.realtime.websocket.websocket_client - ERROR - F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_client.py:204 - 메시지 처리 중 오류: no running event loop
+2025-03-28 00:27:21,294 - api.realtime.websocket.websocket_client - INFO - line 114 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:27:21,319 - api.realtime.websocket.websocket_client - INFO - line 250 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:27:21,322 - api.realtime.websocket.websocket_client - ERROR - line 256 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:27:21,398 - api.realtime.websocket.websocket_client - INFO - line 189 - 웹소켓이 연결되었습니다.
+2025-03-28 00:27:21,406 - api.realtime.websocket.websocket_client - ERROR - line 204 - 메시지 처리 중 오류: no running event loop
+2025-03-28 00:28:01,338 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:28:21,348 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:28:41,352 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:29:01,353 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:29:21,361 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:29:41,369 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:30:01,381 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:30:21,391 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:30:41,392 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:31:01,403 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:31:21,409 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:31:41,424 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:32:01,436 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:32:21,439 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:32:41,450 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:33:01,461 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:33:21,473 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:33:41,477 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:34:01,479 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:34:18,698 - api.realtime.websocket.websocket_client - ERROR - line 317 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:34:18,706 - api.realtime.websocket.websocket_client - ERROR - line 204 - 메시지 처리 중 오류: no running event loop
+2025-03-28 00:34:21,510 - api.realtime.websocket.websocket_client - INFO - line 114 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:34:21,544 - api.realtime.websocket.websocket_client - INFO - line 250 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:34:21,547 - api.realtime.websocket.websocket_client - ERROR - line 256 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:34:21,618 - api.realtime.websocket.websocket_client - INFO - line 189 - 웹소켓이 연결되었습니다.
+2025-03-28 00:34:21,640 - api.realtime.websocket.websocket_client - ERROR - line 204 - 메시지 처리 중 오류: no running event loop
+2025-03-28 00:35:01,555 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:35:21,567 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:35:41,575 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:36:01,581 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:36:21,584 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:36:41,599 - api.realtime.websocket.websocket_client - DEBUG - line 216 - Pong 메시지 수신
+2025-03-28 00:36:55,136 - api.realtime.websocket.websocket_client - ERROR - line 317 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:36:57,903 - api.realtime.websocket.websocket_client - INFO - line 114 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:36:57,950 - api.realtime.websocket.websocket_client - INFO - line 277 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:36:57,954 - api.realtime.websocket.websocket_client - ERROR - line 283 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:36:58,020 - api.realtime.websocket.websocket_client - INFO - line 189 - 웹소켓이 연결되었습니다.
+2025-03-28 00:36:58,029 - api.realtime.websocket.websocket_client - DEBUG - line 201 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:36:58,029 - api.realtime.websocket.websocket_client - INFO - line 212 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:37:37,967 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:37:57,977 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:38:17,979 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:38:37,981 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:38:57,988 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:39:17,998 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:39:38,003 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:39:58,006 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:40:18,021 - api.realtime.websocket.websocket_client - DEBUG - line 243 - Pong 메시지 수신
+2025-03-28 00:40:19,545 - api.realtime.websocket.websocket_client - ERROR - line 344 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:40:19,553 - api.realtime.websocket.websocket_client - DEBUG - line 201 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:40:19,554 - api.realtime.websocket.websocket_client - INFO - line 212 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:45:35,937 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:45:35,975 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:45:35,979 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:45:36,047 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:45:36,064 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:45:36,064 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:46:15,992 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:46:36,008 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:46:56,020 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:47:16,031 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:47:36,046 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:47:56,062 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:48:16,075 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:48:36,079 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:48:55,758 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:48:58,492 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:48:58,540 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:48:58,543 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:48:58,599 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:48:58,606 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:48:58,606 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:49:38,556 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:49:58,563 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:50:18,577 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:50:38,589 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:50:52,936 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:50:52,941 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:50:52,942 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:50:55,520 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:50:55,544 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:50:55,548 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:50:55,638 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:50:55,646 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:50:55,646 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:51:33,880 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:51:33,886 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:51:33,886 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:51:36,524 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:51:36,560 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:51:36,565 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:51:36,634 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:51:36,642 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:51:36,642 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:52:16,580 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:52:36,580 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:52:56,587 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:53:16,597 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:53:36,609 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:53:56,624 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:54:14,829 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:54:14,836 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:54:14,837 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:54:17,252 - api.realtime.websocket.websocket_client - INFO - line 176 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:54:17,276 - api.realtime.websocket.websocket_client - ERROR - line 141 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:54:44,993 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:54:45,017 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:54:45,021 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:54:45,105 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:55:25,043 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:55:45,050 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:56:05,056 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:56:22,481 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:56:24,941 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:56:24,987 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:56:24,992 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:56:25,044 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:56:25,053 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:56:25,053 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:57:05,001 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:57:25,013 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:57:38,041 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:57:38,048 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:57:38,048 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:57:40,363 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:57:40,398 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:57:40,402 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:57:40,472 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:57:40,491 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:57:40,491 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:58:20,411 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:58:40,420 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 00:58:41,152 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:58:43,567 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:58:43,601 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:58:43,606 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:58:43,661 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:58:43,678 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:58:43,678 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:59:10,167 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:59:10,173 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:59:10,174 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:59:12,414 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:59:12,439 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:59:12,442 - api.realtime.websocket.websocket_client - ERROR - line 284 - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:59:12,528 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 00:59:12,537 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 00:59:12,537 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 00:59:52,449 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:00:12,456 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:00:29,542 - api.realtime.websocket.websocket_client - ERROR - line 345 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:00:29,550 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:00:29,550 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:00:31,898 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:00:31,942 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:00:32,016 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:00:32,033 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:00:32,033 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:01:11,962 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:01:31,963 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:01:51,978 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:02:11,992 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:02:14,527 - api.realtime.websocket.websocket_client - ERROR - line 356 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:02:16,902 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:02:16,941 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:02:17,014 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:02:17,023 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:02:17,023 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:02:56,961 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:03:16,970 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:03:36,980 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:03:56,983 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:04:16,997 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:04:37,002 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:04:57,018 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:04:57,591 - api.realtime.websocket.websocket_client - ERROR - line 356 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:04:57,598 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:04:57,598 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:05:04,333 - api.realtime.websocket.websocket_client - INFO - line 118 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:05:04,356 - api.realtime.websocket.websocket_client - INFO - line 285 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:05:04,443 - api.realtime.websocket.websocket_client - INFO - line 197 - 웹소켓이 연결되었습니다.
+2025-03-28 01:05:04,451 - api.realtime.websocket.websocket_client - DEBUG - line 209 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:05:04,451 - api.realtime.websocket.websocket_client - INFO - line 220 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:05:10,311 - api.realtime.websocket.websocket_client - ERROR - line 397 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:05:10,318 - api.realtime.websocket.websocket_client - DEBUG - line 209 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:05:10,318 - api.realtime.websocket.websocket_client - INFO - line 220 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:05:21,764 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:05:21,788 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:05:21,875 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:05:21,882 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:05:21,882 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:06:01,814 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:06:21,827 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:06:35,863 - api.realtime.websocket.websocket_client - ERROR - line 356 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:06:35,869 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:06:35,869 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:06:38,265 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:06:38,288 - api.realtime.websocket.websocket_client - INFO - line 299 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:06:38,375 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:06:38,394 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:06:38,394 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:07:17,116 - api.realtime.websocket.websocket_client - ERROR - line 377 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:07:17,122 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:07:17,123 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:07:20,249 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:07:20,292 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:07:20,366 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:07:20,373 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:07:20,373 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:08:00,306 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:08:20,314 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:08:23,594 - api.realtime.websocket.websocket_client - ERROR - line 356 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:08:23,600 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:08:23,601 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:08:25,765 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:08:25,810 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:08:25,882 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:08:25,898 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:08:25,898 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:09:05,825 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:09:25,829 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:09:45,831 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:10:05,831 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:10:25,832 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:10:45,841 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:11:05,842 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:11:25,853 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:11:45,859 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:12:05,865 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:12:25,878 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:12:45,878 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:13:05,883 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:13:25,884 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:13:45,893 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:14:05,897 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:14:08,713 - api.realtime.websocket.websocket_client - ERROR - line 356 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:14:11,164 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:14:11,188 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:14:11,277 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:14:11,285 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:14:11,286 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:14:51,198 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:15:11,208 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:15:31,222 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:15:51,232 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:16:11,232 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:16:31,243 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:16:51,244 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:17:11,246 - api.realtime.websocket.websocket_client - DEBUG - line 244 - Pong 메시지 수신
+2025-03-28 01:17:23,934 - api.realtime.websocket.websocket_client - ERROR - line 356 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:17:23,941 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:17:23,942 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:17:26,294 - api.realtime.websocket.websocket_client - INFO - line 115 - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 01:17:26,341 - api.realtime.websocket.websocket_client - INFO - line 278 - 웹소켓 연결이 열렸습니다.
+2025-03-28 01:17:26,398 - api.realtime.websocket.websocket_client - INFO - line 190 - 웹소켓이 연결되었습니다.
+2025-03-28 01:17:26,404 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '3', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:17:26,404 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다
+2025-03-28 01:17:46,622 - api.realtime.websocket.websocket_client - ERROR - line 356 - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 01:17:46,628 - api.realtime.websocket.websocket_client - DEBUG - line 202 - 수신된 메시지: {'header': {'tr_type': '4', 'tr_cd': 'VI_', 'rsp_cd': '00000', 'rsp_msg': '정상처리되었습니다'}, 'body': None}
+2025-03-28 01:17:46,629 - api.realtime.websocket.websocket_client - INFO - line 213 - 서버 응답 성공: 정상처리되었습니다

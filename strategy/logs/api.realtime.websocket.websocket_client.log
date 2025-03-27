@@ -22,3 +22,21 @@
 2025-03-27 23:53:59 - api.realtime.websocket.websocket_client - INFO - 웹소켓이 연결되었습니다.
 2025-03-27 23:53:59 - api.realtime.websocket.websocket_client - ERROR - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
 2025-03-27 23:56:50 - api.realtime.websocket.websocket_client - ERROR - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:04:30 - api.realtime.websocket.websocket_client - INFO - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:04:30 - api.realtime.websocket.websocket_client - INFO - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:04:30 - api.realtime.websocket.websocket_client - ERROR - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:04:30 - api.realtime.websocket.websocket_client - INFO - 웹소켓이 연결되었습니다.
+2025-03-28 00:04:30 - api.realtime.websocket.websocket_client - ERROR - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-03-28 00:21:31 - api.realtime.websocket.websocket_client - ERROR - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:21:34 - api.realtime.websocket.websocket_client - INFO - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:21:34 - api.realtime.websocket.websocket_client - INFO - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:21:34 - api.realtime.websocket.websocket_client - ERROR - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:21:35 - api.realtime.websocket.websocket_client - INFO - 웹소켓이 연결되었습니다.
+2025-03-28 00:21:35 - api.realtime.websocket.websocket_client - ERROR - 메시지 처리 중 오류: no running event loop
+2025-03-28 00:24:01 - api.realtime.websocket.websocket_client - ERROR - 웹소켓 종료 중 오류: CLOSED
+2025-03-28 00:24:04 - api.realtime.websocket.websocket_client - INFO - 웹소켓 연결 시도 중... URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 00:24:04 - api.realtime.websocket.websocket_client - INFO - 웹소켓 연결이 열렸습니다.
+2025-03-28 00:24:04 - api.realtime.websocket.websocket_client - ERROR - 연결 성공 핸들러 처리 중 오류: no running event loop
+2025-03-28 00:24:04 - api.realtime.websocket.websocket_client - INFO - 웹소켓이 연결되었습니다.
+2025-03-28 00:24:04 - api.realtime.websocket.websocket_client - ERROR - 메시지 처리 중 오류: no running event loop
+2025-03-28 00:26:31 - api.realtime.websocket.websocket_client - ERROR - 웹소켓 종료 중 오류: CLOSED

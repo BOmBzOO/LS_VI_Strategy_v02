@@ -5,6 +5,7 @@ from typing import Dict, Any, Optional, Callable
 from datetime import datetime
 import pytz
 import time
+import traceback
 from api.realtime.websocket.websocket_client import WebSocketClient
 from api.errors import WebSocketError
 from config.settings import WS_RECONNECT_INTERVAL, WS_MAX_RECONNECT_ATTEMPTS
@@ -71,12 +72,56 @@ class WebSocketManager(BaseWebSocket):
         self.subscriptions: Dict[str, Dict[str, Any]] = {}
         self.logger = setup_logger(__name__)
         self.kst = pytz.timezone('Asia/Seoul')
+        self.event_queue = asyncio.Queue()  # 이벤트 큐 추가
         
         # 캐시 관리자 초기화
         self.cache_manager = CacheManager(
             max_size=config.get("max_cache_size", 1000),
             expiry=config.get("cache_expiry", 60)
         )
+        
+        # 이벤트 처리 태스크 시작
+        asyncio.create_task(self._process_events())
+
+    async def _process_events(self) -> None:
+        """이벤트 큐 처리"""
+        while True:
+            try:
+                event_type, data = await self.event_queue.get()
+                if event_type == "connected":
+                    self.update_state(WebSocketState.CONNECTED)
+                    self.logger.info("웹소켓 연결이 성공적으로 이루어졌습니다.")
+                    await self.emit_event("connected", data)
+                elif event_type == "message":
+                    header = data.get("header", {})
+                    tr_code = header.get("tr_cd")
+                    
+                    # body가 None인 경우 빈 딕셔너리로 처리
+                    body = data.get("body", {}) if data.get("body") is not None else {}
+                    tr_key = body.get("tr_key", "")
+                    
+                    subscription_key = f"{tr_code}_{tr_key}"
+                    if subscription_key in self.subscriptions:
+                        callback = self.subscriptions[subscription_key]["callback"]
+                        # 원본 메시지를 그대로 전달
+                        if asyncio.iscoroutinefunction(callback):
+                            await callback(data)
+                        else:
+                            callback(data)
+                elif event_type == "error":
+                    self.logger.error(f"웹소켓 에러 발생: {str(data)}")
+                    self.update_state(WebSocketState.ERROR)
+                    await self._connect()
+                elif event_type == "close":
+                    code = data.get("code")
+                    message = data.get("message")
+                    self.logger.warning(f"웹소켓 연결 종료 (코드: {code}, 메시지: {message})")
+                    self.update_state(WebSocketState.DISCONNECTED)
+                    await self._connect()
+            except Exception as e:
+                self.logger.error(f"이벤트 처리 중 오류: {str(e)}")
+            finally:
+                self.event_queue.task_done()
 
     def is_connected(self) -> bool:
         """웹소켓 연결 상태 확인
@@ -99,8 +144,6 @@ class WebSocketManager(BaseWebSocket):
             if self.client:
                 await self.close()
 
-            print(self.config["url"]) 
-            print(self.config["token"])
             # WebSocketClient 초기화
             self.client = WebSocketClient(
                 url=self.config["url"],
@@ -147,17 +190,18 @@ class WebSocketManager(BaseWebSocket):
             self.logger.error(f"웹소켓 연결 중 오류 발생: {str(e)}")
             raise
 
-    def _handle_open(self, _: Any) -> None:
-        """웹소켓 연결 시작 처리"""
+    async def _handle_open(self, _: Any) -> None:
         try:
             self.update_state(WebSocketState.CONNECTED)
-            self.logger.info("웹소켓 연결이 성공적으로 이루어졌습니다.")
-            self.emit_event("connected", None)
+            await self.event_queue.put(("connected", None))
+            
         except Exception as e:
-            self.logger.error(f"연결 시작 처리 중 오류: {str(e)}")
+            self.logger.error(f"연결 시작 처리 중 오류 (line {traceback.extract_tb(e.__traceback__)[-1].lineno}): {str(e)}")
 
-    async def subscribe(self, tr_code: str, tr_key: str, 
-                       callback: Callable[[Dict[str, Any]], None]) -> None:
+    async def subscribe(self, 
+                        tr_code: str, 
+                        tr_key: str, 
+                        callback: Callable[[Dict[str, Any]], None]) -> None:
         """실시간 데이터 구독
         
         Args:
@@ -237,29 +281,29 @@ class WebSocketManager(BaseWebSocket):
 
     def _handle_message(self, data: Dict[str, Any]) -> None:
         """수신된 메시지 처리"""
-        header = data.get("header", {})
-        tr_code = header.get("tr_cd")
-        tr_key = data.get("body", {}).get("tr_key", "")
-        
-        subscription_key = f"{tr_code}_{tr_key}"
-        if subscription_key in self.subscriptions:
-            callback = self.subscriptions[subscription_key]["callback"]
-            callback(data)
-            
+        try:
+            # 이벤트 큐에 메시지 이벤트 추가
+            asyncio.create_task(self.event_queue.put(("message", data)))
+        except Exception as e:
+            import traceback
+            self.logger.error(f"메시지 처리 중 오류 (line {traceback.extract_tb(e.__traceback__)[-1].lineno}): {str(e)}")
+
     def _handle_error(self, error: Exception) -> None:
         """에러 발생 시 처리"""
-        self.logger.error(f"웹소켓 에러 발생: {str(error)}")
-        self.update_state(WebSocketState.ERROR)
-        asyncio.create_task(self._connect())
-            
+        try:
+            # 이벤트 큐에 에러 이벤트 추가
+            asyncio.create_task(self.event_queue.put(("error", error)))
+        except Exception as e:
+            self.logger.error(f"에러 처리 중 오류: {str(e)}")
+
     def _handle_close(self, data: Dict[str, Any]) -> None:
         """연결 종료 시 처리"""
-        code = data.get("code")
-        message = data.get("message")
-        self.logger.warning(f"웹소켓 연결 종료 (코드: {code}, 메시지: {message})")
-        self.update_state(WebSocketState.DISCONNECTED)
-        asyncio.create_task(self._connect())
-            
+        try:
+            # 이벤트 큐에 종료 이벤트 추가
+            asyncio.create_task(self.event_queue.put(("close", data)))
+        except Exception as e:
+            self.logger.error(f"종료 처리 중 오류: {str(e)}")
+
     async def close(self) -> None:
         """연결 종료"""
         if self.client:

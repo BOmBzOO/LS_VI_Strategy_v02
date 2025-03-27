@@ -155,10 +155,24 @@ class BaseWebSocket:
         if self.state != new_state:
             old_state = self.state
             self.state = new_state
-            asyncio.create_task(self.emit_event(
-                "state_changed", 
-                {"old_state": old_state, "new_state": new_state}
-            ))
+            # asyncio.create_task(self.emit_event(
+            #     "state_changed", 
+            #     {"old_state": old_state, "new_state": new_state}
+            # ))
+            try:
+                loop = asyncio.get_running_loop()
+                loop.create_task(self.emit_event(
+                    "state_changed", 
+                    {"old_state": old_state, "new_state": new_state}
+                ))
+            except RuntimeError:
+                # 실행 중인 루프가 없을 경우 새 루프 생성 및 실행
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                loop.run_until_complete(self.emit_event(
+                    "state_changed", 
+                    {"old_state": old_state, "new_state": new_state}
+                ))
 
     def is_connected(self) -> bool:
         """연결 상태 확인"""
