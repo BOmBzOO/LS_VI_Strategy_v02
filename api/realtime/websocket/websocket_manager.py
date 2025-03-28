@@ -28,6 +28,9 @@ class WebSocketManager(BaseWebSocket):
         self.event_queue = asyncio.Queue()
         self.event_task = None
         self.is_running = False
+
+        # 콜백 함수 관리
+        self.callbacks: List[Callable[[Dict[str, Any]], None]] = []
         
         # 구독 관리
         self.subscriptions: Dict[str, Dict[str, Any]] = {}
@@ -100,6 +103,9 @@ class WebSocketManager(BaseWebSocket):
                     self.event_queue.task_done()
                 except Exception:
                     break
+
+            self.callbacks.clear()
+            self.subscriptions.clear()
                     
             self.logger.info("웹소켓 매니저가 중지되었습니다.")
             
@@ -180,39 +186,45 @@ class WebSocketManager(BaseWebSocket):
         finally:
             self.is_running = False
 
+    def add_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
+        """콜백 함수 등록"""
+        if callback not in self.callbacks:
+            self.callbacks.append(callback)
+            
+    def remove_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
+        """콜백 함수 제거"""
+        if callback in self.callbacks:
+            self.callbacks.remove(callback)
+
     async def _handle_message(self, data: Dict[str, Any]) -> None:
         """메시지 수신 처리"""
         try:
             print(data)
-            # VI 메시지 처리
-            if "header" in data and "tr_cd" in data["header"]:
-                tr_code = data["header"]["tr_cd"]
-                rsp_cd = data["header"]["rsp_cd"]
-                subscription_key = f"{tr_code}_000000"  # VI 모니터링은 전체 종목('000000')을 구독
-                
-                subscription = self.subscriptions.get(subscription_key)
-                if subscription and subscription.get("callback"):
-                    # 콜백이 있는 경우 전체 메시지 전달
-                    callback = subscription["callback"]
+            # print(self.callbacks)
+            if self.callbacks:
+                for callback in self.callbacks:
                     try:
                         if asyncio.iscoroutinefunction(callback):
                             await callback(data)
                         else:
                             callback(data)
                     except Exception as e:
-                        self.logger.error(f"콜백 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
+                        self.logger.error(f"콜백 함수 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
+                return
+
+            # 콜백이 없는 경우 메시지 출력
+            header = data.get("header", {})
+            
+            if "rsp_cd" in header:
+                rsp_msg = header.get("rsp_msg", "알 수 없는 메시지")
+                if header["rsp_cd"] == "00000":
+                    self.logger.info(f"응답: {rsp_msg}")
                 else:
-                    # 콜백이 없는 경우 메시지 출력
-                    header = data.get("header", {})
-                    if "rsp_cd" in header:
-                        rsp_msg = header.get("rsp_msg", "알 수 없는 메시지")
-                        if header["rsp_cd"] == "00000":
-                            self.logger.info(f"응답: {rsp_msg}")
-                        else:
-                            self.logger.error(f"오류: {rsp_msg}")
-                    else:
-                        self.logger.info(f"메시지 수신: {json.dumps(data, ensure_ascii=False)}")
-                        
+                    self.logger.error(f"오류: {rsp_msg}")
+            else:
+                self.logger.info(f"메시지 수신: {json.dumps(data, ensure_ascii=False)}")
+            
+            # 이벤트 큐에 메시지 추가
             await self.event_queue.put(("message", data))
             
         except Exception as e:

@@ -18,7 +18,7 @@ from config.logging_config import setup_logger
 from services.token_service import TokenService
 from services.market_service import MarketService
 from services.vi_monitor_service import VIMonitorService, VIData
-from api.constants import MarketType, VIStatus
+from api.constants import MarketType, VIStatus, TRCode
 from api.realtime.websocket.websocket_base import WebSocketState
 
 class VIStrategy:
@@ -152,54 +152,63 @@ class VIStrategy:
     async def _handle_vi_data(self, data: Dict[str, Any]) -> None:
         """VI 데이터 처리"""
         try:
-            # VI 발동/해제 정보 로깅
-            self.logger.info(
-                f"VI 상태 변경 - 종목: {data['shcode']}, "
-                f"상태: {data['status']}, "
-                f"VI유형: {data['vi_type']}, "
-                f"발동가: {data['vi_trgprice']}"
-            )
+            # 콜백이 없는 경우 메시지 처리 및 로깅
+            header = data.get("header", {})
+            body = data.get("body", {})
+            
+            # 응답 메시지 처리
+            if "rsp_cd" in header:
+                rsp_msg = header.get("rsp_msg", "알 수 없는 메시지")
+                if header["rsp_cd"] == "00000":
+                    self.logger.info(f"VI 응답: {rsp_msg}")
+                else:
+                    self.logger.error(f"VI 구독 오류: {rsp_msg}")
+                return
+                
+            # VI 메시지가 아닌 경우 무시
+            if header.get("tr_cd") != TRCode.VI_OCCUR:
+                return
+                
+            # body가 None인 경우 무시
+            if not body or not isinstance(body, dict):
+                return
+            
+            # VI 데이터 생성
+            vi_data = VIData(body)
             
             # VI 발동 시 추가 처리
-            if data["status"] == "발동":
+            if vi_data.vi_gubun in ["1", "2", "3"]:
                 self.state["active_vi_count"] += 1
-                await self._handle_vi_activation(data)
+                await self._handle_vi_activation(vi_data)
             # VI 해제 시 추가 처리
-            else:
+            elif vi_data.vi_gubun == "0":
                 self.state["active_vi_count"] -= 1
-                await self._handle_vi_release(data)
+                await self._handle_vi_release(vi_data)
                 
         except Exception as e:
             self.logger.error(f"VI 데이터 처리 중 오류 발생: {str(e)}")
             
-    async def _handle_vi_activation(self, data: Dict[str, Any]) -> None:
+    async def _handle_vi_activation(self, vi_data: VIData) -> None:
         """VI 발동 처리"""
         try:
-            # 현재가 조회
-            price_info = self.market_service.get_stock_price(data["shcode"])
-            if not price_info:
-                return
+            # # 현재가 조회
+            # price_info = self.market_service.get_stock_price(vi_data.shcode)
+            # if not price_info:
+            #     return
                 
             # VI 발동 시 추가 로직 구현
-            self.logger.info(
-                f"VI 발동 감지 - 종목: {data['shcode']}, "
-                f"현재가: {price_info.get('price', 'N/A')}, "
-                f"VI유형: {data['vi_type']}"
-            )
+            self.logger.info(f"VI 발동 감지 - 종목: {vi_data.ref_shcode}, 현재가: {vi_data.get('price', 'N/A')}, VI유형: {vi_data.vi_type}")
             
             # 여기에 VI 발동에 대한 추가 전략 로직 구현
             
         except Exception as e:
             self.logger.error(f"VI 발동 처리 중 오류 발생: {str(e)}")
             
-    async def _handle_vi_release(self, data: Dict[str, Any]) -> None:
+    async def _handle_vi_release(self, vi_data: VIData) -> None:
         """VI 해제 처리"""
         try:
             # VI 해제 시 추가 로직 구현
-            self.logger.info(
-                f"VI 해제 감지 - 종목: {data['shcode']}, "
-                f"지속시간: {data.get('duration', 'N/A')}초"
-            )
+            self.logger.info(f"VI 해제 감지 - 종목: {vi_data.ref_shcode}, 정적기준가: {vi_data.svi_recprice}, 동적기준가: {vi_data.dvi_recprice}, 발동가: {vi_data.vi_trgprice}")
             
             # 여기에 VI 해제에 대한 추가 전략 로직 구현
             

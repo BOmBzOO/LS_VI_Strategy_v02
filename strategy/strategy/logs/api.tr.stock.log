@@ -1,2 +1,7 @@
 2025-03-28 11:52:53,019 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T02:52:53.751+00:00","status":404,"error":"Not Found","path":"/stock/price"}
 2025-03-28 12:02:42,015 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T03:02:42.775+00:00","status":404,"error":"Not Found","path":"/stock/price"}
+2025-03-28 14:26:03,265 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T05:26:04.419+00:00","status":404,"error":"Not Found","path":"/stock/price"}
+2025-03-28 14:29:01,210 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T05:29:02.372+00:00","status":404,"error":"Not Found","path":"/stock/price"}
+2025-03-28 14:29:29,259 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T05:29:30.423+00:00","status":404,"error":"Not Found","path":"/stock/price"}
+2025-03-28 14:32:42,886 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T05:32:44.058+00:00","status":404,"error":"Not Found","path":"/stock/price"}
+2025-03-28 14:32:50,849 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T05:32:52.022+00:00","status":404,"error":"Not Found","path":"/stock/price"}

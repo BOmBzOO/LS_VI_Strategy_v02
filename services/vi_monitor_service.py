@@ -16,17 +16,28 @@ class VIData:
     
     def __init__(self, data: Dict[str, Any]):
         """초기화"""
-        self.vi_gubun = data.get("vi_gubun", "")
-        self.svi_recprice = data.get("svi_recprice", "")
-        self.dvi_recprice = data.get("dvi_recprice", "")
-        self.vi_trgprice = data.get("vi_trgprice", "")
-        self.shcode = data.get("shcode", "")
-        self.ref_shcode = data.get("ref_shcode", "")
-        self.time = data.get("time", "")
-        self.exchname = data.get("exchname", "")
+        # API 명세에 맞춰 필드 정의
+        self.vi_gubun = data.get("vi_gubun", "")  # 구분(0:해제1:정적발동2:동적발동3:정적&동적)
+        self.svi_recprice = data.get("svi_recprice", "")  # 정적VI발동기준가격
+        self.dvi_recprice = data.get("dvi_recprice", "")  # 동적VI발동기준가격
+        self.vi_trgprice = data.get("vi_trgprice", "")  # VI발동가격
+        self.shcode = data.get("shcode", "")  # 단축코드(KEY)
+        self.ref_shcode = data.get("ref_shcode", "")  # 참조코드
+        self.time = data.get("time", "")  # 시간
+        self.exchname = data.get("exchname", "")  # 거래소명
         self.timestamp = datetime.now().isoformat()
-        self.vi_type = VIStatus.STATUS_MAP.get(self.vi_gubun, "알수없음")
-        self.status = "해제" if self.vi_gubun == VIStatus.RELEASE else "발동"
+        
+        # VI 상태 매핑
+        vi_status_map = {
+            "0": "해제",
+            "1": "정적발동",
+            "2": "동적발동",
+            "3": "정적&동적"
+        }
+        self.vi_type = vi_status_map.get(self.vi_gubun, "알수없음")
+        self.status = "해제" if self.vi_gubun == "0" else "발동"
+        
+        # 추가 상태 정보
         self.activation_time: Optional[datetime] = None
         self.release_time: Optional[datetime] = None
         self.duration: Optional[float] = None
@@ -98,6 +109,9 @@ class VIMonitorService:
             self.ws_manager.add_event_handler("error", self._handle_error)
             self.ws_manager.add_event_handler("close", self._handle_close)
             self.ws_manager.add_event_handler("open", self._handle_open)
+
+                        # VI 데이터 처리 콜백 등록
+            self.ws_manager.add_callback(self._handle_vi_message)
             
             # 웹소켓 연결 시작
             await self.ws_manager.start()
@@ -266,7 +280,9 @@ class VIMonitorService:
                 f"종목: {data.shcode}, "
                 f"상태: {data.status}, "
                 f"VI유형: {data.vi_type}, "
-                f"발동가: {data.vi_trgprice}"
+                f"발동가: {data.vi_trgprice}, "
+                f"정적기준가: {data.svi_recprice}, "
+                f"동적기준가: {data.dvi_recprice}"
                 f"{duration_str}"
             )
         except Exception as e:
