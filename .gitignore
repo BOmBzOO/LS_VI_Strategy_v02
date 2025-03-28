@@ -24,25 +24,42 @@ wheels/
 venv/
 env/
 ENV/
+.env
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+.DS_Store
 
-# 로그
-logs/*
-!logs/.gitkeep
+# 로그 파일
+logs/
+*.log
 
-# 환경변수
-.env
+# 설정 파일
+config/config.yaml
+config/*.local.yaml
 
-# 테스트
+# 데이터 파일
+data/
+*.csv
+*.json
+*.xlsx
+*.xls
+
+# 캐시 파일
+.cache/
+.pytest_cache/
 .coverage
 htmlcov/
-.pytest_cache/
 
-# 기타
+# 임시 파일
+*.tmp
+*.bak
+*.swp
+*~
+
+# 시스템 파일
 .DS_Store
 Thumbs.db 

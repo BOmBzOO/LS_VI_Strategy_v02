@@ -68,41 +68,42 @@ def setup_logger(name: str) -> logging.Logger:
         name (str): 로거 이름
         
     Returns:
-        logging.Logger: 설정된 로거
+        logging.Logger: 설정된 로거 객체
     """
+    # 로그 디렉토리 생성
+    log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
+    os.makedirs(log_dir, exist_ok=True)
+    
     # 로거 생성
     logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
     
     # 이미 핸들러가 있다면 추가하지 않음
     if logger.handlers:
         return logger
         
-    # 로그 디렉토리 생성
-    log_dir = os.path.join("strategy", "logs")
-    os.makedirs(log_dir, exist_ok=True)
+    # 포맷터 생성
+    formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
     
-    # 로그 파일 경로
-    log_file = os.path.join(log_dir, f"{name}.log")
+    # 파일 핸들러 설정 (날짜 포함)
+    current_date = datetime.now().strftime('%Y%m%d')
+    log_file = os.path.join(log_dir, f'trading_{current_date}.log')
     
-    # 파일 핸들러 설정
     file_handler = RotatingFileHandler(
         log_file,
         maxBytes=10*1024*1024,  # 10MB
         backupCount=5,
         encoding='utf-8'
     )
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
     
     # 콘솔 핸들러 설정
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.INFO)
-    
-    # 포맷터 설정 (줄 번호만 포함)
-    formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - line %(lineno)d - %(message)s'
-    )
-    file_handler.setFormatter(formatter)
     console_handler.setFormatter(formatter)
     
     # 핸들러 추가
