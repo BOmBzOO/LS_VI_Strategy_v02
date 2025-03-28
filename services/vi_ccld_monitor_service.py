@@ -9,7 +9,7 @@ import asyncio
 from config.logging_config import setup_logger
 from services.vi_monitor_service import VIMonitorService, VIData
 from services.ccld_monitor_service import CCLDMonitorService, CCLDData
-from services.market_service import MarketService
+from services.market_data_service import MarketService
 from api.constants import MarketType
 
 class VICCLDMonitorService:

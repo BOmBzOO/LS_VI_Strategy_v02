@@ -1,46 +1,20 @@
-2025-03-27 23:19:07 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() missing 1 required positional argument: 'token'
-2025-03-27 23:20:05 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() missing 1 required positional argument: 'token'
-2025-03-27 23:21:45 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() got an unexpected keyword argument 'max_subscriptions'
-2025-03-27 23:25:13 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:26:22 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:26:33 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:28:35 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:29:46 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:40:12 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:42:24 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:47:33 - services.vi_monitor_service - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:48:53 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:50:12 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
-2025-03-27 23:50:16 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:50:22 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
-2025-03-27 23:50:27 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:53:51 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
-2025-03-27 23:53:59 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:56:50 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
-2025-03-28 00:04:30 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
-2025-03-28 00:21:31 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
-2025-03-28 00:21:35 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
-2025-03-28 00:24:01 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
-2025-03-28 00:24:04 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
-2025-03-28 00:26:31 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
-2025-03-28 14:45:37,302 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 14:46:38,827 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 14:46:41,552 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 14:48:06,355 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 14:48:52,787 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 15:03:28,776 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 15:03:31,818 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:03:11,272 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:06:49,822 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 16:07:17,296 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:14:49,916 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 16:16:44,522 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:17:04,132 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 16:17:54,418 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:17:56,124 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 16:29:02,266 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:31:43,036 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 16:39:25,028 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:43:50,753 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
-2025-03-28 16:43:53,624 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
-2025-03-28 16:44:02,746 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:24:26,306 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:24:32,419 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:24:50,896 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:24:56,039 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:42:05,949 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:43:42,152 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:46:38,071 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:47:41,811 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:48:04,671 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:48:06,897 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:48:59,889 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:49:03,341 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:50:58,288 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:51:00,345 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:52:59,013 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:53:02,558 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:55:46,728 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:55:51,479 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 17:56:27,526 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 17:56:42,740 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.

@@ -42,15 +42,11 @@ async def main():
         
     except KeyboardInterrupt:
         logger.info("\n프로그램 종료 중...")
-        logger.info("1. VI 모니터링 중지 중...")
         await strategy.stop()
-        logger.info("2. 리소스 정리 중...")
-        logger.info("3. 연결 종료 중...")
         logger.info("프로그램이 종료되었습니다.")
         
     except Exception as e:
         logger.error(f"프로그램 실행 중 오류 발생: {str(e)}", exc_info=True)
-        logger.info("\n프로그램 종료 중...")
         await strategy.stop()
         
     finally:
@@ -60,6 +56,7 @@ async def main():
         logger.info(f"최종 상태: {status}")
 
 if __name__ == "__main__":
+    
     try:
         asyncio.run(main())
     except KeyboardInterrupt:

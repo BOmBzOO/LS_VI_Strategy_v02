@@ -1,82 +1,30 @@
-2025-03-27 23:19:06 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:19:07 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:19:07 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() missing 1 required positional argument: 'token'
-2025-03-27 23:19:07 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:20:04 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:20:05 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:20:05 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() missing 1 required positional argument: 'token'
-2025-03-27 23:20:05 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:21:44 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:21:45 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:21:45 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: WebSocketClient.__init__() got an unexpected keyword argument 'max_subscriptions'
-2025-03-27 23:21:45 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:25:12 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:25:13 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:25:13 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:25:13 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:26:21 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:26:22 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:26:22 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:26:22 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:26:32 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:26:33 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:26:33 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:26:33 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:28:34 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:28:35 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:28:35 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:28:35 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:29:45 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:29:46 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:29:46 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:29:46 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:40:12 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:40:12 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:40:12 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:40:12 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:42:23 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:42:24 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:42:24 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:42:24 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:47:32 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:47:33 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:47:33 - __main__ - ERROR - VI 모니터링 시작 중 오류 발생: CLOSED
-2025-03-27 23:47:33 - __main__ - INFO - 전략이 중지되었습니다.
-2025-03-27 23:48:52 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:48:53 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:48:53 - __main__ - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:50:12 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
-2025-03-27 23:50:15 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:50:16 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:50:16 - __main__ - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:50:22 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
-2025-03-27 23:50:26 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:50:26 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:50:27 - __main__ - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:53:51 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
-2025-03-27 23:53:58 - __main__ - INFO - 토큰 초기화 완료
-2025-03-27 23:53:59 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-27 23:53:59 - __main__ - INFO - VI 모니터링이 시작되었습니다.
-2025-03-27 23:56:50 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
-2025-03-28 00:04:29 - __main__ - INFO - 토큰 초기화 완료
-2025-03-28 00:04:30 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-28 00:04:30 - __main__ - INFO - VI 모니터링이 시작되었습니다.
-2025-03-28 00:21:31 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
-2025-03-28 00:21:33 - __main__ - INFO - 토큰 초기화 완료
-2025-03-28 00:21:34 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-28 00:21:35 - __main__ - INFO - VI 모니터링이 시작되었습니다.
-2025-03-28 00:24:01 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
-2025-03-28 00:24:03 - __main__ - INFO - 토큰 초기화 완료
-2025-03-28 00:24:04 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
-2025-03-28 00:24:04 - __main__ - INFO - VI 모니터링이 시작되었습니다.
-2025-03-28 00:26:31 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
-2025-03-28 15:12:52,579 - __main__ - ERROR - line 55 - 오류 발생: object str can't be used in 'await' expression
-2025-03-28 15:19:30,057 - __main__ - ERROR - line 76 - 오류 발생: object str can't be used in 'await' expression
-2025-03-28 16:03:11,272 - __main__ - INFO - line 55 - VI 발동 종목 체결 모니터링이 시작되었습니다.
-2025-03-28 16:06:49,823 - __main__ - INFO - line 81 - VI 발동 종목 체결 모니터링이 종료되었습니다.
-2025-03-28 16:07:17,296 - __main__ - INFO - line 55 - VI 발동 종목 체결 모니터링이 시작되었습니다.
-2025-03-28 16:14:49,917 - __main__ - INFO - line 81 - VI 발동 종목 체결 모니터링이 종료되었습니다.
-2025-03-28 16:16:44,523 - __main__ - INFO - line 55 - VI 발동 종목 체결 모니터링이 시작되었습니다.
-2025-03-28 16:17:04,133 - __main__ - INFO - line 81 - VI 발동 종목 체결 모니터링이 종료되었습니다.
-2025-03-28 16:17:54,418 - __main__ - INFO - line 55 - VI 발동 종목 체결 모니터링이 시작되었습니다.
-2025-03-28 16:17:56,125 - __main__ - INFO - line 81 - VI 발동 종목 체결 모니터링이 종료되었습니다.
+2025-03-28 17:40:30,422 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:40:30,429 - __main__ - INFO - line 54 - 프로그램 종료 - 실행 시간: 0.01초
+2025-03-28 17:40:30,429 - __main__ - INFO - line 55 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:40:30.422984', 'end_time': None, 'running_time': 0.006324, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': False, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}
+2025-03-28 17:42:04,907 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:43:42,993 - __main__ - INFO - line 54 - 프로그램 종료 - 실행 시간: 97.25초
+2025-03-28 17:43:42,993 - __main__ - INFO - line 55 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:42:04.907894', 'end_time': '2025-03-28T17:43:42.152950', 'running_time': 97.245056, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': True, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}
+2025-03-28 17:46:37,030 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:47:42,763 - __main__ - INFO - line 54 - 프로그램 종료 - 실행 시간: 64.78초
+2025-03-28 17:47:42,763 - __main__ - INFO - line 55 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:46:37.030547', 'end_time': '2025-03-28T17:47:41.811225', 'running_time': 64.780678, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': True, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}
+2025-03-28 17:48:04,672 - __main__ - INFO - line 55 - VI 발동 종목 체결 모니터링이 시작되었습니다.
+2025-03-28 17:48:06,897 - __main__ - INFO - line 81 - VI 발동 종목 체결 모니터링이 종료되었습니다.
+2025-03-28 17:48:58,867 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:49:03,916 - __main__ - INFO - line 55 - 프로그램 종료 - 실행 시간: 4.47초
+2025-03-28 17:49:03,916 - __main__ - INFO - line 56 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:48:58.868621', 'end_time': '2025-03-28T17:49:03.341088', 'running_time': 4.472467, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': True, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}
+2025-03-28 17:50:57,203 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:51:01,308 - __main__ - INFO - line 55 - 프로그램 종료 - 실행 시간: 3.14초
+2025-03-28 17:51:01,310 - __main__ - INFO - line 56 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:50:57.204980', 'end_time': '2025-03-28T17:51:00.345372', 'running_time': 3.140392, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': True, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}
+2025-03-28 17:51:37,023 - __main__ - INFO - line 66 - 체결 모니터링 시작 - 종목: 020180
+2025-03-28 17:51:39,439 - __main__ - INFO - line 86 - 체결 모니터링 종료 - 종목: 020180
+2025-03-28 17:52:50,089 - __main__ - INFO - line 66 - 체결 모니터링 시작 - 종목: 020180
+2025-03-28 17:52:55,515 - __main__ - INFO - line 86 - 체결 모니터링 종료 - 종목: 020180
+2025-03-28 17:52:57,989 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:53:03,073 - __main__ - INFO - line 55 - 프로그램 종료 - 실행 시간: 4.57초
+2025-03-28 17:53:03,073 - __main__ - INFO - line 56 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:52:57.990273', 'end_time': '2025-03-28T17:53:02.559471', 'running_time': 4.569198, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': True, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}
+2025-03-28 17:55:45,693 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:55:51,799 - __main__ - INFO - line 59 - 프로그램 종료 - 실행 시간: 5.78초
+2025-03-28 17:55:51,800 - __main__ - INFO - line 60 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:55:45.694793', 'end_time': '2025-03-28T17:55:51.479195', 'running_time': 5.784402, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': True, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}
+2025-03-28 17:56:26,497 - __main__ - INFO - line 39 - VI 모니터링 전략 시작...
+2025-03-28 17:56:43,754 - __main__ - INFO - line 59 - 프로그램 종료 - 실행 시간: 16.24초
+2025-03-28 17:56:43,756 - __main__ - INFO - line 60 - 최종 상태: {'name': 'VI_Monitoring', 'is_running': False, 'is_initialized': True, 'start_time': '2025-03-28T17:56:26.497448', 'end_time': '2025-03-28T17:56:42.740443', 'running_time': 16.242995, 'monitors': {'count': 0, 'names': []}, 'positions': 0, 'orders': 0, 'performance_metrics': {'total_profit_loss': 0.0, 'win_rate': 0.0, 'max_drawdown': 0.0, 'sharpe_ratio': 0.0}, 'last_error': None, 'market_data_loaded': True, 'monitoring_active': False, 'active_vi_count': 0, 'vi_monitor_state': 'NOT_INITIALIZED', 'vi_active_stocks': {}}

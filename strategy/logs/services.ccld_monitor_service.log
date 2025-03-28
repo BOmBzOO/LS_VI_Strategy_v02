@@ -1,8 +1,4 @@
-2025-03-28 15:20:31,981 - services.ccld_monitor_service - INFO - line 119 - 체결 모니터링 시작 - 종목: 005930
-2025-03-28 15:25:16,087 - services.ccld_monitor_service - INFO - line 157 - 체결 모니터링 중지 - 종목: 005930
-2025-03-28 15:25:17,936 - services.ccld_monitor_service - INFO - line 149 - 체결 모니터링 시작 - 종목: 005930
-2025-03-28 15:32:43,821 - services.ccld_monitor_service - INFO - line 187 - 체결 모니터링 중지 - 종목: 005930
-2025-03-28 15:32:45,536 - services.ccld_monitor_service - INFO - line 149 - 체결 모니터링 시작 - 종목: 005930
-2025-03-28 15:44:17,239 - services.ccld_monitor_service - INFO - line 187 - 체결 모니터링 중지 - 종목: 005930
-2025-03-28 15:44:20,084 - services.ccld_monitor_service - INFO - line 149 - 체결 모니터링 시작 - 종목: 020180
-2025-03-28 15:47:07,298 - services.ccld_monitor_service - INFO - line 187 - 체결 모니터링 중지 - 종목: 020180
+2025-03-28 17:51:37,022 - services.ccld_monitor_service - INFO - line 149 - 체결 모니터링 시작 - 종목: 020180
+2025-03-28 17:51:39,438 - services.ccld_monitor_service - INFO - line 187 - 체결 모니터링 중지 - 종목: 020180
+2025-03-28 17:52:50,089 - services.ccld_monitor_service - INFO - line 149 - 체결 모니터링 시작 - 종목: 020180
+2025-03-28 17:52:55,514 - services.ccld_monitor_service - INFO - line 187 - 체결 모니터링 중지 - 종목: 020180

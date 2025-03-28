@@ -14,7 +14,7 @@ from datetime import datetime
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.logging_config import setup_logger
-from services.token_service import TokenService
+from services.auth_token_service import TokenService
 from services.ccld_monitor_service import CCLDMonitorService
 from api.constants import MarketType
 
@@ -24,19 +24,18 @@ def print_ccld_data(data: Dict[str, Any]) -> None:
     if not body:
         return
         
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] "
-          f"현재가: {body.get('price', '')}, "
-          f"체결량: {body.get('volume', '')}, "
-          f"거래대금: {body.get('value', '')}")
+    print(
+        f"[{datetime.now().strftime('%H:%M:%S')}] "
+        f"현재가: {body.get('price', '')}, "
+        f"체결량: {body.get('volume', '')}, "
+        f"거래대금: {body.get('value', '')}"
+    )
 
 async def main():
     """메인 함수"""
     logger = setup_logger(__name__)
     
     # 모니터링할 종목 설정
-    # stock_code = "005930"  # 삼성전자
-    # market_type = MarketType.KOSPI
-
     stock_code = "020180"  # 삼성전자
     market_type = MarketType.KOSDAQ
     
@@ -53,17 +52,18 @@ async def main():
             return
             
         # 체결 모니터링 서비스 초기화
-        ccld_monitor = CCLDMonitorService(
+        monitor_service = CCLDMonitorService(
             token=token,
             stock_code=stock_code,
             market_type=market_type
         )
         
         # 콜백 함수 등록
-        ccld_monitor.add_callback(print_ccld_data)
+        monitor_service.add_callback(print_ccld_data)
         
         # 모니터링 시작
-        await ccld_monitor.start()
+        await monitor_service.start()
+        logger.info(f"체결 모니터링 시작 - 종목: {stock_code}")
         
         # 프로그램 종료 대기
         try:
@@ -71,7 +71,7 @@ async def main():
                 await asyncio.sleep(1)
                 
                 # 현재 데이터 확인
-                current_data = ccld_monitor.get_current_data()
+                current_data = monitor_service.get_current_data()
                 if current_data:
                     logger.debug(f"현재 데이터: {current_data}")
                     
@@ -81,8 +81,25 @@ async def main():
     except Exception as e:
         logger.error(f"오류 발생: {str(e)}")
     finally:
-        if 'ccld_monitor' in locals():
-            await ccld_monitor.stop()
+        if 'monitor_service' in locals():
+            await monitor_service.stop()
+            logger.info(f"체결 모니터링 종료 - 종목: {stock_code}")
 
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    # 프로세스 종료 시그널 핸들러 등록
+    def signal_handler(signum, frame):
+        print("\n프로그램 종료 중...")
+        sys.exit(0)
+        
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+    
+    try:
+        # 메인 함수 실행
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n프로그램이 사용자에 의해 종료되었습니다.")
+    except Exception as e:
+        print(f"\n프로그램 실행 중 오류 발생: {str(e)}")
+    finally:
+        print("\n프로그램이 종료되었습니다.") 

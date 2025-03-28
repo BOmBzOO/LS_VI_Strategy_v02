@@ -4,12 +4,30 @@
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional, List, Protocol
 from datetime import datetime
-from core.base_monitor import BaseMonitor
+import asyncio
+import signal
+from contextlib import asynccontextmanager
+
 from config.logging_config import setup_logger
 from api.tr.order import OrderTRAPI
 from api.tr.account import AccountTRAPI
+
+class MonitorProtocol(Protocol):
+    """모니터 프로토콜"""
+    
+    async def start(self) -> None:
+        """모니터링 시작"""
+        ...
+        
+    async def stop(self) -> None:
+        """모니터링 중지"""
+        ...
+        
+    def add_callback(self, callback) -> None:
+        """콜백 함수 등록"""
+        ...
 
 class BaseStrategy(ABC):
     """기본 전략 클래스"""
@@ -30,7 +48,7 @@ class BaseStrategy(ABC):
         self.account_api = AccountTRAPI()
         
         # 모니터링 객체들
-        self.monitors: Dict[str, BaseMonitor] = {}
+        self.monitors: Dict[str, MonitorProtocol] = {}
         
         # 포지션 및 주문 관리
         self.positions: Dict[str, Dict[str, Any]] = {}  # 종목코드: 포지션 정보
@@ -43,25 +61,55 @@ class BaseStrategy(ABC):
             "max_drawdown": 0.0,
             "sharpe_ratio": 0.0
         }
+        
+        # 상태 관리
+        self.state: Dict[str, Any] = {
+            "is_initialized": False,
+            "last_error": None,
+            "active_monitors": 0
+        }
+
+    @asynccontextmanager
+    async def strategy_session(self):
+        """전략 세션 관리"""
+        try:
+            # 시그널 핸들러 설정
+            self._setup_signal_handlers()
+            
+            # 상태 초기화
+            self.is_running = True
+            self.start_time = datetime.now()
+            
+            yield
+            
+        finally:
+            # 종료 처리
+            await self._cleanup()
+            
+    def _setup_signal_handlers(self):
+        """시그널 핸들러 설정"""
+        signal.signal(signal.SIGINT, lambda s, f: asyncio.create_task(self.stop()))
+        signal.signal(signal.SIGTERM, lambda s, f: asyncio.create_task(self.stop()))
 
     @abstractmethod
-    def initialize(self) -> None:
+    async def initialize(self) -> bool:
         """전략 초기화"""
         pass
 
     @abstractmethod
-    def start(self) -> None:
+    async def start(self) -> bool:
         """전략 실행"""
         if self.is_running:
             self.logger.warning("이미 전략이 실행 중입니다.")
-            return
+            return False
         
         self.is_running = True
         self.start_time = datetime.now()
         self.logger.info(f"{self.name} 전략 시작")
+        return True
 
     @abstractmethod
-    def stop(self) -> None:
+    async def stop(self) -> None:
         """전략 중지"""
         if not self.is_running:
             self.logger.warning("전략이 실행 중이 아닙니다.")
@@ -71,14 +119,28 @@ class BaseStrategy(ABC):
         self.end_time = datetime.now()
         self.logger.info(f"{self.name} 전략 중지")
 
-    def add_monitor(self, name: str, monitor: BaseMonitor) -> None:
+    async def _cleanup(self) -> None:
+        """자원 정리"""
+        try:
+            # 모든 모니터 중지
+            for monitor in self.monitors.values():
+                await monitor.stop()
+                
+            self.is_running = False
+            self.logger.info(f"{self.name} 전략이 정상적으로 종료되었습니다")
+            
+        except Exception as e:
+            self.logger.error(f"종료 처리 중 오류 발생: {str(e)}")
+
+    def add_monitor(self, name: str, monitor: MonitorProtocol) -> None:
         """모니터 추가
 
         Args:
             name (str): 모니터 이름
-            monitor (BaseMonitor): 모니터 객체
+            monitor (MonitorProtocol): 모니터 객체
         """
         self.monitors[name] = monitor
+        self.state["active_monitors"] += 1
         self.logger.debug(f"모니터 추가: {name}")
 
     def remove_monitor(self, name: str) -> None:
@@ -89,16 +151,17 @@ class BaseStrategy(ABC):
         """
         if name in self.monitors:
             del self.monitors[name]
+            self.state["active_monitors"] -= 1
             self.logger.debug(f"모니터 제거: {name}")
 
-    def get_monitor(self, name: str) -> Optional[BaseMonitor]:
+    def get_monitor(self, name: str) -> Optional[MonitorProtocol]:
         """모니터 조회
 
         Args:
             name (str): 모니터 이름
 
         Returns:
-            Optional[BaseMonitor]: 모니터 객체
+            Optional[MonitorProtocol]: 모니터 객체
         """
         return self.monitors.get(name)
 
@@ -141,11 +204,16 @@ class BaseStrategy(ABC):
         return {
             "name": self.name,
             "is_running": self.is_running,
+            "is_initialized": self.state["is_initialized"],
             "start_time": self.start_time.isoformat() if self.start_time else None,
             "end_time": self.end_time.isoformat() if self.end_time else None,
             "running_time": self.running_time,
-            "monitors": list(self.monitors.keys()),
+            "monitors": {
+                "count": self.state["active_monitors"],
+                "names": list(self.monitors.keys())
+            },
             "positions": len(self.positions),
             "orders": len(self.orders),
-            "performance_metrics": self.performance_metrics
+            "performance_metrics": self.performance_metrics,
+            "last_error": self.state["last_error"]
         } 

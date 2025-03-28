@@ -14,7 +14,7 @@ from datetime import datetime
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.logging_config import setup_logger
-from services.token_service import TokenService
+from services.auth_token_service import TokenService
 from services.vi_ccld_monitor_service import VICCLDMonitorService
 
 def print_vi_ccld_data(data: Dict[str, Any]) -> None:

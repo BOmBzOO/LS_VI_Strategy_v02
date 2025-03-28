@@ -3,64 +3,39 @@
 토큰 발급, 주식 리스트 조회, VI 모니터링을 순차적으로 수행하는 전략 클래스를 제공합니다.
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, Optional
 from datetime import datetime
 import asyncio
 import sys
 import os
-import signal
-from contextlib import asynccontextmanager
 
 # 프로젝트 루트 디렉토리를 Python 경로에 추가
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.logging_config import setup_logger
-from services.token_service import TokenService
-from services.market_service import MarketService
+from services.auth_token_service import TokenService
+from services.market_data_service import MarketService
 from services.vi_monitor_service import VIMonitorService, VIData
 from api.constants import MarketType, VIStatus, TRCode
 from api.realtime.websocket.websocket_base import WebSocketState
+from strategy.base_strategy import BaseStrategy
 
-class VIStrategy:
+class VIStrategy(BaseStrategy):
     """VI 모니터링 전략 클래스"""
     
     def __init__(self):
         """초기화"""
-        self.logger = setup_logger(__name__)
+        super().__init__("VI_Monitoring")
         self.token_service = TokenService()
         self.market_service = MarketService()
         self.vi_monitor: Optional[VIMonitorService] = None
-        self.state = {
-            "is_running": False,
-            "is_initialized": False,
+        
+        # VI 관련 상태 추가
+        self.state.update({
             "market_data_loaded": False,
             "monitoring_active": False,
-            "last_error": None,
-            "start_time": None,
             "active_vi_count": 0
-        }
-        
-    @asynccontextmanager
-    async def strategy_session(self):
-        """전략 세션 관리"""
-        try:
-            # 시그널 핸들러 설정
-            self._setup_signal_handlers()
-            
-            # 상태 초기화
-            self.state["is_running"] = True
-            self.state["start_time"] = datetime.now()
-            
-            yield
-            
-        finally:
-            # 종료 처리
-            await self._cleanup()
-            
-    def _setup_signal_handlers(self):
-        """시그널 핸들러 설정"""
-        signal.signal(signal.SIGINT, lambda s, f: asyncio.create_task(self.stop()))
-        signal.signal(signal.SIGTERM, lambda s, f: asyncio.create_task(self.stop()))
+        })
         
     async def initialize(self) -> bool:
         """초기화 및 토큰 발급"""
@@ -87,6 +62,96 @@ class VIStrategy:
             self.logger.error(f"초기화 중 오류 발생: {str(e)}")
             return False
             
+    async def stop(self) -> None:
+        """전략 중지"""
+        if not self.is_running:
+            self.logger.warning("전략이 실행 중이 아닙니다.")
+            return
+            
+        try:
+            # VI 모니터링 중지
+            if self.vi_monitor:
+                await self.vi_monitor.stop()
+                self.vi_monitor = None
+                
+            self.state["monitoring_active"] = False
+            self.state["active_vi_count"] = 0
+            
+            # 부모 클래스의 stop 메서드 호출
+            await super().stop()
+            
+            self.logger.info("VI 모니터링 전략이 중지되었습니다")
+            
+        except Exception as e:
+            self.state["last_error"] = str(e)
+            self.logger.error(f"전략 중지 중 오류 발생: {str(e)}")
+            
+    async def start(self) -> bool:
+        """전략 실행"""
+        if self.is_running:
+            self.logger.warning("이미 전략이 실행 중입니다.")
+            return False
+            
+        try:
+            # 1. 시장 데이터 로드
+            if not await self.load_market_data():
+                return False
+                
+            # 2. VI 모니터링 시작
+            if not await self.start_vi_monitoring():
+                return False
+                
+            # 3. 상태 업데이트
+            self.is_running = True
+            self.start_time = datetime.now()
+            self.logger.info(f"{self.name} 전략 시작")
+            return True
+            
+        except Exception as e:
+            self.state["last_error"] = str(e)
+            self.logger.error(f"전략 실행 중 오류 발생: {str(e)}")
+            return False
+            
+    async def run(self) -> None:
+        """전략 실행"""
+        async with self.strategy_session():
+            try:
+                self.logger.info("전략 실행 시작...")
+                
+                # 1. 초기화 및 토큰 발급
+                self.logger.info("초기화 시작...")
+                if not await self.initialize():
+                    self.logger.error(f"초기화 실패: {self.state['last_error']}")
+                    return
+                    
+                # 2. 시장 데이터 로드
+                self.logger.info("시장 데이터 로드 시작...")
+                if not await self.load_market_data():
+                    self.logger.error(f"시장 데이터 로드 실패: {self.state['last_error']}")
+                    return
+                    
+                # 3. VI 모니터링 시작
+                self.logger.info("VI 모니터링 시작...")
+                if not await self.start_vi_monitoring():
+                    self.logger.error(f"VI 모니터링 시작 실패: {self.state['last_error']}")
+                    return
+                    
+                # 4. 모니터링 유지
+                self.logger.info("모니터링 유지 중...")
+                while self.is_running:
+                    if self.vi_monitor and self.vi_monitor.state == WebSocketState.ERROR:
+                        self.logger.error("VI 모니터링 오류 발생")
+                        await self.stop()
+                        break
+                    await asyncio.sleep(1)
+                    
+            except Exception as e:
+                self.state["last_error"] = str(e)
+                self.logger.error(f"전략 실행 중 오류 발생: {str(e)}", exc_info=True)
+                await self.stop()
+            finally:
+                self.logger.info("전략 실행 종료")
+                
     async def load_market_data(self) -> bool:
         """시장 데이터 로드"""
         try:
@@ -210,37 +275,6 @@ class VIStrategy:
         except Exception as e:
             self.logger.error(f"VI 해제 처리 중 오류 발생: {str(e)}")
             
-    async def run(self) -> None:
-        """전략 실행"""
-        async with self.strategy_session():
-            try:
-                # 1. 초기화 및 토큰 발급
-                if not await self.initialize():
-                    self.logger.error(f"초기화 실패: {self.state['last_error']}")
-                    return
-                    
-                # 2. 시장 데이터 로드
-                if not await self.load_market_data():
-                    self.logger.error(f"시장 데이터 로드 실패: {self.state['last_error']}")
-                    return
-                    
-                # 3. VI 모니터링 시작
-                if not await self.start_vi_monitoring():
-                    self.logger.error(f"VI 모니터링 시작 실패: {self.state['last_error']}")
-                    return
-                    
-                # 4. 모니터링 유지
-                while self.state["is_running"]:
-                    if self.vi_monitor and self.vi_monitor.state == WebSocketState.ERROR:
-                        self.logger.error("VI 모니터링 오류 발생")
-                        await self.stop()
-                        break
-                    await asyncio.sleep(1)
-                    
-            except Exception as e:
-                self.state["last_error"] = str(e)
-                self.logger.error(f"전략 실행 중 오류 발생: {str(e)}")
-                
     async def _cleanup(self) -> None:
         """자원 정리"""
         try:
@@ -248,28 +282,23 @@ class VIStrategy:
                 await self.vi_monitor.stop()
                 self.vi_monitor = None
                 
-            self.state["is_running"] = False
             self.state["monitoring_active"] = False
-            
-            self.logger.info("전략이 정상적으로 종료되었습니다")
+            await super()._cleanup()
             
         except Exception as e:
             self.logger.error(f"종료 처리 중 오류 발생: {str(e)}")
             
-    async def stop(self) -> None:
-        """전략 중지"""
-        self.state["is_running"] = False
-            
     def get_status(self) -> Dict[str, Any]:
         """현재 상태 정보 반환"""
-        return {
-            **self.state,
-            "token_status": self.token_service.get_token_info(),
-            "market_status": self.market_service.get_status(),
+        status = super().get_status()
+        status.update({
+            "market_data_loaded": self.state["market_data_loaded"],
+            "monitoring_active": self.state["monitoring_active"],
+            "active_vi_count": self.state["active_vi_count"],
             "vi_monitor_state": self.vi_monitor.state.name if self.vi_monitor else "NOT_INITIALIZED",
-            "vi_active_stocks": self.vi_monitor.get_active_stocks() if self.vi_monitor else {},
-            "uptime": (datetime.now() - self.state["start_time"]).total_seconds() if self.state["start_time"] else 0
-        }
+            "vi_active_stocks": self.vi_monitor.get_active_stocks() if self.vi_monitor else {}
+        })
+        return status
 
 async def main():
     """메인 함수"""
@@ -284,4 +313,4 @@ async def main():
         await strategy.stop()
 
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    asyncio.run(main())
