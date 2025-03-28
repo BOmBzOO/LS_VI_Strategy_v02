@@ -121,3 +121,52 @@ AttributeError: 'NoneType' object has no attribute 'get'
 2025-03-28 15:47:07,252 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: K3__020180
 2025-03-28 15:47:07,297 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 34, 'errors': 0}}
 2025-03-28 15:47:07,298 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 16:03:11,156 - api.realtime.websocket.websocket_manager - INFO - line 46 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 16:03:11,157 - api.realtime.websocket.websocket_manager - INFO - line 56 - 웹소켓 매니저 시작 중...
+2025-03-28 16:03:11,209 - api.realtime.websocket.websocket_manager - INFO - line 260 - 웹소켓 연결이 열렸습니다.
+2025-03-28 16:03:11,271 - api.realtime.websocket.websocket_manager - INFO - line 299 - 구독 요청 완료: VI__000000
+2025-03-28 16:06:49,812 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: VI__000000
+2025-03-28 16:06:49,821 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 16:06:49,823 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 16:07:17,183 - api.realtime.websocket.websocket_manager - INFO - line 46 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 16:07:17,184 - api.realtime.websocket.websocket_manager - INFO - line 56 - 웹소켓 매니저 시작 중...
+2025-03-28 16:07:17,230 - api.realtime.websocket.websocket_manager - INFO - line 260 - 웹소켓 연결이 열렸습니다.
+2025-03-28 16:07:17,295 - api.realtime.websocket.websocket_manager - INFO - line 299 - 구독 요청 완료: VI__000000
+2025-03-28 16:14:49,908 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: VI__000000
+2025-03-28 16:14:49,916 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 16:14:49,918 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 16:16:44,401 - api.realtime.websocket.websocket_manager - INFO - line 46 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 16:16:44,402 - api.realtime.websocket.websocket_manager - INFO - line 56 - 웹소켓 매니저 시작 중...
+2025-03-28 16:16:44,455 - api.realtime.websocket.websocket_manager - INFO - line 260 - 웹소켓 연결이 열렸습니다.
+2025-03-28 16:16:44,521 - api.realtime.websocket.websocket_manager - INFO - line 299 - 구독 요청 완료: VI__000000
+2025-03-28 16:17:04,125 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: VI__000000
+2025-03-28 16:17:04,132 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 16:17:04,134 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 16:17:54,306 - api.realtime.websocket.websocket_manager - INFO - line 46 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 16:17:54,306 - api.realtime.websocket.websocket_manager - INFO - line 56 - 웹소켓 매니저 시작 중...
+2025-03-28 16:17:54,359 - api.realtime.websocket.websocket_manager - INFO - line 260 - 웹소켓 연결이 열렸습니다.
+2025-03-28 16:17:54,417 - api.realtime.websocket.websocket_manager - INFO - line 299 - 구독 요청 완료: VI__000000
+2025-03-28 16:17:56,116 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: VI__000000
+2025-03-28 16:17:56,123 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 16:17:56,125 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 16:29:02,138 - api.realtime.websocket.websocket_manager - INFO - line 46 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 16:29:02,138 - api.realtime.websocket.websocket_manager - INFO - line 56 - 웹소켓 매니저 시작 중...
+2025-03-28 16:29:02,166 - api.realtime.websocket.websocket_manager - INFO - line 260 - 웹소켓 연결이 열렸습니다.
+2025-03-28 16:29:02,265 - api.realtime.websocket.websocket_manager - INFO - line 299 - 구독 요청 완료: VI__000000
+2025-03-28 16:31:42,984 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: VI__000000
+2025-03-28 16:31:43,035 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 16:31:43,036 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 16:39:24,903 - api.realtime.websocket.websocket_manager - INFO - line 46 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 16:39:24,903 - api.realtime.websocket.websocket_manager - INFO - line 56 - 웹소켓 매니저 시작 중...
+2025-03-28 16:39:24,929 - api.realtime.websocket.websocket_manager - INFO - line 260 - 웹소켓 연결이 열렸습니다.
+2025-03-28 16:39:25,027 - api.realtime.websocket.websocket_manager - INFO - line 299 - 구독 요청 완료: VI__000000
+2025-03-28 16:43:50,745 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: VI__000000
+2025-03-28 16:43:50,752 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 16:43:50,753 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 16:43:53,508 - api.realtime.websocket.websocket_manager - INFO - line 46 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 16:43:53,508 - api.realtime.websocket.websocket_manager - INFO - line 56 - 웹소켓 매니저 시작 중...
+2025-03-28 16:43:53,533 - api.realtime.websocket.websocket_manager - INFO - line 260 - 웹소켓 연결이 열렸습니다.
+2025-03-28 16:43:53,624 - api.realtime.websocket.websocket_manager - INFO - line 299 - 구독 요청 완료: VI__000000
+2025-03-28 16:44:02,691 - api.realtime.websocket.websocket_manager - INFO - line 330 - 구독 해제 완료: VI__000000
+2025-03-28 16:44:02,744 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 16:44:02,745 - api.realtime.websocket.websocket_manager - INFO - line 110 - 웹소켓 매니저가 중지되었습니다.

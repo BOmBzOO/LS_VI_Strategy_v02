@@ -576,3 +576,362 @@ SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_vers
 - 오류: 0개
 마지막 오류: 없음
 2025-03-28 15:47:07,297 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)
+2025-03-28 15:47:32,395 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:48:02,402 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:48:32,412 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:49:02,426 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:49:32,432 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:50:02,434 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:50:32,439 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:51:02,440 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:51:32,452 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:52:02,462 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:52:32,464 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:53:02,477 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:53:32,480 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:54:02,484 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:54:32,498 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:55:02,508 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:55:32,517 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:56:02,524 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:56:32,532 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:57:02,534 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:57:32,536 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:58:02,548 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:58:32,560 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:59:02,573 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 15:59:32,584 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:00:02,597 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:00:32,602 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:01:02,604 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:01:32,615 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:02:02,623 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:02:32,634 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:03:02,648 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:03:11,158 - api.realtime.websocket.websocket_client - DEBUG - line 159 - 이벤트 핸들러 등록: ['message', 'error', 'close', 'open']
+2025-03-28 16:03:11,158 - api.realtime.websocket.websocket_client - INFO - line 169 - 웹소켓 연결 시작 (시도 1번째)...
+2025-03-28 16:03:11,158 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CONNECTING (지속시간: 0.0초)
+2025-03-28 16:03:11,159 - api.realtime.websocket.websocket_client - DEBUG - line 188 - 연결 설정:
+URL: wss://openapi.ls-sec.co.kr:9443/websocket
+Headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ', 'Content-Type': 'application/json'}
+SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}
+2025-03-28 16:03:11,160 - api.realtime.websocket.websocket_client - DEBUG - line 245 - 웹소켓 실행 시작 (설정: {'sslopt': {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}, 'ping_interval': 30, 'ping_timeout': 10})
+2025-03-28 16:03:11,207 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTING -> CONNECTED (지속시간: 0.0초)
+2025-03-28 16:03:11,209 - api.realtime.websocket.websocket_client - INFO - line 399 - 웹소켓 연결 성공 (시도 1번째), URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 16:03:11,270 - api.realtime.websocket.websocket_client - INFO - line 230 - 웹소켓 연결 성공
+2025-03-28 16:03:11,270 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:03:11,271 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:03:11,273 - api.realtime.websocket.websocket_client - DEBUG - line 55 - 메시지 처리 시작: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:03:11,273 - api.realtime.websocket.websocket_client - DEBUG - line 147 - 메시지 전송 완료 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:03:11,274 - api.realtime.websocket.websocket_client - DEBUG - line 58 - 메시지 처리 완료
+2025-03-28 16:03:11,279 - api.realtime.websocket.websocket_client - DEBUG - line 260 - 메시지 수신 (총 1개): {"header":{"tr_type":"3","tr_cd":"VI_","rsp_cd":"00000","rsp_msg":"정상처리되었습니다"},"body":null}...
+2025-03-28 16:03:32,650 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:04:02,660 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:04:11,229 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:04:32,663 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:04:41,243 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:05:02,675 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:05:11,257 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:05:32,686 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:05:41,271 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:06:02,701 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:06:11,283 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:06:32,705 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:06:41,297 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:06:49,811 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:06:49,812 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 2개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:06:49,813 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTED -> CLOSING (지속시간: 218.6초)
+2025-03-28 16:06:49,813 - api.realtime.websocket.websocket_client - DEBUG - line 79 - 메시지 큐 중지 시작
+2025-03-28 16:06:49,814 - api.realtime.websocket.websocket_client - DEBUG - line 63 - 메시지 처리 태스크 취소됨
+2025-03-28 16:06:49,814 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 2개, 오류: 0개)
+2025-03-28 16:06:49,814 - api.realtime.websocket.websocket_client - DEBUG - line 86 - 메시지 처리 태스크 정상 종료
+2025-03-28 16:06:49,814 - api.realtime.websocket.websocket_client - DEBUG - line 100 - 미처리 메시지 2개 제거됨
+2025-03-28 16:06:49,819 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSING -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:06:49,819 - api.realtime.websocket.websocket_client - INFO - line 371 - 웹소켓 연결 종료:
+상태 코드: None
+메시지: None
+통계:
+- 전송: 1개
+- 수신: 1개
+- 오류: 0개
+2025-03-28 16:06:49,820 - api.realtime.websocket.websocket_client - INFO - line 466 - 웹소켓 연결 종료 완료
+통계:
+- 연결 시도: 1번
+- 전송: 1개
+- 수신: 1개
+- 오류: 0개
+마지막 오류: 없음
+2025-03-28 16:06:49,821 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:07:02,708 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:07:17,185 - api.realtime.websocket.websocket_client - DEBUG - line 159 - 이벤트 핸들러 등록: ['message', 'error', 'close', 'open']
+2025-03-28 16:07:17,185 - api.realtime.websocket.websocket_client - INFO - line 169 - 웹소켓 연결 시작 (시도 1번째)...
+2025-03-28 16:07:17,186 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CONNECTING (지속시간: 0.0초)
+2025-03-28 16:07:17,186 - api.realtime.websocket.websocket_client - DEBUG - line 188 - 연결 설정:
+URL: wss://openapi.ls-sec.co.kr:9443/websocket
+Headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ', 'Content-Type': 'application/json'}
+SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}
+2025-03-28 16:07:17,187 - api.realtime.websocket.websocket_client - DEBUG - line 245 - 웹소켓 실행 시작 (설정: {'sslopt': {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}, 'ping_interval': 30, 'ping_timeout': 10})
+2025-03-28 16:07:17,229 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTING -> CONNECTED (지속시간: 0.0초)
+2025-03-28 16:07:17,229 - api.realtime.websocket.websocket_client - INFO - line 399 - 웹소켓 연결 성공 (시도 1번째), URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 16:07:17,294 - api.realtime.websocket.websocket_client - INFO - line 230 - 웹소켓 연결 성공
+2025-03-28 16:07:17,295 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:07:17,295 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:07:17,297 - api.realtime.websocket.websocket_client - DEBUG - line 55 - 메시지 처리 시작: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:07:17,297 - api.realtime.websocket.websocket_client - DEBUG - line 147 - 메시지 전송 완료 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:07:17,297 - api.realtime.websocket.websocket_client - DEBUG - line 58 - 메시지 처리 완료
+2025-03-28 16:07:17,302 - api.realtime.websocket.websocket_client - DEBUG - line 260 - 메시지 수신 (총 1개): {"header":{"tr_type":"3","tr_cd":"VI_","rsp_cd":"00000","rsp_msg":"정상처리되었습니다"},"body":null}...
+2025-03-28 16:07:32,714 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:08:02,721 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:08:17,242 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:08:32,723 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:08:47,253 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:09:02,733 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:09:17,264 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:09:32,742 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:09:47,265 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:10:02,754 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:10:17,278 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:10:32,756 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:10:47,280 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:11:02,764 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:11:17,294 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:11:32,766 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:11:47,296 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:12:02,778 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:12:17,306 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:12:32,788 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:12:47,318 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:13:02,789 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:13:17,331 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:13:32,790 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:13:47,336 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:14:02,797 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:14:17,336 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:14:32,797 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:14:47,348 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:14:49,907 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:14:49,907 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 2개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:14:49,908 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTED -> CLOSING (지속시간: 452.7초)
+2025-03-28 16:14:49,909 - api.realtime.websocket.websocket_client - DEBUG - line 79 - 메시지 큐 중지 시작
+2025-03-28 16:14:49,909 - api.realtime.websocket.websocket_client - DEBUG - line 63 - 메시지 처리 태스크 취소됨
+2025-03-28 16:14:49,909 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 2개, 오류: 0개)
+2025-03-28 16:14:49,909 - api.realtime.websocket.websocket_client - DEBUG - line 86 - 메시지 처리 태스크 정상 종료
+2025-03-28 16:14:49,910 - api.realtime.websocket.websocket_client - DEBUG - line 100 - 미처리 메시지 2개 제거됨
+2025-03-28 16:14:49,914 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSING -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:14:49,914 - api.realtime.websocket.websocket_client - INFO - line 371 - 웹소켓 연결 종료:
+상태 코드: None
+메시지: None
+통계:
+- 전송: 1개
+- 수신: 1개
+- 오류: 0개
+2025-03-28 16:14:49,915 - api.realtime.websocket.websocket_client - INFO - line 466 - 웹소켓 연결 종료 완료
+통계:
+- 연결 시도: 1번
+- 전송: 1개
+- 수신: 1개
+- 오류: 0개
+마지막 오류: 없음
+2025-03-28 16:14:49,916 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:15:02,808 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:15:32,821 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:16:02,831 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:16:32,839 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:16:44,403 - api.realtime.websocket.websocket_client - DEBUG - line 159 - 이벤트 핸들러 등록: ['message', 'error', 'close', 'open']
+2025-03-28 16:16:44,403 - api.realtime.websocket.websocket_client - INFO - line 169 - 웹소켓 연결 시작 (시도 1번째)...
+2025-03-28 16:16:44,403 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CONNECTING (지속시간: 0.0초)
+2025-03-28 16:16:44,404 - api.realtime.websocket.websocket_client - DEBUG - line 188 - 연결 설정:
+URL: wss://openapi.ls-sec.co.kr:9443/websocket
+Headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ', 'Content-Type': 'application/json'}
+SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}
+2025-03-28 16:16:44,405 - api.realtime.websocket.websocket_client - DEBUG - line 245 - 웹소켓 실행 시작 (설정: {'sslopt': {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}, 'ping_interval': 30, 'ping_timeout': 10})
+2025-03-28 16:16:44,453 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTING -> CONNECTED (지속시간: 0.0초)
+2025-03-28 16:16:44,454 - api.realtime.websocket.websocket_client - INFO - line 399 - 웹소켓 연결 성공 (시도 1번째), URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 16:16:44,520 - api.realtime.websocket.websocket_client - INFO - line 230 - 웹소켓 연결 성공
+2025-03-28 16:16:44,521 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:16:44,521 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:16:44,524 - api.realtime.websocket.websocket_client - DEBUG - line 55 - 메시지 처리 시작: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:16:44,524 - api.realtime.websocket.websocket_client - DEBUG - line 147 - 메시지 전송 완료 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:16:44,524 - api.realtime.websocket.websocket_client - DEBUG - line 58 - 메시지 처리 완료
+2025-03-28 16:16:44,529 - api.realtime.websocket.websocket_client - DEBUG - line 260 - 메시지 수신 (총 1개): {"header":{"tr_type":"3","tr_cd":"VI_","rsp_cd":"00000","rsp_msg":"정상처리되었습니다"},"body":null}...
+2025-03-28 16:17:02,841 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:17:04,124 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:04,125 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 2개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:04,125 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTED -> CLOSING (지속시간: 19.7초)
+2025-03-28 16:17:04,126 - api.realtime.websocket.websocket_client - DEBUG - line 79 - 메시지 큐 중지 시작
+2025-03-28 16:17:04,126 - api.realtime.websocket.websocket_client - DEBUG - line 63 - 메시지 처리 태스크 취소됨
+2025-03-28 16:17:04,126 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 2개, 오류: 0개)
+2025-03-28 16:17:04,127 - api.realtime.websocket.websocket_client - DEBUG - line 86 - 메시지 처리 태스크 정상 종료
+2025-03-28 16:17:04,127 - api.realtime.websocket.websocket_client - DEBUG - line 100 - 미처리 메시지 2개 제거됨
+2025-03-28 16:17:04,130 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSING -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:17:04,131 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:17:32,841 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:17:54,307 - api.realtime.websocket.websocket_client - DEBUG - line 159 - 이벤트 핸들러 등록: ['message', 'error', 'close', 'open']
+2025-03-28 16:17:54,307 - api.realtime.websocket.websocket_client - INFO - line 169 - 웹소켓 연결 시작 (시도 1번째)...
+2025-03-28 16:17:54,308 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CONNECTING (지속시간: 0.0초)
+2025-03-28 16:17:54,308 - api.realtime.websocket.websocket_client - DEBUG - line 188 - 연결 설정:
+URL: wss://openapi.ls-sec.co.kr:9443/websocket
+Headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ', 'Content-Type': 'application/json'}
+SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}
+2025-03-28 16:17:54,309 - api.realtime.websocket.websocket_client - DEBUG - line 245 - 웹소켓 실행 시작 (설정: {'sslopt': {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}, 'ping_interval': 30, 'ping_timeout': 10})
+2025-03-28 16:17:54,357 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTING -> CONNECTED (지속시간: 0.0초)
+2025-03-28 16:17:54,358 - api.realtime.websocket.websocket_client - INFO - line 399 - 웹소켓 연결 성공 (시도 1번째), URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 16:17:54,416 - api.realtime.websocket.websocket_client - INFO - line 230 - 웹소켓 연결 성공
+2025-03-28 16:17:54,417 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:54,417 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:54,419 - api.realtime.websocket.websocket_client - DEBUG - line 55 - 메시지 처리 시작: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:54,419 - api.realtime.websocket.websocket_client - DEBUG - line 147 - 메시지 전송 완료 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:54,420 - api.realtime.websocket.websocket_client - DEBUG - line 58 - 메시지 처리 완료
+2025-03-28 16:17:54,435 - api.realtime.websocket.websocket_client - DEBUG - line 260 - 메시지 수신 (총 1개): {"header":{"tr_type":"3","tr_cd":"VI_","rsp_cd":"00000","rsp_msg":"정상처리되었습니다"},"body":null}...
+2025-03-28 16:17:56,115 - api.realtime.websocket.websocket_client - DEBUG - line 63 - 메시지 처리 태스크 취소됨
+2025-03-28 16:17:56,115 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 1개, 오류: 0개)
+2025-03-28 16:17:56,116 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:56,116 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 2개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:17:56,117 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTED -> CLOSING (지속시간: 1.8초)
+2025-03-28 16:17:56,117 - api.realtime.websocket.websocket_client - DEBUG - line 79 - 메시지 큐 중지 시작
+2025-03-28 16:17:56,117 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 2개, 오류: 0개)
+2025-03-28 16:17:56,118 - api.realtime.websocket.websocket_client - DEBUG - line 86 - 메시지 처리 태스크 정상 종료
+2025-03-28 16:17:56,118 - api.realtime.websocket.websocket_client - DEBUG - line 100 - 미처리 메시지 2개 제거됨
+2025-03-28 16:17:56,122 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSING -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:17:56,122 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:18:02,843 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:18:32,857 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:19:02,857 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:19:32,858 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:20:02,865 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:20:32,871 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:21:02,872 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:21:32,881 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:22:02,892 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:22:32,900 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:23:02,908 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:23:32,918 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:24:02,920 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:24:32,920 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:25:02,920 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:25:32,925 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:26:02,925 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:26:32,933 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:27:02,947 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:27:32,955 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:28:02,967 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:28:32,976 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:29:02,139 - api.realtime.websocket.websocket_client - DEBUG - line 159 - 이벤트 핸들러 등록: ['message', 'error', 'close', 'open']
+2025-03-28 16:29:02,139 - api.realtime.websocket.websocket_client - INFO - line 169 - 웹소켓 연결 시작 (시도 1번째)...
+2025-03-28 16:29:02,139 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CONNECTING (지속시간: 0.0초)
+2025-03-28 16:29:02,139 - api.realtime.websocket.websocket_client - DEBUG - line 188 - 연결 설정:
+URL: wss://openapi.ls-sec.co.kr:9443/websocket
+Headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ', 'Content-Type': 'application/json'}
+SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}
+2025-03-28 16:29:02,141 - api.realtime.websocket.websocket_client - DEBUG - line 245 - 웹소켓 실행 시작 (설정: {'sslopt': {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}, 'ping_interval': 30, 'ping_timeout': 10})
+2025-03-28 16:29:02,164 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTING -> CONNECTED (지속시간: 0.0초)
+2025-03-28 16:29:02,165 - api.realtime.websocket.websocket_client - INFO - line 399 - 웹소켓 연결 성공 (시도 1번째), URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 16:29:02,264 - api.realtime.websocket.websocket_client - INFO - line 230 - 웹소켓 연결 성공
+2025-03-28 16:29:02,265 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:29:02,265 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:29:02,267 - api.realtime.websocket.websocket_client - DEBUG - line 55 - 메시지 처리 시작: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:29:02,267 - api.realtime.websocket.websocket_client - DEBUG - line 147 - 메시지 전송 완료 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:29:02,267 - api.realtime.websocket.websocket_client - DEBUG - line 58 - 메시지 처리 완료
+2025-03-28 16:29:02,282 - api.realtime.websocket.websocket_client - DEBUG - line 260 - 메시지 수신 (총 1개): {"header":{"tr_type":"3","tr_cd":"VI_","rsp_cd":"00000","rsp_msg":"정상처리되었습니다"},"body":null}...
+2025-03-28 16:29:02,990 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:29:32,995 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:30:02,190 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:30:03,005 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:30:32,198 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:30:33,010 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:31:02,199 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:31:03,013 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:31:32,202 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:31:33,015 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:31:42,983 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:31:42,983 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 2개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:31:42,984 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTED -> CLOSING (지속시간: 160.8초)
+2025-03-28 16:31:42,985 - api.realtime.websocket.websocket_client - DEBUG - line 79 - 메시지 큐 중지 시작
+2025-03-28 16:31:43,029 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 2개, 오류: 0개)
+2025-03-28 16:31:43,029 - api.realtime.websocket.websocket_client - DEBUG - line 86 - 메시지 처리 태스크 정상 종료
+2025-03-28 16:31:43,030 - api.realtime.websocket.websocket_client - DEBUG - line 100 - 미처리 메시지 2개 제거됨
+2025-03-28 16:31:43,034 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSING -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:31:43,035 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:32:03,018 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:32:33,027 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:33:03,034 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:33:33,043 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:34:03,042 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:34:33,052 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:35:03,054 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:35:33,065 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:36:03,078 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:36:33,080 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:37:03,091 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:37:33,101 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:38:03,104 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:38:33,111 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:39:03,112 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:39:24,904 - api.realtime.websocket.websocket_client - DEBUG - line 159 - 이벤트 핸들러 등록: ['message', 'error', 'close', 'open']
+2025-03-28 16:39:24,905 - api.realtime.websocket.websocket_client - INFO - line 169 - 웹소켓 연결 시작 (시도 1번째)...
+2025-03-28 16:39:24,905 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CONNECTING (지속시간: 0.0초)
+2025-03-28 16:39:24,906 - api.realtime.websocket.websocket_client - DEBUG - line 188 - 연결 설정:
+URL: wss://openapi.ls-sec.co.kr:9443/websocket
+Headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ', 'Content-Type': 'application/json'}
+SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}
+2025-03-28 16:39:24,907 - api.realtime.websocket.websocket_client - DEBUG - line 245 - 웹소켓 실행 시작 (설정: {'sslopt': {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}, 'ping_interval': 30, 'ping_timeout': 10})
+2025-03-28 16:39:24,928 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTING -> CONNECTED (지속시간: 0.0초)
+2025-03-28 16:39:24,928 - api.realtime.websocket.websocket_client - INFO - line 399 - 웹소켓 연결 성공 (시도 1번째), URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 16:39:25,026 - api.realtime.websocket.websocket_client - INFO - line 230 - 웹소켓 연결 성공
+2025-03-28 16:39:25,027 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:39:25,027 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:39:25,029 - api.realtime.websocket.websocket_client - DEBUG - line 55 - 메시지 처리 시작: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:39:25,029 - api.realtime.websocket.websocket_client - DEBUG - line 147 - 메시지 전송 완료 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:39:25,029 - api.realtime.websocket.websocket_client - DEBUG - line 58 - 메시지 처리 완료
+2025-03-28 16:39:25,034 - api.realtime.websocket.websocket_client - DEBUG - line 260 - 메시지 수신 (총 1개): {"header":{"tr_type":"3","tr_cd":"VI_","rsp_cd":"00000","rsp_msg":"정상처리되었습니다"},"body":null}...
+2025-03-28 16:39:33,114 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:40:03,116 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:40:24,946 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:40:33,120 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:40:54,950 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:41:03,126 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:41:24,963 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:41:33,126 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:41:54,969 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:42:03,132 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:42:24,972 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:42:33,144 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:42:54,980 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:43:03,152 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:43:24,983 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:43:33,165 - api.realtime.websocket.websocket_client - DEBUG - line 425 - Pong 수신: b''
+2025-03-28 16:43:50,744 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:43:50,744 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 2개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:43:50,745 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTED -> CLOSING (지속시간: 265.8초)
+2025-03-28 16:43:50,746 - api.realtime.websocket.websocket_client - DEBUG - line 79 - 메시지 큐 중지 시작
+2025-03-28 16:43:50,746 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 2개, 오류: 0개)
+2025-03-28 16:43:50,746 - api.realtime.websocket.websocket_client - DEBUG - line 86 - 메시지 처리 태스크 정상 종료
+2025-03-28 16:43:50,747 - api.realtime.websocket.websocket_client - DEBUG - line 100 - 미처리 메시지 2개 제거됨
+2025-03-28 16:43:50,750 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSING -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:43:50,751 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:43:53,509 - api.realtime.websocket.websocket_client - DEBUG - line 159 - 이벤트 핸들러 등록: ['message', 'error', 'close', 'open']
+2025-03-28 16:43:53,509 - api.realtime.websocket.websocket_client - INFO - line 169 - 웹소켓 연결 시작 (시도 1번째)...
+2025-03-28 16:43:53,509 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CONNECTING (지속시간: 0.0초)
+2025-03-28 16:43:53,510 - api.realtime.websocket.websocket_client - DEBUG - line 188 - 연결 설정:
+URL: wss://openapi.ls-sec.co.kr:9443/websocket
+Headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ', 'Content-Type': 'application/json'}
+SSL: {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}
+2025-03-28 16:43:53,511 - api.realtime.websocket.websocket_client - DEBUG - line 245 - 웹소켓 실행 시작 (설정: {'sslopt': {'cert_reqs': <VerifyMode.CERT_NONE: 0>, 'check_hostname': False, 'ssl_version': <_SSLMethod.PROTOCOL_TLSv1_2: 5>}, 'ping_interval': 30, 'ping_timeout': 10})
+2025-03-28 16:43:53,532 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTING -> CONNECTED (지속시간: 0.0초)
+2025-03-28 16:43:53,532 - api.realtime.websocket.websocket_client - INFO - line 399 - 웹소켓 연결 성공 (시도 1번째), URL: wss://openapi.ls-sec.co.kr:9443/websocket
+2025-03-28 16:43:53,623 - api.realtime.websocket.websocket_client - INFO - line 230 - 웹소켓 연결 성공
+2025-03-28 16:43:53,623 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:43:53,624 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:43:53,625 - api.realtime.websocket.websocket_client - DEBUG - line 55 - 메시지 처리 시작: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:43:53,626 - api.realtime.websocket.websocket_client - DEBUG - line 147 - 메시지 전송 완료 (총 1개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:43:53,626 - api.realtime.websocket.websocket_client - DEBUG - line 58 - 메시지 처리 완료
+2025-03-28 16:43:53,643 - api.realtime.websocket.websocket_client - DEBUG - line 260 - 메시지 수신 (총 1개): {"header":{"tr_type":"3","tr_cd":"VI_","rsp_cd":"00000","rsp_msg":"정상처리되었습니다"},"body":null}...
+2025-03-28 16:44:02,691 - api.realtime.websocket.websocket_client - DEBUG - line 434 - 메시지 전송 요청: {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:44:02,691 - api.realtime.websocket.websocket_client - DEBUG - line 35 - 메시지 큐에 추가 (총 2개): {"header": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6I...
+2025-03-28 16:44:02,692 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CONNECTED -> CLOSING (지속시간: 9.2초)
+2025-03-28 16:44:02,692 - api.realtime.websocket.websocket_client - DEBUG - line 79 - 메시지 큐 중지 시작
+2025-03-28 16:44:02,738 - api.realtime.websocket.websocket_client - DEBUG - line 71 - 메시지 큐 처리 종료 (처리: 2개, 오류: 0개)
+2025-03-28 16:44:02,738 - api.realtime.websocket.websocket_client - DEBUG - line 86 - 메시지 처리 태스크 정상 종료
+2025-03-28 16:44:02,739 - api.realtime.websocket.websocket_client - DEBUG - line 100 - 미처리 메시지 2개 제거됨
+2025-03-28 16:44:02,742 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSING -> CLOSED (지속시간: 0.0초)
+2025-03-28 16:44:02,744 - api.realtime.websocket.websocket_client - INFO - line 136 - 웹소켓 상태 변경: CLOSED -> CLOSED (지속시간: 0.0초)

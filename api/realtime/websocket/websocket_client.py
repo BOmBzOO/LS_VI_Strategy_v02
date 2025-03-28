@@ -368,15 +368,15 @@ class WebSocketClient(BaseWebSocket):
                 "stats": self.message_stats
             }
             
-            self.logger.info(
-                f"웹소켓 연결 종료:\n"
-                f"상태 코드: {close_status_code}\n"
-                f"메시지: {close_msg}\n"
-                f"통계:\n"
-                f"- 전송: {self.message_stats['sent']}개\n"
-                f"- 수신: {self.message_stats['received']}개\n"
-                f"- 오류: {self.message_stats['errors']}개"
-            )
+            # self.logger.info(
+            #     f"웹소켓 연결 종료:\n"
+            #     f"상태 코드: {close_status_code}\n"
+            #     f"메시지: {close_msg}\n"
+            #     f"통계:\n"
+            #     f"- 전송: {self.message_stats['sent']}개\n"
+            #     f"- 수신: {self.message_stats['received']}개\n"
+            #     f"- 오류: {self.message_stats['errors']}개"
+            # )
             
             for handler in self.event_handlers.get("close", []):
                 try:
@@ -463,15 +463,15 @@ class WebSocketClient(BaseWebSocket):
             if self.thread and self.thread.is_alive():
                 self.thread.join(timeout=5.0)
                 
-            self.logger.info(
-                f"웹소켓 연결 종료 완료\n"
-                f"통계:\n"
-                f"- 연결 시도: {self.connection_attempts}번\n"
-                f"- 전송: {self.message_stats['sent']}개\n"
-                f"- 수신: {self.message_stats['received']}개\n"
-                f"- 오류: {self.message_stats['errors']}개\n"
-                f"마지막 오류: {self.last_error or '없음'}"
-            )
+            # self.logger.info(
+            #     f"웹소켓 연결 종료 완료\n"
+            #     f"통계:\n"
+            #     f"- 연결 시도: {self.connection_attempts}번\n"
+            #     f"- 전송: {self.message_stats['sent']}개\n"
+            #     f"- 수신: {self.message_stats['received']}개\n"
+            #     f"- 오류: {self.message_stats['errors']}개\n"
+            #     f"마지막 오류: {self.last_error or '없음'}"
+            # )
             
         except Exception as e:
             self.logger.error(f"웹소켓 종료 중 오류: {str(e)}\n{traceback.format_exc()}")
