@@ -42,3 +42,74 @@
 2025-03-28 01:17:23,935 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
 2025-03-28 01:17:26,399 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
 2025-03-28 01:17:46,622 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:20:27,328 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:23:30,225 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:23:32,401 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:26:39,422 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:30:32,326 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:30:46,513 - services.vi_monitor_service - ERROR - line 99 - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 01:32:57,138 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:33:01,167 - services.vi_monitor_service - WARNING - line 95 - 웹소켓 연결 종료 중 오류 발생: CLOSED
+2025-03-28 01:33:01,168 - services.vi_monitor_service - INFO - line 103 - VI 모니터링이 중지되었습니다.
+2025-03-28 01:35:28,448 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:35:31,919 - services.vi_monitor_service - WARNING - line 95 - 웹소켓 연결 종료 중 오류 발생: CLOSED
+2025-03-28 01:35:31,920 - services.vi_monitor_service - INFO - line 103 - VI 모니터링이 중지되었습니다.
+2025-03-28 01:36:46,323 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:36:49,125 - services.vi_monitor_service - WARNING - line 95 - 웹소켓 연결 종료 중 오류 발생: CLOSED
+2025-03-28 01:36:49,126 - services.vi_monitor_service - INFO - line 103 - VI 모니터링이 중지되었습니다.
+2025-03-28 01:38:30,055 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 01:38:50,809 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 01:38:54,790 - services.vi_monitor_service - WARNING - line 95 - 웹소켓 연결 종료 중 오류 발생: CLOSED
+2025-03-28 01:38:54,790 - services.vi_monitor_service - INFO - line 103 - VI 모니터링이 중지되었습니다.
+2025-03-28 08:53:43,451 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 08:56:43,758 - services.vi_monitor_service - INFO - line 67 - VI 모니터링이 시작되었습니다.
+2025-03-28 08:57:07,663 - services.vi_monitor_service - WARNING - line 95 - 웹소켓 연결 종료 중 오류 발생: CLOSED
+2025-03-28 08:57:07,664 - services.vi_monitor_service - INFO - line 103 - VI 모니터링이 중지되었습니다.
+2025-03-28 09:00:24,345 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 09:00:43,389 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 09:03:22,007 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: 'WebSocketManager' object has no attribute 'is_running'
+2025-03-28 09:05:51,201 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 09:07:54,081 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: 웹소켓 연결 실패
+2025-03-28 09:42:45,316 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 09:43:01,015 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: 'WebSocketManager' object has no attribute 'is_running'
+2025-03-28 09:49:05,998 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 09:49:21,943 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 10:03:44,891 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: 웹소켓 연결 실패: CLOSED
+2025-03-28 10:10:05,020 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: name 'CacheManager' is not defined
+2025-03-28 10:11:08,090 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: 웹소켓 연결 실패: CLOSED
+2025-03-28 10:20:24,808 - services.vi_monitor_service - ERROR - line 70 - VI 모니터링 시작 중 오류 발생: CLOSED
+2025-03-28 11:15:29,372 - services.vi_monitor_service - ERROR - line 112 - VI 모니터링 시작 중 오류 발생: a coroutine was expected, got <async_generator object MessageQueue._process at 0x0000023A489EC4A0>
+2025-03-28 11:15:29,378 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:18:18,226 - services.vi_monitor_service - ERROR - line 112 - VI 모니터링 시작 중 오류 발생: a coroutine was expected, got <async_generator object MessageQueue._process at 0x00000190F02E0E40>
+2025-03-28 11:18:18,231 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:20:20,318 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:21:14,844 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:22:30,164 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:23:23,688 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:23:27,066 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:24:52,673 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:24:56,431 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:25:02,611 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:25:56,351 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:27:22,252 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:27:26,556 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:40:28,961 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:40:32,243 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:44:43,735 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:44:47,227 - services.vi_monitor_service - INFO - line 108 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:52:16,460 - services.vi_monitor_service - INFO - line 146 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:52:44,112 - services.vi_monitor_service - INFO - line 109 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:52:52,730 - services.vi_monitor_service - INFO - line 247 - [2025-03-28T11:52:52.730100] 종목: 000000, 상태: 발동, VI유형: 정적발동, 발동가: 1622
+2025-03-28 11:52:59,437 - services.vi_monitor_service - INFO - line 242 - [2025-03-28T11:52:52.730100] 종목: 000000, 상태: 해제, VI유형: 정적발동, 발동가: 1622, 지속시간: 6.7초
+2025-03-28 11:54:48,282 - services.vi_monitor_service - INFO - line 147 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:54:51,911 - services.vi_monitor_service - INFO - line 109 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:58:23,949 - services.vi_monitor_service - INFO - line 147 - VI 모니터링이 중지되었습니다.
+2025-03-28 11:58:26,912 - services.vi_monitor_service - INFO - line 109 - VI 모니터링이 시작되었습니다.
+2025-03-28 11:58:26,932 - services.vi_monitor_service - INFO - line 202 - VI 응답: 정상처리되었습니다
+2025-03-28 12:02:41,663 - services.vi_monitor_service - INFO - line 249 - [2025-03-28T12:02:41.663508] 종목: 000000, 상태: 발동, VI유형: 정적발동, 발동가: 5200
+2025-03-28 12:04:44,046 - services.vi_monitor_service - INFO - line 244 - [2025-03-28T12:02:41.663508] 종목: 000000, 상태: 해제, VI유형: 정적발동, 발동가: 5200, 지속시간: 122.4초
+2025-03-28 12:05:03,994 - services.vi_monitor_service - INFO - line 147 - VI 모니터링이 중지되었습니다.
+2025-03-28 12:05:06,910 - services.vi_monitor_service - INFO - line 109 - VI 모니터링이 시작되었습니다.
+2025-03-28 12:10:14,550 - services.vi_monitor_service - INFO - line 147 - VI 모니터링이 중지되었습니다.
+2025-03-28 12:10:17,449 - services.vi_monitor_service - INFO - line 109 - VI 모니터링이 시작되었습니다.
+2025-03-28 12:14:48,842 - services.vi_monitor_service - INFO - line 147 - VI 모니터링이 중지되었습니다.

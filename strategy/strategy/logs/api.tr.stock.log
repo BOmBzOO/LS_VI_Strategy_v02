@@ -1,0 +1,2 @@
+2025-03-28 11:52:53,019 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T02:52:53.751+00:00","status":404,"error":"Not Found","path":"/stock/price"}
+2025-03-28 12:02:42,015 - api.tr.stock - ERROR - line 61 - TR 요청 실패: {"timestamp":"2025-03-28T03:02:42.775+00:00","status":404,"error":"Not Found","path":"/stock/price"}

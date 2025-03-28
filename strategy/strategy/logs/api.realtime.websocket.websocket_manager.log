@@ -158,3 +158,333 @@
 2025-03-28 01:17:26,398 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
 2025-03-28 01:17:26,398 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
 2025-03-28 01:17:46,621 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 01:20:27,219 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:20:27,220 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 01:20:27,220 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 01:20:27,326 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 01:20:27,327 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 01:20:27,327 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 01:23:30,224 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 01:23:32,280 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:23:32,281 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 01:23:32,281 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 01:23:32,399 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 01:23:32,400 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 01:23:32,401 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 01:26:39,421 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 01:30:32,208 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:30:32,209 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 01:30:32,209 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 01:30:32,324 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 01:30:32,325 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 01:30:32,325 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 01:30:46,512 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 01:32:57,019 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:32:57,019 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 01:32:57,020 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 01:32:57,136 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 01:32:57,137 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 01:32:57,137 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 01:33:01,166 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 01:35:28,328 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:35:28,329 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 01:35:28,329 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 01:35:28,446 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 01:35:28,447 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 01:35:28,448 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 01:35:31,918 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 01:36:46,217 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:36:46,217 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 01:36:46,218 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 01:36:46,321 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 01:36:46,322 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 01:36:46,323 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 01:36:49,125 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 01:38:30,054 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:38:30,055 - api.realtime.websocket.websocket_manager - ERROR - line 173 - 웹소켓 연결 시작 중 오류 발생: CLOSED
+2025-03-28 01:38:50,691 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 01:38:50,692 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 01:38:50,692 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 01:38:50,807 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 01:38:50,808 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 01:38:50,809 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 01:38:54,789 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 08:53:43,344 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 08:53:43,345 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 08:53:43,345 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 08:53:43,449 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 08:53:43,450 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 08:53:43,451 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 08:56:43,640 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 08:56:43,641 - api.realtime.websocket.websocket_manager - INFO - line 169 - 웹소켓 클라이언트 연결 시도 중...
+2025-03-28 08:56:43,642 - api.realtime.websocket.websocket_manager - INFO - line 179 - 웹소켓 연결 시도 중...
+2025-03-28 08:56:43,756 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 연결이 성공적으로 이루어졌습니다.
+2025-03-28 08:56:43,757 - api.realtime.websocket.websocket_manager - INFO - line 187 - 웹소켓 연결 성공
+2025-03-28 08:56:43,757 - api.realtime.websocket.websocket_manager - INFO - line 247 - VI 구독 요청 전송 완료: VI__000000
+2025-03-28 08:57:07,662 - api.realtime.websocket.websocket_manager - INFO - line 275 - VI 구독 해제 요청 전송 완료: VI__000000
+2025-03-28 09:00:00,773 - api.realtime.websocket.websocket_manager - ERROR - line 289 - 메시지 처리 중 오류 (line 371): no running event loop
+2025-03-28 09:00:08,930 - api.realtime.websocket.websocket_manager - ERROR - line 289 - 메시지 처리 중 오류 (line 371): no running event loop
+2025-03-28 09:00:12,434 - api.realtime.websocket.websocket_manager - ERROR - line 289 - 메시지 처리 중 오류 (line 371): no running event loop
+2025-03-28 09:00:17,539 - api.realtime.websocket.websocket_manager - ERROR - line 289 - 메시지 처리 중 오류 (line 371): no running event loop
+2025-03-28 09:00:24,343 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 09:00:24,344 - api.realtime.websocket.websocket_manager - ERROR - line 173 - 웹소켓 연결 시작 중 오류 발생: CLOSED
+2025-03-28 09:00:43,387 - api.realtime.websocket.websocket_manager - INFO - line 141 - 웹소켓 매니저 시작 중...
+2025-03-28 09:00:43,388 - api.realtime.websocket.websocket_manager - ERROR - line 173 - 웹소켓 연결 시작 중 오류 발생: CLOSED
+2025-03-28 09:03:22,006 - api.realtime.websocket.websocket_manager - INFO - line 122 - 웹소켓 매니저 시작 중...
+2025-03-28 09:03:22,007 - api.realtime.websocket.websocket_manager - ERROR - line 137 - 웹소켓 연결 시작 중 오류 발생: 'WebSocketManager' object has no attribute 'is_running'
+2025-03-28 09:05:51,198 - api.realtime.websocket.websocket_manager - INFO - line 132 - 웹소켓 매니저 시작 중...
+2025-03-28 09:05:51,200 - api.realtime.websocket.websocket_manager - ERROR - line 210 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:05:51,201 - api.realtime.websocket.websocket_manager - ERROR - line 147 - 웹소켓 연결 시작 중 오류 발생: CLOSED
+2025-03-28 09:07:34,037 - api.realtime.websocket.websocket_manager - INFO - line 133 - 웹소켓 매니저 시작 중...
+2025-03-28 09:07:34,038 - api.realtime.websocket.websocket_manager - INFO - line 192 - 웹소켓 연결 시도 중...
+2025-03-28 09:07:34,040 - api.realtime.websocket.websocket_manager - ERROR - line 224 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:07:34,040 - api.realtime.websocket.websocket_manager - INFO - line 229 - 웹소켓 재연결 시도 중... (시도 1/5)
+2025-03-28 09:07:39,042 - api.realtime.websocket.websocket_manager - INFO - line 192 - 웹소켓 연결 시도 중...
+2025-03-28 09:07:39,043 - api.realtime.websocket.websocket_manager - ERROR - line 224 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:07:39,044 - api.realtime.websocket.websocket_manager - INFO - line 229 - 웹소켓 재연결 시도 중... (시도 2/5)
+2025-03-28 09:07:44,057 - api.realtime.websocket.websocket_manager - INFO - line 192 - 웹소켓 연결 시도 중...
+2025-03-28 09:07:44,058 - api.realtime.websocket.websocket_manager - ERROR - line 224 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:07:44,058 - api.realtime.websocket.websocket_manager - INFO - line 229 - 웹소켓 재연결 시도 중... (시도 3/5)
+2025-03-28 09:07:49,067 - api.realtime.websocket.websocket_manager - INFO - line 192 - 웹소켓 연결 시도 중...
+2025-03-28 09:07:49,068 - api.realtime.websocket.websocket_manager - ERROR - line 224 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:07:49,068 - api.realtime.websocket.websocket_manager - INFO - line 229 - 웹소켓 재연결 시도 중... (시도 4/5)
+2025-03-28 09:07:54,076 - api.realtime.websocket.websocket_manager - INFO - line 192 - 웹소켓 연결 시도 중...
+2025-03-28 09:07:54,079 - api.realtime.websocket.websocket_manager - ERROR - line 224 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:07:54,080 - api.realtime.websocket.websocket_manager - ERROR - line 233 - 최대 재연결 시도 횟수 초과
+2025-03-28 09:07:54,080 - api.realtime.websocket.websocket_manager - ERROR - line 148 - 웹소켓 연결 시작 중 오류 발생: 웹소켓 연결 실패
+2025-03-28 09:07:54,083 - api.realtime.websocket.websocket_manager - INFO - line 119 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:07:54,083 - api.realtime.websocket.websocket_manager - INFO - line 119 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:11:04,154 - api.realtime.websocket.websocket_manager - INFO - line 130 - 웹소켓 매니저 시작 중...
+2025-03-28 09:11:04,154 - api.realtime.websocket.websocket_manager - INFO - line 190 - 웹소켓 연결 시도 중...
+2025-03-28 09:11:04,156 - api.realtime.websocket.websocket_manager - ERROR - line 231 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:11:04,156 - api.realtime.websocket.websocket_manager - INFO - line 236 - 웹소켓 재연결 시도 중... (시도 1/5)
+2025-03-28 09:11:08,606 - api.realtime.websocket.websocket_manager - INFO - line 116 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:26:39,846 - api.realtime.websocket.websocket_manager - INFO - line 130 - 웹소켓 매니저 시작 중...
+2025-03-28 09:26:39,846 - api.realtime.websocket.websocket_manager - INFO - line 190 - 웹소켓 연결 시도 중...
+2025-03-28 09:26:39,847 - api.realtime.websocket.websocket_manager - ERROR - line 231 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:26:39,848 - api.realtime.websocket.websocket_manager - INFO - line 236 - 웹소켓 재연결 시도 중... (시도 1/5)
+2025-03-28 09:26:44,863 - api.realtime.websocket.websocket_manager - INFO - line 190 - 웹소켓 연결 시도 중...
+2025-03-28 09:26:44,863 - api.realtime.websocket.websocket_manager - ERROR - line 231 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:26:44,864 - api.realtime.websocket.websocket_manager - INFO - line 236 - 웹소켓 재연결 시도 중... (시도 2/5)
+2025-03-28 09:41:52,771 - api.realtime.websocket.websocket_manager - INFO - line 130 - 웹소켓 매니저 시작 중...
+2025-03-28 09:41:52,772 - api.realtime.websocket.websocket_manager - INFO - line 190 - 웹소켓 연결 시도 중...
+2025-03-28 09:41:52,773 - api.realtime.websocket.websocket_manager - ERROR - line 231 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:41:52,773 - api.realtime.websocket.websocket_manager - INFO - line 236 - 웹소켓 재연결 시도 중... (시도 1/5)
+2025-03-28 09:41:55,207 - api.realtime.websocket.websocket_manager - INFO - line 116 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:42:25,040 - api.realtime.websocket.websocket_manager - INFO - line 133 - 웹소켓 매니저 시작 중...
+2025-03-28 09:42:25,041 - api.realtime.websocket.websocket_manager - INFO - line 192 - 웹소켓 연결 시도 중...
+2025-03-28 09:42:25,043 - api.realtime.websocket.websocket_manager - ERROR - line 224 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:42:25,043 - api.realtime.websocket.websocket_manager - INFO - line 229 - 웹소켓 재연결 시도 중... (시도 1/5)
+2025-03-28 09:42:30,047 - api.realtime.websocket.websocket_manager - INFO - line 192 - 웹소켓 연결 시도 중...
+2025-03-28 09:42:30,048 - api.realtime.websocket.websocket_manager - ERROR - line 224 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:42:30,048 - api.realtime.websocket.websocket_manager - INFO - line 229 - 웹소켓 재연결 시도 중... (시도 2/5)
+2025-03-28 09:42:30,463 - api.realtime.websocket.websocket_manager - INFO - line 119 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:42:30,464 - api.realtime.websocket.websocket_manager - INFO - line 119 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:42:45,314 - api.realtime.websocket.websocket_manager - INFO - line 132 - 웹소켓 매니저 시작 중...
+2025-03-28 09:42:45,315 - api.realtime.websocket.websocket_manager - ERROR - line 210 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:42:45,316 - api.realtime.websocket.websocket_manager - ERROR - line 147 - 웹소켓 연결 시작 중 오류 발생: CLOSED
+2025-03-28 09:43:01,014 - api.realtime.websocket.websocket_manager - INFO - line 122 - 웹소켓 매니저 시작 중...
+2025-03-28 09:43:01,015 - api.realtime.websocket.websocket_manager - ERROR - line 137 - 웹소켓 연결 시작 중 오류 발생: 'WebSocketManager' object has no attribute 'is_running'
+2025-03-28 09:49:05,994 - api.realtime.websocket.websocket_manager - INFO - line 123 - 웹소켓 매니저 시작 중...
+2025-03-28 09:49:05,996 - api.realtime.websocket.websocket_manager - ERROR - line 201 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:49:05,998 - api.realtime.websocket.websocket_manager - ERROR - line 138 - 웹소켓 연결 시작 중 오류 발생: CLOSED
+2025-03-28 09:49:21,940 - api.realtime.websocket.websocket_manager - INFO - line 128 - 웹소켓 매니저 시작 중...
+2025-03-28 09:49:21,942 - api.realtime.websocket.websocket_manager - ERROR - line 201 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 09:49:21,943 - api.realtime.websocket.websocket_manager - ERROR - line 138 - 웹소켓 연결 시작 중 오류 발생: CLOSED
+2025-03-28 09:52:06,631 - api.realtime.websocket.websocket_manager - INFO - line 128 - 웹소켓 매니저 시작 중...
+2025-03-28 09:52:06,632 - api.realtime.websocket.websocket_manager - ERROR - line 217 - 웹소켓 연결 시도 실패 (1/5): CLOSED
+2025-03-28 09:52:06,632 - api.realtime.websocket.websocket_manager - INFO - line 222 - 10초 후 재시도...
+2025-03-28 09:52:09,382 - api.realtime.websocket.websocket_manager - INFO - line 109 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:52:09,383 - api.realtime.websocket.websocket_manager - INFO - line 109 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:53:58,744 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 09:53:58,745 - api.realtime.websocket.websocket_manager - INFO - line 136 - 웹소켓 매니저 시작 중...
+2025-03-28 09:53:58,746 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (1/5): CLOSED
+2025-03-28 09:53:58,747 - api.realtime.websocket.websocket_manager - INFO - line 230 - 10초 후 재시도...
+2025-03-28 09:54:08,760 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (2/5): CLOSED
+2025-03-28 09:54:08,760 - api.realtime.websocket.websocket_manager - INFO - line 230 - 20초 후 재시도...
+2025-03-28 09:54:15,998 - api.realtime.websocket.websocket_manager - INFO - line 117 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 09:57:23,569 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 09:57:23,570 - api.realtime.websocket.websocket_manager - INFO - line 136 - 웹소켓 매니저 시작 중...
+2025-03-28 09:57:23,571 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (1/5): CLOSED
+2025-03-28 09:57:23,572 - api.realtime.websocket.websocket_manager - INFO - line 230 - 10초 후 재시도...
+2025-03-28 09:57:33,561 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (2/5): CLOSED
+2025-03-28 09:57:33,562 - api.realtime.websocket.websocket_manager - INFO - line 230 - 20초 후 재시도...
+2025-03-28 09:57:33,717 - api.realtime.websocket.websocket_manager - INFO - line 117 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 10:01:19,155 - api.realtime.websocket.websocket_manager - INFO - line 93 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 10:01:19,156 - api.realtime.websocket.websocket_manager - INFO - line 136 - 웹소켓 매니저 시작 중...
+2025-03-28 10:01:19,157 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (1/5): CLOSED
+2025-03-28 10:01:19,158 - api.realtime.websocket.websocket_manager - INFO - line 230 - 10초 후 재시도...
+2025-03-28 10:01:29,166 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (2/5): CLOSED
+2025-03-28 10:01:29,167 - api.realtime.websocket.websocket_manager - INFO - line 230 - 20초 후 재시도...
+2025-03-28 10:01:49,177 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (3/5): CLOSED
+2025-03-28 10:01:49,178 - api.realtime.websocket.websocket_manager - INFO - line 230 - 40초 후 재시도...
+2025-03-28 10:02:29,181 - api.realtime.websocket.websocket_manager - ERROR - line 225 - 웹소켓 연결 시도 실패 (4/5): CLOSED
+2025-03-28 10:02:29,182 - api.realtime.websocket.websocket_manager - INFO - line 230 - 80초 후 재시도...
+2025-03-28 10:03:41,981 - api.realtime.websocket.websocket_manager - INFO - line 117 - 이벤트 처리 루프가 취소되었습니다.
+2025-03-28 10:03:44,887 - api.realtime.websocket.websocket_manager - INFO - line 94 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 10:03:44,887 - api.realtime.websocket.websocket_manager - INFO - line 137 - 웹소켓 매니저 시작 중...
+2025-03-28 10:03:44,888 - api.realtime.websocket.websocket_manager - DEBUG - line 189 - === 웹소켓 매니저 연결 시작 ===
+2025-03-28 10:03:44,888 - api.realtime.websocket.websocket_manager - DEBUG - line 190 - 설정: {
+  "url": "wss://openapi.ls-sec.co.kr:9443/websocket",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ",
+  "max_subscriptions": 100,
+  "max_reconnect_attempts": 5,
+  "reconnect_delay": 5,
+  "ping_interval": 30,
+  "ping_timeout": 10,
+  "max_cache_size": 1000,
+  "cache_expiry": 60
+}
+2025-03-28 10:03:44,889 - api.realtime.websocket.websocket_manager - DEBUG - line 203 - 새로운 웹소켓 클라이언트 생성 중...
+2025-03-28 10:03:44,890 - api.realtime.websocket.websocket_manager - ERROR - line 234 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 10:03:44,890 - api.realtime.websocket.websocket_manager - ERROR - line 147 - 웹소켓 연결 시작 중 오류 발생: 웹소켓 연결 실패: CLOSED
+2025-03-28 10:11:08,086 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 10:11:08,087 - api.realtime.websocket.websocket_manager - INFO - line 86 - 웹소켓 매니저 시작 중...
+2025-03-28 10:11:08,087 - api.realtime.websocket.websocket_manager - DEBUG - line 138 - === 웹소켓 매니저 연결 시작 ===
+2025-03-28 10:11:08,088 - api.realtime.websocket.websocket_manager - DEBUG - line 139 - 설정: {
+  "url": "wss://openapi.ls-sec.co.kr:9443/websocket",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjMxMDQ2MjEzLTdiOGUtNDIyMC04OTI5LWRkMGFhYjFmYmI0ZSIsIm5iZiI6MTc0MzExOTYyMCwiZ3JhbnRfdHlwZSI6IkNsaWVudCIsImlzcyI6InVub2d3IiwiZXhwIjoxNzQzMTk5MTk5LCJpYXQiOjE3NDMxMTk2MjAsImp0aSI6IlBTUWZGdTlzZWIxTERkZ2l4VFFVYmV2dFZRTXNzVXBEVHZydiJ9.yTfrobqKafAj1g94jKnmh5KOTe0UiAAKN8RFCYBZHfO1MH7xyi4iZrgPCwZffizxMaMRemE7XoNmHOKvLBfuMQ",
+  "max_subscriptions": 100,
+  "max_reconnect_attempts": 5,
+  "reconnect_delay": 5,
+  "ping_interval": 30,
+  "ping_timeout": 10,
+  "max_cache_size": 1000,
+  "cache_expiry": 60
+}
+2025-03-28 10:11:08,088 - api.realtime.websocket.websocket_manager - DEBUG - line 152 - 새로운 웹소켓 클라이언트 생성 중...
+2025-03-28 10:11:08,089 - api.realtime.websocket.websocket_manager - ERROR - line 183 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 10:11:08,090 - api.realtime.websocket.websocket_manager - ERROR - line 96 - 웹소켓 연결 시작 중 오류 발생: 웹소켓 연결 실패: CLOSED
+2025-03-28 10:20:24,805 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 10:20:24,806 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 10:20:24,807 - api.realtime.websocket.websocket_manager - ERROR - line 151 - 웹소켓 연결 중 오류: CLOSED
+2025-03-28 10:20:24,808 - api.realtime.websocket.websocket_manager - ERROR - line 65 - 웹소켓 매니저 시작 중 오류: CLOSED
+2025-03-28 11:15:29,250 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:15:29,250 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:15:29,371 - api.realtime.websocket.websocket_manager - ERROR - line 274 - 구독 요청 실패: a coroutine was expected, got <async_generator object MessageQueue._process at 0x0000023A489EC4A0>
+2025-03-28 11:15:29,377 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:18:18,104 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:18:18,105 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:18:18,130 - api.realtime.websocket.websocket_manager - INFO - line 233 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:18:18,225 - api.realtime.websocket.websocket_manager - ERROR - line 274 - 구독 요청 실패: a coroutine was expected, got <async_generator object MessageQueue._process at 0x00000190F02E0E40>
+2025-03-28 11:18:18,230 - api.realtime.websocket.websocket_manager - INFO - line 221 - 웹소켓 연결 종료: {'code': None, 'message': None}
+2025-03-28 11:18:18,231 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:20:20,194 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:20:20,194 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:20:20,223 - api.realtime.websocket.websocket_manager - INFO - line 233 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:20:20,317 - api.realtime.websocket.websocket_manager - INFO - line 272 - 구독 요청 완료: VI__000000
+2025-03-28 11:20:20,325 - api.realtime.websocket.websocket_manager - ERROR - line 204 - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-03-28 11:21:14,793 - api.realtime.websocket.websocket_manager - INFO - line 303 - 구독 해제 완료: VI__000000
+2025-03-28 11:21:14,842 - api.realtime.websocket.websocket_manager - INFO - line 221 - 웹소켓 연결 종료: {'code': None, 'message': None}
+2025-03-28 11:21:14,843 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:22:30,039 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:22:30,039 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:22:30,064 - api.realtime.websocket.websocket_manager - INFO - line 233 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:22:30,163 - api.realtime.websocket.websocket_manager - INFO - line 272 - 구독 요청 완료: VI__000000
+2025-03-28 11:22:30,171 - api.realtime.websocket.websocket_manager - ERROR - line 204 - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-03-28 11:23:23,681 - api.realtime.websocket.websocket_manager - INFO - line 303 - 구독 해제 완료: VI__000000
+2025-03-28 11:23:23,686 - api.realtime.websocket.websocket_manager - INFO - line 221 - 웹소켓 연결 종료: {'code': None, 'message': None}
+2025-03-28 11:23:23,687 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:23:26,948 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:23:26,948 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:23:26,976 - api.realtime.websocket.websocket_manager - INFO - line 233 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:23:27,065 - api.realtime.websocket.websocket_manager - INFO - line 272 - 구독 요청 완료: VI__000000
+2025-03-28 11:23:27,074 - api.realtime.websocket.websocket_manager - ERROR - line 204 - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-03-28 11:24:52,620 - api.realtime.websocket.websocket_manager - INFO - line 303 - 구독 해제 완료: VI__000000
+2025-03-28 11:24:52,672 - api.realtime.websocket.websocket_manager - INFO - line 221 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 2, 'errors': 0}}
+2025-03-28 11:24:52,672 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:24:56,306 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:24:56,306 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:24:56,334 - api.realtime.websocket.websocket_manager - INFO - line 233 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:24:56,430 - api.realtime.websocket.websocket_manager - INFO - line 272 - 구독 요청 완료: VI__000000
+2025-03-28 11:24:56,438 - api.realtime.websocket.websocket_manager - ERROR - line 204 - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-03-28 11:25:02,489 - api.realtime.websocket.websocket_manager - INFO - line 303 - 구독 해제 완료: VI__000000
+2025-03-28 11:25:02,609 - api.realtime.websocket.websocket_manager - INFO - line 221 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 11:25:02,610 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:25:56,228 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:25:56,228 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:25:56,256 - api.realtime.websocket.websocket_manager - INFO - line 233 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:25:56,350 - api.realtime.websocket.websocket_manager - INFO - line 272 - 구독 요청 완료: VI__000000
+2025-03-28 11:25:56,359 - api.realtime.websocket.websocket_manager - ERROR - line 204 - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-03-28 11:27:22,242 - api.realtime.websocket.websocket_manager - INFO - line 303 - 구독 해제 완료: VI__000000
+2025-03-28 11:27:22,251 - api.realtime.websocket.websocket_manager - INFO - line 221 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 2, 'errors': 0}}
+2025-03-28 11:27:22,252 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:27:26,443 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:27:26,443 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:27:26,472 - api.realtime.websocket.websocket_manager - INFO - line 270 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:27:26,555 - api.realtime.websocket.websocket_manager - INFO - line 309 - 구독 요청 완료: VI__000000
+2025-03-28 11:27:26,564 - api.realtime.websocket.websocket_manager - WARNING - line 195 - 메시지 형식 오류: header 또는 body가 dictionary가 아님
+2025-03-28 11:29:41,161 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:31:59,263 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:32:34,300 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:35:03,610 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:36:56,532 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:39:03,575 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:39:50,428 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:40:28,850 - api.realtime.websocket.websocket_manager - INFO - line 340 - 구독 해제 완료: VI__000000
+2025-03-28 11:40:28,960 - api.realtime.websocket.websocket_manager - INFO - line 258 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 8, 'errors': 0}}
+2025-03-28 11:40:28,961 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:40:32,120 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:40:32,121 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:40:32,149 - api.realtime.websocket.websocket_manager - INFO - line 270 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:40:32,243 - api.realtime.websocket.websocket_manager - INFO - line 309 - 구독 요청 완료: VI__000000
+2025-03-28 11:40:32,252 - api.realtime.websocket.websocket_manager - WARNING - line 195 - 메시지 형식 오류: header 또는 body가 dictionary가 아님
+2025-03-28 11:42:02,483 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:43:42,643 - api.realtime.websocket.websocket_manager - DEBUG - line 232 - 구독되지 않은 메시지: VI__
+2025-03-28 11:44:43,723 - api.realtime.websocket.websocket_manager - INFO - line 340 - 구독 해제 완료: VI__000000
+2025-03-28 11:44:43,734 - api.realtime.websocket.websocket_manager - INFO - line 258 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 3, 'errors': 0}}
+2025-03-28 11:44:43,734 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:44:47,107 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:44:47,107 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:44:47,142 - api.realtime.websocket.websocket_manager - INFO - line 271 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:44:47,226 - api.realtime.websocket.websocket_manager - INFO - line 310 - 구독 요청 완료: VI__000000
+2025-03-28 11:44:47,234 - api.realtime.websocket.websocket_manager - WARNING - line 196 - 메시지 형식 오류: header 또는 body가 dictionary가 아님
+2025-03-28 11:45:08,249 - api.realtime.websocket.websocket_manager - DEBUG - line 233 - 구독되지 않은 메시지: VI__
+2025-03-28 11:45:45,539 - api.realtime.websocket.websocket_manager - DEBUG - line 233 - 구독되지 않은 메시지: VI__
+2025-03-28 11:47:32,258 - api.realtime.websocket.websocket_manager - DEBUG - line 233 - 구독되지 않은 메시지: VI__
+2025-03-28 11:50:40,359 - api.realtime.websocket.websocket_manager - DEBUG - line 233 - 구독되지 않은 메시지: VI__
+2025-03-28 11:52:16,392 - api.realtime.websocket.websocket_manager - INFO - line 341 - 구독 해제 완료: VI__000000
+2025-03-28 11:52:16,459 - api.realtime.websocket.websocket_manager - INFO - line 259 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 5, 'errors': 0}}
+2025-03-28 11:52:16,459 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:52:44,005 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:52:44,005 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:52:44,032 - api.realtime.websocket.websocket_manager - INFO - line 234 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:52:44,111 - api.realtime.websocket.websocket_manager - INFO - line 273 - 구독 요청 완료: VI__000000
+2025-03-28 11:54:48,245 - api.realtime.websocket.websocket_manager - INFO - line 304 - 구독 해제 완료: VI__000000
+2025-03-28 11:54:48,281 - api.realtime.websocket.websocket_manager - INFO - line 222 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 3, 'errors': 0}}
+2025-03-28 11:54:48,281 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:54:51,791 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:54:51,791 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:54:51,820 - api.realtime.websocket.websocket_manager - INFO - line 234 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:54:51,910 - api.realtime.websocket.websocket_manager - INFO - line 273 - 구독 요청 완료: VI__000000
+2025-03-28 11:58:23,834 - api.realtime.websocket.websocket_manager - INFO - line 304 - 구독 해제 완료: VI__000000
+2025-03-28 11:58:23,948 - api.realtime.websocket.websocket_manager - INFO - line 222 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 2, 'errors': 0}}
+2025-03-28 11:58:23,948 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 11:58:26,803 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 11:58:26,803 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 11:58:26,839 - api.realtime.websocket.websocket_manager - INFO - line 234 - 웹소켓 연결이 열렸습니다.
+2025-03-28 11:58:26,912 - api.realtime.websocket.websocket_manager - INFO - line 273 - 구독 요청 완료: VI__000000
+2025-03-28 12:05:03,879 - api.realtime.websocket.websocket_manager - INFO - line 304 - 구독 해제 완료: VI__000000
+2025-03-28 12:05:03,993 - api.realtime.websocket.websocket_manager - INFO - line 222 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 4, 'errors': 0}}
+2025-03-28 12:05:03,994 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 12:05:06,797 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 12:05:06,798 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 12:05:06,831 - api.realtime.websocket.websocket_manager - INFO - line 234 - 웹소켓 연결이 열렸습니다.
+2025-03-28 12:05:06,909 - api.realtime.websocket.websocket_manager - INFO - line 273 - 구독 요청 완료: VI__000000
+2025-03-28 12:10:14,439 - api.realtime.websocket.websocket_manager - INFO - line 304 - 구독 해제 완료: VI__000000
+2025-03-28 12:10:14,549 - api.realtime.websocket.websocket_manager - INFO - line 222 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 12:10:14,550 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.
+2025-03-28 12:10:17,320 - api.realtime.websocket.websocket_manager - INFO - line 43 - 웹소켓 매니저가 초기화되었습니다.
+2025-03-28 12:10:17,321 - api.realtime.websocket.websocket_manager - INFO - line 53 - 웹소켓 매니저 시작 중...
+2025-03-28 12:10:17,348 - api.realtime.websocket.websocket_manager - INFO - line 248 - 웹소켓 연결이 열렸습니다.
+2025-03-28 12:10:17,448 - api.realtime.websocket.websocket_manager - INFO - line 287 - 구독 요청 완료: VI__000000
+2025-03-28 12:10:17,458 - api.realtime.websocket.websocket_manager - ERROR - line 219 - 메시지 처리 중 오류: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "F:\Trading_platform\LS\LS_VIstrategy_v01_2025_03_28\api\realtime\websocket\websocket_manager.py", line 190, in _handle_message
+    tr_key = data.get("body", {}).get("tr_key", "000000")  # body에서 tr_key를 가져오거나 기본값 사용
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+2025-03-28 12:14:48,833 - api.realtime.websocket.websocket_manager - INFO - line 318 - 구독 해제 완료: VI__000000
+2025-03-28 12:14:48,841 - api.realtime.websocket.websocket_manager - INFO - line 236 - 웹소켓 연결 종료: {'code': None, 'message': None, 'stats': {'sent': 1, 'received': 1, 'errors': 0}}
+2025-03-28 12:14:48,842 - api.realtime.websocket.websocket_manager - INFO - line 104 - 웹소켓 매니저가 중지되었습니다.

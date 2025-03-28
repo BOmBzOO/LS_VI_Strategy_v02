@@ -1,62 +1,17 @@
 """웹소켓 연결 관리"""
 
 import asyncio
-from typing import Dict, Any, Optional, Callable
+from typing import Dict, Any, Optional, Callable, List
 from datetime import datetime
 import pytz
 import time
 import traceback
+import json
 from api.realtime.websocket.websocket_client import WebSocketClient
 from api.errors import WebSocketError
 from config.settings import WS_RECONNECT_INTERVAL, WS_MAX_RECONNECT_ATTEMPTS
 from config.logging_config import setup_logger
 from api.realtime.websocket.websocket_base import BaseWebSocket, WebSocketState, WebSocketConfig, WebSocketMessage
-
-class CacheManager:
-    """캐시 관리 클래스"""
-    
-    def __init__(self, max_size: int, expiry: int):
-        """초기화
-        
-        Args:
-            max_size (int): 최대 캐시 크기
-            expiry (int): 캐시 만료 시간 (초)
-        """
-        self.cache: Dict[str, tuple[Any, float]] = {}
-        self.max_size = max_size
-        self.expiry = expiry
-        
-    def get(self, key: str) -> Optional[Any]:
-        """캐시 데이터 조회
-        
-        Args:
-            key (str): 캐시 키
-            
-        Returns:
-            Optional[Any]: 캐시 데이터
-        """
-        if key in self.cache:
-            data, timestamp = self.cache[key]
-            if time.time() - timestamp < self.expiry:
-                return data
-            del self.cache[key]
-        return None
-        
-    def set(self, key: str, value: Any) -> None:
-        """캐시 데이터 저장
-        
-        Args:
-            key (str): 캐시 키
-            value (Any): 저장할 데이터
-        """
-        if len(self.cache) >= self.max_size:
-            oldest_key = min(self.cache.items(), key=lambda x: x[1][1])[0]
-            del self.cache[oldest_key]
-        self.cache[key] = (value, time.time())
-        
-    def clear(self) -> None:
-        """캐시 초기화"""
-        self.cache.clear()
 
 class WebSocketManager(BaseWebSocket):
     """웹소켓 연결 관리 클래스"""
@@ -68,159 +23,245 @@ class WebSocketManager(BaseWebSocket):
             config (WebSocketConfig): 웹소켓 설정
         """
         super().__init__(config)
-        self.client: Optional[WebSocketClient] = None
-        self.subscriptions: Dict[str, Dict[str, Any]] = {}
         self.logger = setup_logger(__name__)
-        self.kst = pytz.timezone('Asia/Seoul')
-        self.event_queue = asyncio.Queue()  # 이벤트 큐 추가
+        self.client: Optional[WebSocketClient] = None
+        self.event_queue = asyncio.Queue()
+        self.event_task = None
+        self.is_running = False
         
-        # 캐시 관리자 초기화
-        self.cache_manager = CacheManager(
-            max_size=config.get("max_cache_size", 1000),
-            expiry=config.get("cache_expiry", 60)
-        )
+        # 구독 관리
+        self.subscriptions: Dict[str, Dict[str, Any]] = {}
         
-        # 이벤트 처리 태스크 시작
-        asyncio.create_task(self._process_events())
-
-    async def _process_events(self) -> None:
-        """이벤트 큐 처리"""
-        while True:
-            try:
-                event_type, data = await self.event_queue.get()
-                if event_type == "connected":
-                    self.update_state(WebSocketState.CONNECTED)
-                    self.logger.info("웹소켓 연결이 성공적으로 이루어졌습니다.")
-                    await self.emit_event("connected", data)
-                elif event_type == "message":
-                    header = data.get("header", {})
-                    tr_code = header.get("tr_cd")
-                    
-                    # body가 None인 경우 빈 딕셔너리로 처리
-                    body = data.get("body", {}) if data.get("body") is not None else {}
-                    tr_key = body.get("tr_key", "")
-                    
-                    subscription_key = f"{tr_code}_{tr_key}"
-                    if subscription_key in self.subscriptions:
-                        callback = self.subscriptions[subscription_key]["callback"]
-                        # 원본 메시지를 그대로 전달
-                        if asyncio.iscoroutinefunction(callback):
-                            await callback(data)
-                        else:
-                            callback(data)
-                elif event_type == "error":
-                    self.logger.error(f"웹소켓 에러 발생: {str(data)}")
-                    self.update_state(WebSocketState.ERROR)
-                    await self._connect()
-                elif event_type == "close":
-                    code = data.get("code")
-                    message = data.get("message")
-                    self.logger.warning(f"웹소켓 연결 종료 (코드: {code}, 메시지: {message})")
-                    self.update_state(WebSocketState.DISCONNECTED)
-                    await self._connect()
-            except Exception as e:
-                self.logger.error(f"이벤트 처리 중 오류: {str(e)}")
-            finally:
-                self.event_queue.task_done()
-
-    def is_connected(self) -> bool:
-        """웹소켓 연결 상태 확인
+        # 이벤트 핸들러
+        self.event_handlers = {
+            "message": [],
+            "error": [],
+            "close": [],
+            "open": []
+        }
         
-        Returns:
-            bool: 연결 여부
-        """
-        return (self.client and 
-                self.client.ws and 
-                self.client.ws.sock and 
-                self.client.ws.sock.connected and 
-                self.state == WebSocketState.CONNECTED)
+        self.logger.info("웹소켓 매니저가 초기화되었습니다.")
 
     async def start(self) -> None:
-        """웹소켓 연결 시작"""
+        """웹소켓 매니저 시작"""
         try:
+            if self.is_running:
+                self.logger.warning("웹소켓 매니저가 이미 실행 중입니다.")
+                return
+                
+            self.is_running = True
             self.logger.info("웹소켓 매니저 시작 중...")
             
-            # 기존 연결 정리
-            if self.client:
-                await self.close()
-
-            # WebSocketClient 초기화
-            self.client = WebSocketClient(
-                url=self.config["url"],
-                token=self.config["token"]
-            )
+            # 이벤트 처리 태스크 시작
+            self.event_task = asyncio.create_task(self._process_events())
             
-            # 추가 설정 적용
-            self.client.config.update({
-                "max_subscriptions": self.config.get("max_subscriptions", 100),
-                "max_reconnect_attempts": self.config.get("max_reconnect_attempts", 5),
-                "reconnect_delay": self.config.get("reconnect_delay", 5),
-                "ping_interval": self.config.get("ping_interval", 30),
-                "ping_timeout": self.config.get("ping_timeout", 10)
-            })
-            
-            # 이벤트 핸들러 등록
-            self.client.add_event_handler("message", self._handle_message)
-            self.client.add_event_handler("error", self._handle_error)
-            self.client.add_event_handler("close", self._handle_close)
-            self.client.add_event_handler("open", self._handle_open)
-            
-            # 연결 시작
-            self.logger.info("웹소켓 클라이언트 연결 시도 중...")
+            # 웹소켓 연결 시작
             await self._connect()
             
         except Exception as e:
-            self.logger.error(f"웹소켓 연결 시작 중 오류 발생: {str(e)}")
+            self.is_running = False
+            if self.event_task:
+                self.event_task.cancel()
+            self.logger.error(f"웹소켓 매니저 시작 중 오류: {str(e)}")
+            raise
+
+    async def stop(self) -> None:
+        """웹소켓 매니저 중지"""
+        if not self.is_running:
+            return
+            
+        try:
+            self.is_running = False
+            
+            # 모든 구독 해제
+            for tr_code, tr_key in list(self.subscriptions.keys()):
+                try:
+                    await self.unsubscribe(tr_code, tr_key)
+                except Exception as e:
+                    self.logger.warning(f"구독 해제 중 오류: {str(e)}")
+            
+            # 웹소켓 연결 종료
+            if self.client:
+                await self.client.close()
+                self.client = None
+            
+            # 이벤트 처리 태스크 종료
+            if self.event_task:
+                self.event_task.cancel()
+                try:
+                    await self.event_task
+                except asyncio.CancelledError:
+                    pass
+            
+            # 이벤트 큐 비우기
+            while not self.event_queue.empty():
+                try:
+                    await self.event_queue.get()
+                    self.event_queue.task_done()
+                except Exception:
+                    break
+                    
+            self.logger.info("웹소켓 매니저가 중지되었습니다.")
+            
+        except Exception as e:
+            self.logger.error(f"웹소켓 매니저 중지 중 오류: {str(e)}")
             raise
 
     async def _connect(self) -> None:
         """웹소켓 연결"""
         try:
-            self.logger.info("웹소켓 연결 시도 중...")
+            # URL과 토큰 검증
+            if not self.config.get("url"):
+                raise WebSocketError("웹소켓 URL이 설정되지 않았습니다.")
+            if not self.config.get("token"):
+                raise WebSocketError("인증 토큰이 설정되지 않았습니다.")
+            
+            # 기존 연결 정리
+            if self.client:
+                await self.client.close()
+                self.client = None
+            
+            # 새로운 클라이언트 생성 및 연결
+            self.client = WebSocketClient(
+                url=self.config["url"],
+                token=self.config["token"]
+            )
+            
+            # 이벤트 핸들러 등록
+            self.client.set_event_handlers({
+                "message": [self._handle_message],
+                "error": [self._handle_error],
+                "close": [self._handle_close],
+                "open": [self._handle_open]
+            })
+            
+            # 연결 시작
             await self.client.connect()
             
-            # 연결 상태 확인
-            if not self.client.is_connected:
-                self.logger.error("웹소켓 연결 실패")
-                raise Exception("웹소켓 연결 실패")
-                
-            self.logger.info("웹소켓 연결 성공")
+            # 기존 구독 복구
+            for subscription_key, subscription_data in self.subscriptions.items():
+                tr_code, tr_key = subscription_key.split("_")
+                try:
+                    await self.client.send(subscription_data["message"])
+                    self.logger.info(f"구독 복구 완료: {subscription_key}")
+                except Exception as e:
+                    self.logger.error(f"구독 복구 실패: {subscription_key} - {str(e)}")
             
         except Exception as e:
-            self.logger.error(f"웹소켓 연결 중 오류 발생: {str(e)}")
+            self.logger.error(f"웹소켓 연결 중 오류: {str(e)}")
             raise
 
-    async def _handle_open(self, _: Any) -> None:
+    async def _process_events(self) -> None:
+        """이벤트 처리 루프"""
         try:
-            self.update_state(WebSocketState.CONNECTED)
-            await self.event_queue.put(("connected", None))
+            while self.is_running:
+                try:
+                    event_type, data = await self.event_queue.get()
+                    handlers = self.event_handlers.get(event_type, [])
+                    
+                    for handler in handlers:
+                        try:
+                            if asyncio.iscoroutinefunction(handler):
+                                await handler(data)
+                            else:
+                                handler(data)
+                        except Exception as e:
+                            self.logger.error(f"이벤트 핸들러 실행 중 오류: {str(e)}")
+                    
+                    self.event_queue.task_done()
+                    
+                except asyncio.CancelledError:
+                    break
+                except Exception as e:
+                    self.logger.error(f"이벤트 처리 중 오류: {str(e)}")
+                    
+        except Exception as e:
+            self.logger.error(f"이벤트 처리 루프 중 오류: {str(e)}")
+        finally:
+            self.is_running = False
+
+    async def _handle_message(self, data: Dict[str, Any]) -> None:
+        """메시지 수신 처리"""
+        try:
+            print(data)
+            # VI 메시지 처리
+            if "header" in data and "tr_cd" in data["header"]:
+                tr_code = data["header"]["tr_cd"]
+                rsp_cd = data["header"]["rsp_cd"]
+                subscription_key = f"{tr_code}_000000"  # VI 모니터링은 전체 종목('000000')을 구독
+                
+                subscription = self.subscriptions.get(subscription_key)
+                if subscription and subscription.get("callback"):
+                    # 콜백이 있는 경우 전체 메시지 전달
+                    callback = subscription["callback"]
+                    try:
+                        if asyncio.iscoroutinefunction(callback):
+                            await callback(data)
+                        else:
+                            callback(data)
+                    except Exception as e:
+                        self.logger.error(f"콜백 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
+                else:
+                    # 콜백이 없는 경우 메시지 출력
+                    header = data.get("header", {})
+                    if "rsp_cd" in header:
+                        rsp_msg = header.get("rsp_msg", "알 수 없는 메시지")
+                        if header["rsp_cd"] == "00000":
+                            self.logger.info(f"응답: {rsp_msg}")
+                        else:
+                            self.logger.error(f"오류: {rsp_msg}")
+                    else:
+                        self.logger.info(f"메시지 수신: {json.dumps(data, ensure_ascii=False)}")
+                        
+            await self.event_queue.put(("message", data))
             
         except Exception as e:
-            self.logger.error(f"연결 시작 처리 중 오류 (line {traceback.extract_tb(e.__traceback__)[-1].lineno}): {str(e)}")
+            self.logger.error(f"메시지 처리 중 오류: {str(e)}\n{traceback.format_exc()}")
 
-    async def subscribe(self, 
-                        tr_code: str, 
-                        tr_key: str, 
-                        callback: Callable[[Dict[str, Any]], None]) -> None:
-        """실시간 데이터 구독
+    async def _handle_error(self, error: Dict[str, Any]) -> None:
+        """에러 처리"""
+        try:
+            self.logger.error(f"웹소켓 에러: {error}")
+            await self.event_queue.put(("error", error))
+            
+            # 연결 재시도
+            if self.is_running:
+                await self._connect()
+        except Exception as e:
+            self.logger.error(f"에러 처리 중 오류: {str(e)}")
+
+    async def _handle_close(self, data: Dict[str, Any]) -> None:
+        """연결 종료 처리"""
+        try:
+            self.logger.info(f"웹소켓 연결 종료: {data}")
+            await self.event_queue.put(("close", data))
+            
+            # 정상적인 종료가 아닌 경우 재연결 시도
+            if self.is_running:
+                await self._connect()
+        except Exception as e:
+            self.logger.error(f"연결 종료 처리 중 오류: {str(e)}")
+
+    async def _handle_open(self, _: Any) -> None:
+        """연결 시작 처리"""
+        try:
+            self.logger.info("웹소켓 연결이 열렸습니다.")
+            await self.event_queue.put(("open", None))
+        except Exception as e:
+            self.logger.error(f"연결 시작 처리 중 오류: {str(e)}")
+
+    async def subscribe(self, tr_code: str, tr_key: str, 
+                       callback: Callable[[Dict[str, Any]], None]) -> None:
+        """VI 데이터 구독
         
         Args:
-            tr_code (str): TR 코드
-            tr_key (str): TR 키
-            callback (Callable[[Dict[str, Any]], None]): 콜백 함수
+            tr_code (str): TR 코드 (VI_)
+            tr_key (str): 단축코드 6자리 또는 전체종목 '000000'
+            callback (Callable[[Dict[str, Any]], None]): VI 데이터 수신 시 호출될 콜백 함수
         """
-        if len(self.subscriptions) >= self.config["max_subscriptions"]:
-            raise Exception("최대 구독 개수 초과")
-            
         subscription_key = f"{tr_code}_{tr_key}"
         
-        # 캐시된 구독 정보 확인
-        cached_subscription = self.cache_manager.get(subscription_key)
-        if cached_subscription:
-            self.subscriptions[subscription_key] = cached_subscription
-            return
-            
-        # VI 구독 메시지 형식 수정
+        # 구독 메시지 생성
         message = {
             "header": {
                 "token": self.config["token"],
@@ -232,32 +273,34 @@ class WebSocketManager(BaseWebSocket):
             }
         }
         
-        subscription_data = {
+        # 구독 정보 저장
+        self.subscriptions[subscription_key] = {
             "message": message,
             "callback": callback,
-            "subscribe_time": self.get_timestamp()
+            "subscribe_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
         
-        self.subscriptions[subscription_key] = subscription_data
-        self.cache_manager.set(subscription_key, subscription_data)
-        
-        if self.is_connected():
+        # 구독 요청 전송
+        if self.client and self.client.is_connected:
             try:
                 await self.client.send(message)
-                self.logger.info(f"VI 구독 요청 전송 완료: {tr_code}_{tr_key}")
+                self.logger.info(f"구독 요청 완료: {subscription_key}")
             except Exception as e:
-                self.logger.error(f"VI 구독 요청 전송 실패: {str(e)}")
+                self.logger.error(f"구독 요청 실패: {str(e)}")
+                del self.subscriptions[subscription_key]
                 raise
 
     async def unsubscribe(self, tr_code: str, tr_key: str) -> None:
-        """실시간 데이터 구독 해제
+        """VI 데이터 구독 해제
         
         Args:
-            tr_code (str): TR 코드
-            tr_key (str): TR 키
+            tr_code (str): TR 코드 (VI_)
+            tr_key (str): 단축코드 6자리 또는 전체종목 '000000'
         """
         subscription_key = f"{tr_code}_{tr_key}"
+        
         if subscription_key in self.subscriptions:
+            # 구독 해제 메시지 전송
             message = {
                 "header": {
                     "token": self.config["token"],
@@ -269,44 +312,15 @@ class WebSocketManager(BaseWebSocket):
                 }
             }
             
-            if self.is_connected():
-                try:
+            try:
+                if self.client and self.client.is_connected:
                     await self.client.send(message)
-                    self.logger.info(f"VI 구독 해제 요청 전송 완료: {tr_code}_{tr_key}")
-                except Exception as e:
-                    self.logger.error(f"VI 구독 해제 요청 전송 실패: {str(e)}")
-                    raise
-                
-            del self.subscriptions[subscription_key]
+                    self.logger.info(f"구독 해제 완료: {subscription_key}")
+            except Exception as e:
+                self.logger.error(f"구독 해제 실패: {str(e)}")
+            finally:
+                del self.subscriptions[subscription_key]
 
-    def _handle_message(self, data: Dict[str, Any]) -> None:
-        """수신된 메시지 처리"""
-        try:
-            # 이벤트 큐에 메시지 이벤트 추가
-            asyncio.create_task(self.event_queue.put(("message", data)))
-        except Exception as e:
-            import traceback
-            self.logger.error(f"메시지 처리 중 오류 (line {traceback.extract_tb(e.__traceback__)[-1].lineno}): {str(e)}")
-
-    def _handle_error(self, error: Exception) -> None:
-        """에러 발생 시 처리"""
-        try:
-            # 이벤트 큐에 에러 이벤트 추가
-            asyncio.create_task(self.event_queue.put(("error", error)))
-        except Exception as e:
-            self.logger.error(f"에러 처리 중 오류: {str(e)}")
-
-    def _handle_close(self, data: Dict[str, Any]) -> None:
-        """연결 종료 시 처리"""
-        try:
-            # 이벤트 큐에 종료 이벤트 추가
-            asyncio.create_task(self.event_queue.put(("close", data)))
-        except Exception as e:
-            self.logger.error(f"종료 처리 중 오류: {str(e)}")
-
-    async def close(self) -> None:
-        """연결 종료"""
-        if self.client:
-            await self.client.close()
-            self.client = None
-            self.subscriptions.clear() 
+    def is_connected(self) -> bool:
+        """웹소켓 연결 상태 확인"""
+        return bool(self.client and self.client.is_connected) 

@@ -3,12 +3,13 @@
 import json
 import websocket
 import asyncio
-from typing import Dict, Any, Optional, Callable, List
+from typing import Dict, Any, Optional, Callable, List, Tuple
 from datetime import datetime
 import threading
 from functools import partial
 import ssl
 import time
+import traceback
 
 from .websocket_base import BaseWebSocket, WebSocketState, WebSocketConfig, WebSocketMessage, DEFAULT_CONFIG
 from api.errors import WebSocketError
@@ -18,140 +19,180 @@ from config.settings import WS_DEBUG_MODE
 class MessageQueue:
     """메시지 큐 관리 클래스"""
     
-    def __init__(self, ws_client: 'WebSocketClient'):
-        self.queue = asyncio.PriorityQueue()
+    def __init__(self):
+        """초기화"""
+        self.logger = setup_logger(__name__)
+        self.queue = asyncio.Queue()
         self.processing = False
-        self.ws_client = ws_client
+        self.is_running = True
+        self.processor_task = None
+        self.message_count = 0
+        self.error_count = 0
         
-    async def add(self, priority: int, message: str) -> None:
-        """메시지 추가
-        
-        Args:
-            priority (int): 우선순위
-            message (str): 메시지
-        """
-        await self.queue.put((priority, message))
+    async def add(self, message: str) -> None:
+        """메시지 추가"""
+        self.message_count += 1
+        self.logger.debug(f"메시지 큐에 추가 (총 {self.message_count}개): {message[:200]}...")
+        await self.queue.put(message)
         if not self.processing:
-            asyncio.create_task(self._process())
+            self.processor_task = asyncio.create_task(self._process())
             
     async def _process(self) -> None:
         """메시지 처리"""
         self.processing = True
         try:
-            while not self.queue.empty():
-                _, message = await self.queue.get()
-                if self.ws_client.ws and self.ws_client.is_connected:
-                    self.ws_client.ws.send(message)
-                self.queue.task_done()
+            while self.is_running:
+                try:
+                    if self.queue.empty():
+                        await asyncio.sleep(0.1)
+                        continue
+                        
+                    message = await self.queue.get()
+                    if message is None:
+                        self.logger.debug("메시지 큐 종료 시그널 수신")
+                        break
+                        
+                    self.logger.debug(f"메시지 처리 시작: {message[:200]}...")
+                    if hasattr(self, 'callback') and self.callback:
+                        await self.callback(message)
+                        self.logger.debug("메시지 처리 완료")
+                        
+                    self.queue.task_done()
+                    
+                except asyncio.CancelledError:
+                    self.logger.debug("메시지 처리 태스크 취소됨")
+                    break
+                except Exception as e:
+                    self.error_count += 1
+                    self.logger.error(f"메시지 처리 중 오류 ({self.error_count}번째): {str(e)}\n{traceback.format_exc()}")
+                    
         finally:
             self.processing = False
-
-class EventLoopManager:
-    """이벤트 루프 관리 클래스"""
-    
-    def __init__(self):
-        self.loop = None
-        self.tasks = set()
-        
-    def get_loop(self) -> asyncio.AbstractEventLoop:
-        """이벤트 루프 반환"""
-        if self.loop is None:
-            try:
-                self.loop = asyncio.get_running_loop()
-            except RuntimeError:
-                self.loop = asyncio.new_event_loop()
-                asyncio.set_event_loop(self.loop)
-        return self.loop
-        
-    async def create_task(self, coro) -> asyncio.Task:
-        """태스크 생성
-        
-        Args:
-            coro: 코루틴
+            self.logger.debug(f"메시지 큐 처리 종료 (처리: {self.message_count}개, 오류: {self.error_count}개)")
             
-        Returns:
-            asyncio.Task: 생성된 태스크
-        """
-        task = asyncio.create_task(coro)
-        self.tasks.add(task)
-        task.add_done_callback(self.tasks.discard)
-        return task
+    def set_callback(self, callback: Callable[[str], None]) -> None:
+        """콜백 함수 설정"""
+        self.callback = callback
+            
+    async def stop(self) -> None:
+        """메시지 큐 중지"""
+        self.logger.debug("메시지 큐 중지 시작")
+        self.is_running = False
+        await self.queue.put(None)  # 종료 시그널
+        
+        if self.processor_task:
+            try:
+                await self.processor_task
+                self.logger.debug("메시지 처리 태스크 정상 종료")
+            except asyncio.CancelledError:
+                self.logger.debug("메시지 처리 태스크 강제 종료")
+            
+        # 남은 메시지 제거
+        remaining = 0
+        while not self.queue.empty():
+            try:
+                await self.queue.get()
+                self.queue.task_done()
+                remaining += 1
+            except Exception as e:
+                self.logger.error(f"메시지 큐 정리 중 오류: {str(e)}\n{traceback.format_exc()}")
+        if remaining > 0:
+            self.logger.debug(f"미처리 메시지 {remaining}개 제거됨")
 
 class WebSocketClient(BaseWebSocket):
     """웹소켓 클라이언트 클래스"""
     
     def __init__(self, url: str, token: str):
-        """초기화
-
-        Args:
-            url (str): 웹소켓 URL
-            token (str): 인증 토큰
-        """
-        self.logger = setup_logger(__name__)
-        
-        # 기본 설정에 URL과 토큰 추가
-        self.config = DEFAULT_CONFIG.copy()
-        self.config.update({
+        """초기화"""
+        super().__init__({
             "url": url,
             "token": token
         })
-        
+        self.logger = setup_logger(__name__)
         self.ws = None
         self.is_connected = False
-        # self.state = WebSocketState.CLOSED
-        self.state = None
+        self.state = WebSocketState.CLOSED
         self.event_handlers: Dict[str, List[Callable]] = {}
+        self.message_queue = MessageQueue()
+        self.message_queue.set_callback(self._send_message)
         self.thread = None
-        self.is_running = False
+        self.event_loop = None
+        self.connection_attempts = 0
+        self.last_error = None
+        self.last_state_change = datetime.now()
+        self.message_stats = {
+            "sent": 0,
+            "received": 0,
+            "errors": 0
+        }
         
-        # 메시지 큐와 이벤트 루프 관리자 초기화
-        self.message_queue = MessageQueue(self)
-        self.event_loop_manager = EventLoopManager()
+    def _log_state_change(self, new_state: WebSocketState) -> None:
+        """상태 변경 로깅"""
+        old_state = self.state
+        self.state = new_state
+        current_time = datetime.now()
+        duration = (current_time - self.last_state_change).total_seconds()
+        self.last_state_change = current_time
+        self.logger.info(
+            f"웹소켓 상태 변경: {old_state.name} -> {new_state.name} "
+            f"(지속시간: {duration:.1f}초)"
+        )
+        
+    async def _send_message(self, message: str) -> None:
+        """메시지 전송"""
+        if self.ws and self.is_connected:
+            try:
+                self.ws.send(message)
+                self.message_stats["sent"] += 1
+                self.logger.debug(f"메시지 전송 완료 (총 {self.message_stats['sent']}개): {message[:200]}...")
+            except Exception as e:
+                self.message_stats["errors"] += 1
+                self.logger.error(
+                    f"메시지 전송 중 오류 (총 {self.message_stats['errors']}개): {str(e)}\n"
+                    f"메시지: {message[:200]}...\n"
+                    f"{traceback.format_exc()}"
+                )
+        
+    def set_event_handlers(self, handlers: Dict[str, List[Callable]]) -> None:
+        """이벤트 핸들러 설정"""
+        self.event_handlers = handlers
+        self.logger.debug(f"이벤트 핸들러 등록: {list(handlers.keys())}")
         
     async def connect(self) -> None:
         """웹소켓 연결"""
         try:
-            self.state = WebSocketState.CONNECTING
-            self.logger.info(f"웹소켓 연결 시도 중... URL: {self.config['url']}")
+            if self.is_connected:
+                self.logger.warning("이미 연결된 상태입니다.")
+                return
+                
+            self.connection_attempts += 1
+            self.logger.info(f"웹소켓 연결 시작 (시도 {self.connection_attempts}번째)...")
+            self._log_state_change(WebSocketState.CONNECTING)
             
-            # SSL 검증 비활성화
-            websocket.enableTrace(WS_DEBUG_MODE)  # settings.py의 설정 사용
+            # 이벤트 루프 설정
+            self.event_loop = asyncio.get_running_loop()
             
-            # 헤더 설정
-            headers = {
-                "Authorization": f"Bearer {self.config['token']}",
-                "Content-Type": "application/json",
-                "User-Agent": "Mozilla/5.0",
-                "Accept": "*/*",
-                "Accept-Encoding": "gzip, deflate, br",
-                "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
-            }
-            
-            # SSL 옵션 설정
-            ssl_opts = {
+            # SSL 설정
+            ssl_options = {
                 "cert_reqs": ssl.CERT_NONE,
                 "check_hostname": False,
                 "ssl_version": ssl.PROTOCOL_TLSv1_2
             }
             
-            # 웹소켓 옵션 설정
-            websocket.setdefaulttimeout(30)
+            # 헤더 설정
+            headers = {
+                "Authorization": f"Bearer {self.config['token']}",
+                "Content-Type": "application/json"
+            }
             
-            # 기존 연결이 있다면 정리
-            if self.ws:
-                self.ws.close()
-                self.ws = None
+            self.logger.debug(f"연결 설정:\nURL: {self.config['url']}\nHeaders: {headers}\nSSL: {ssl_options}")
             
-            if self.thread and self.thread.is_alive():
-                self.thread.join(timeout=5)
-                self.thread = None
+            # 웹소켓 설정
+            websocket.enableTrace(WS_DEBUG_MODE)
             
-            # 상태 초기화
-            self.is_connected = False
-            self.state = WebSocketState.CONNECTING
-            
+            # 웹소켓 객체 생성
             self.ws = websocket.WebSocketApp(
-                self.config["url"],
+                url=self.config["url"],
                 header=headers,
                 on_message=self._handle_message_wrapper,
                 on_error=self._handle_error_wrapper,
@@ -161,205 +202,285 @@ class WebSocketClient(BaseWebSocket):
                 on_pong=self._handle_pong
             )
             
-            # 웹소켓 연결 시작
+            # 웹소켓 스레드 시작
             self.thread = threading.Thread(
-                target=lambda: self.ws.run_forever(
-                    sslopt=ssl_opts,
-                    ping_interval=20,
-                    ping_timeout=10
-                )
+                target=self._run_websocket,
+                kwargs={
+                    "sslopt": ssl_options,
+                    "ping_interval": self.config.get("ping_interval", 30),
+                    "ping_timeout": self.config.get("ping_timeout", 10)
+                }
             )
             self.thread.daemon = True
             self.thread.start()
             
-            # 연결될 때까지 대기
-            timeout = 30  # 30초 타임아웃
+            # 연결 대기
+            timeout = self.config.get("connect_timeout", 30)
             start_time = time.time()
             
-            while not self.is_connected and self.state != WebSocketState.ERROR:
-                if time.time() - start_time > timeout:
-                    self.logger.error("웹소켓 연결 타임아웃")
-                    raise Exception("웹소켓 연결 타임아웃")
+            while not self.is_connected and (time.time() - start_time) < timeout:
+                if self.state == WebSocketState.ERROR:
+                    error_msg = getattr(self.ws, 'last_error', "알 수 없는 오류")
+                    raise WebSocketError(f"웹소켓 연결 중 오류 발생: {error_msg}")
                 await asyncio.sleep(0.1)
-            
-            if self.state == WebSocketState.ERROR:
-                self.logger.error("웹소켓 연결 실패")
-                raise Exception("웹소켓 연결 실패")
-            
-            self.state = WebSocketState.CONNECTED
-            self.logger.info("웹소켓이 연결되었습니다.")
+                
+            if not self.is_connected:
+                raise WebSocketError(f"웹소켓 연결 시간 초과 (timeout: {timeout}초)")
+                
+            self.logger.info("웹소켓 연결 성공")
             
         except Exception as e:
-            self.state = WebSocketState.ERROR
-            self.is_connected = False
-            self.logger.error(f"웹소켓 연결 중 오류: {str(e)}")
+            self.last_error = str(e)
+            self.logger.error(
+                f"웹소켓 연결 중 오류 (시도 {self.connection_attempts}번째): {str(e)}\n"
+                f"{traceback.format_exc()}"
+            )
+            self._log_state_change(WebSocketState.ERROR)
+            await self.close()
             raise
-
-    def _handle_message_wrapper(self, ws: websocket.WebSocketApp, message: str) -> None:
-        """웹소켓 메시지 수신 핸들러"""
-        try:
-            data = json.loads(message)
-            self.logger.debug(f"수신된 메시지: {data}")
             
-            # 응답 메시지 처리
-            if "header" in data and "rsp_cd" in data["header"]:
-                rsp_cd = data["header"]["rsp_cd"]
-                rsp_msg = data["header"].get("rsp_msg", "")
-                
-                if rsp_cd != "00000":
-                    self.logger.error(f"서버 응답 오류: {rsp_msg}")
-                    return
-                    
-                self.logger.info(f"서버 응답 성공: {rsp_msg}")
+    def _run_websocket(self, **kwargs) -> None:
+        """웹소켓 실행"""
+        try:
+            self.logger.debug(f"웹소켓 실행 시작 (설정: {kwargs})")
+            self.ws.run_forever(**kwargs)
+        except Exception as e:
+            self.last_error = str(e)
+            self.logger.error(f"웹소켓 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
+            self._log_state_change(WebSocketState.ERROR)
+            
+    def _handle_message_wrapper(self, ws: websocket.WebSocketApp, message: str) -> None:
+        """메시지 수신 처리"""
+        try:
+            if not message:
+                self.logger.warning("빈 메시지가 수신되었습니다.")
                 return
                 
-            # 일반 메시지 처리
-            for handler in self.event_handlers.get("message", []):
+            self.message_stats["received"] += 1
+            self.logger.debug(f"메시지 수신 (총 {self.message_stats['received']}개): {message[:200]}...")
+            
+            try:
+                data = json.loads(message)
+            except json.JSONDecodeError as e:
+                self.message_stats["errors"] += 1
+                self.logger.error(
+                    f"JSON 파싱 오류 (총 {self.message_stats['errors']}개): {str(e)}\n"
+                    f"메시지: {message[:200]}...\n"
+                    f"{traceback.format_exc()}"
+                )
+                return
+                
+            if not isinstance(data, dict):
+                self.message_stats["errors"] += 1
+                self.logger.error(f"잘못된 메시지 형식: dictionary가 아님 (타입: {type(data)})")
+                return
+                
+            # 응답 코드 확인
+            header = data.get("header")
+            if header is not None:
+                rsp_cd = header.get("rsp_cd")
+                if rsp_cd is not None and rsp_cd != "00000":
+                    self.message_stats["errors"] += 1
+                    self.logger.error(
+                        f"서버 응답 오류 (코드: {rsp_cd}, "
+                        f"메시지: {header.get('rsp_msg', '알 수 없는 오류')}, "
+                        f"총 오류: {self.message_stats['errors']}개)"
+                    )
+                    return
+                    
+            # 이벤트 핸들러 실행
+            handlers = self.event_handlers.get("message", [])
+            if not handlers:
+                self.logger.debug("등록된 메시지 핸들러가 없습니다.")
+                return
+                
+            for handler in handlers:
+                if handler is None:
+                    continue
+                    
                 try:
                     if asyncio.iscoroutinefunction(handler):
-                        # 새로운 이벤트 루프 생성
-                        loop = asyncio.new_event_loop()
-                        asyncio.set_event_loop(loop)
-                        loop.run_until_complete(handler(data))
-                        loop.close()
+                        if self.event_loop is None:
+                            self.logger.error("이벤트 루프가 설정되지 않았습니다.")
+                            continue
+                        asyncio.run_coroutine_threadsafe(handler(data), self.event_loop)
                     else:
                         handler(data)
                 except Exception as e:
-                    self.logger.error(f"메시지 핸들러 실행 중 오류: {str(e)}")
+                    self.message_stats["errors"] += 1
+                    self.logger.error(
+                        f"메시지 핸들러 실행 중 오류 (총 {self.message_stats['errors']}개): "
+                        f"{str(e)}\n"
+                        f"핸들러: {handler.__name__ if hasattr(handler, '__name__') else str(handler)}\n"
+                        f"{traceback.format_exc()}"
+                    )
                     
         except Exception as e:
-            self.logger.error(f"메시지 처리 중 오류: {str(e)}")
-            self.logger.error(f"문제가 발생한 메시지: {message}")
-
-    def _handle_ping(self, ws: websocket.WebSocketApp, message: str) -> None:
-        """Ping 메시지 처리"""
-        try:
-            ws.send(message)
-        except Exception as e:
-            self.logger.error(f"Ping 처리 중 오류: {str(e)}")
-
-    def _handle_pong(self, ws: websocket.WebSocketApp, message: str) -> None:
-        """Pong 메시지 처리"""
-        try:
-            self.logger.debug("Pong 메시지 수신")
-        except Exception as e:
-            self.logger.error(f"Pong 처리 중 오류: {str(e)}")
-
+            self.message_stats["errors"] += 1
+            self.logger.error(
+                f"메시지 처리 중 오류 (총 {self.message_stats['errors']}개): {str(e)}\n"
+                f"메시지: {message[:200] if message else 'None'}\n"
+                f"{traceback.format_exc()}"
+            )
+            
     def _handle_error_wrapper(self, ws: websocket.WebSocketApp, error: Exception) -> None:
-        """웹소켓 에러 핸들러"""
-        self.state = WebSocketState.ERROR
-        self.is_connected = False
-        self.logger.error(f"웹소켓 에러: {str(error)}")
-        for handler in self.event_handlers.get("error", []):
-            asyncio.create_task(handler({"error": str(error)}))
-
+        """에러 처리"""
+        try:
+            self.last_error = str(error)
+            self._log_state_change(WebSocketState.ERROR)
+            self.is_connected = False
+            
+            error_info = {
+                "error_type": type(error).__name__,
+                "error_message": str(error),
+                "traceback": traceback.format_exc()
+            }
+            
+            self.logger.error(
+                f"웹소켓 에러 발생:\n"
+                f"타입: {error_info['error_type']}\n"
+                f"메시지: {error_info['error_message']}\n"
+                f"스택트레이스:\n{error_info['traceback']}"
+            )
+            
+            for handler in self.event_handlers.get("error", []):
+                try:
+                    if asyncio.iscoroutinefunction(handler):
+                        asyncio.run_coroutine_threadsafe(handler(error_info), self.event_loop)
+                    else:
+                        handler(error_info)
+                except Exception as e:
+                    self.logger.error(f"에러 핸들러 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
+                    
+        except Exception as e:
+            self.logger.error(f"에러 처리 중 오류: {str(e)}\n{traceback.format_exc()}")
+            
     def _handle_close_wrapper(self, ws: websocket.WebSocketApp, 
                             close_status_code: int, close_msg: str) -> None:
-        """웹소켓 연결 종료 핸들러"""
+        """연결 종료 처리"""
         try:
             self.is_connected = False
-            self.state = WebSocketState.CLOSED
-            self.logger.info(f"웹소켓 연결이 종료되었습니다. (코드: {close_status_code}, 메시지: {close_msg})")
+            self._log_state_change(WebSocketState.CLOSED)
             
-            # 연결 종료 이벤트 발생
+            close_info = {
+                "code": close_status_code,
+                "message": close_msg,
+                "stats": self.message_stats
+            }
+            
+            self.logger.info(
+                f"웹소켓 연결 종료:\n"
+                f"상태 코드: {close_status_code}\n"
+                f"메시지: {close_msg}\n"
+                f"통계:\n"
+                f"- 전송: {self.message_stats['sent']}개\n"
+                f"- 수신: {self.message_stats['received']}개\n"
+                f"- 오류: {self.message_stats['errors']}개"
+            )
+            
             for handler in self.event_handlers.get("close", []):
-                asyncio.create_task(handler({
-                    "code": close_status_code,
-                    "message": close_msg
-                }))
+                try:
+                    if asyncio.iscoroutinefunction(handler):
+                        asyncio.run_coroutine_threadsafe(handler(close_info), self.event_loop)
+                    else:
+                        handler(close_info)
+                except Exception as e:
+                    self.logger.error(f"종료 핸들러 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
+                    
         except Exception as e:
-            self.logger.error(f"연결 종료 핸들러 처리 중 오류: {str(e)}")
-
+            self.logger.error(f"연결 종료 처리 중 오류: {str(e)}\n{traceback.format_exc()}")
+            
     def _handle_open_wrapper(self, ws: websocket.WebSocketApp) -> None:
-        """웹소켓 연결 성공 핸들러"""
+        """연결 성공 처리"""
         try:
             self.is_connected = True
-            self.state = WebSocketState.CONNECTED
-            self.logger.info("웹소켓 연결이 열렸습니다.")
+            self._log_state_change(WebSocketState.CONNECTED)
             
-            # 연결 성공 이벤트를 동기적으로 처리
+            self.logger.info(
+                f"웹소켓 연결 성공 (시도 {self.connection_attempts}번째)\n"
+                f"URL: {self.config['url']}"
+            )
+            
             for handler in self.event_handlers.get("open", []):
                 try:
                     if asyncio.iscoroutinefunction(handler):
-                        # 새로운 이벤트 루프 생성
-                        loop = asyncio.new_event_loop()
-                        asyncio.set_event_loop(loop)
-                        loop.run_until_complete(handler(None))
-                        loop.close()
+                        asyncio.run_coroutine_threadsafe(handler(None), self.event_loop)
                     else:
                         handler(None)
                 except Exception as e:
-                    self.logger.error(f"연결 성공 이벤트 핸들러 실행 중 오류: {str(e)}")
+                    self.logger.error(f"연결 성공 핸들러 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
                     
         except Exception as e:
-            self.logger.error(f"연결 성공 핸들러 처리 중 오류: {str(e)}")
+            self.last_error = str(e)
+            self.logger.error(f"연결 성공 처리 중 오류: {str(e)}\n{traceback.format_exc()}")
+            self._log_state_change(WebSocketState.ERROR)
             
-    async def send(self, data: Dict[str, Any], priority: int = 1) -> None:
-        """데이터 전송
+    def _handle_ping(self, ws: websocket.WebSocketApp, message: str) -> None:
+        """Ping 메시지 처리"""
+        try:
+            self.logger.debug(f"Ping 수신: {message}")
+            ws.send(message)
+        except Exception as e:
+            self.logger.error(f"Ping 처리 중 오류: {str(e)}\n{traceback.format_exc()}")
+            
+    def _handle_pong(self, ws: websocket.WebSocketApp, message: str) -> None:
+        """Pong 메시지 처리"""
+        self.logger.debug(f"Pong 수신: {message}")
         
-        Args:
-            data (Dict[str, Any]): 전송할 데이터
-            priority (int, optional): 우선순위. Defaults to 1.
-        """
+    async def send(self, data: Dict[str, Any]) -> None:
+        """데이터 전송"""
         try:
             if not self.is_connected:
                 raise WebSocketError("웹소켓이 연결되지 않았습니다.")
-            
+                
             message = json.dumps(data)
-            await self.message_queue.add(priority, message)
+            self.logger.debug(f"메시지 전송 요청: {message[:200]}...")
+            await self.message_queue.add(message)
             
         except Exception as e:
-            self.logger.error(f"메시지 전송 중 오류 발생: {str(e)}")
+            self.message_stats["errors"] += 1
+            self.logger.error(
+                f"메시지 전송 중 오류 (총 {self.message_stats['errors']}개): {str(e)}\n"
+                f"데이터: {data}\n"
+                f"{traceback.format_exc()}"
+            )
             raise
-            
-    async def _handle_message(self, ws: websocket.WebSocketApp, message: str) -> None:
-        """메시지 수신 처리"""
-        try:
-            data = json.loads(message)
-            await self.emit_event("message", data)
-        except Exception as e:
-            self.logger.error(f"메시지 처리 중 오류 발생: {str(e)}")
-            
-    async def _handle_error(self, ws: websocket.WebSocketApp, error: Exception) -> None:
-        """에러 처리"""
-        self.state = WebSocketState.ERROR
-        self.logger.error(f"웹소켓 에러: {str(error)}")
-        await self.emit_event("error", {"error": str(error)})
-            
-    async def _handle_close(self, ws: websocket.WebSocketApp, 
-                          close_status_code: int, close_msg: str) -> None:
-        """연결 종료 처리"""
-        self.state = WebSocketState.CLOSED
-        self.is_connected = False
-        self.logger.info("웹소켓 연결이 종료되었습니다.")
-        await self.emit_event("close", {
-            "code": close_status_code,
-            "message": close_msg
-        })
-            
-    async def _handle_open(self, ws: websocket.WebSocketApp) -> None:
-        """연결 시작 처리"""
-        self.state = WebSocketState.CONNECTED
-        self.is_connected = True
-        self.logger.info("웹소켓 연결이 열렸습니다.")
             
     async def close(self) -> None:
-        """연결 종료"""
+        """웹소켓 연결 종료"""
         try:
+            if self.state == WebSocketState.CLOSED:
+                return
+                
+            self._log_state_change(WebSocketState.CLOSING)
+            
+            # 메시지 큐 중지
+            if self.message_queue:
+                await self.message_queue.stop()
+                
+            # 웹소켓 연결 종료
             if self.ws:
-                self.state = WebSocketState.CLOSED
-                self.is_connected = False
                 self.ws.close()
+                
+            # 스레드 종료 대기
             if self.thread and self.thread.is_alive():
-                self.thread.join(timeout=5)
+                self.thread.join(timeout=5.0)
+                
+            self.logger.info(
+                f"웹소켓 연결 종료 완료\n"
+                f"통계:\n"
+                f"- 연결 시도: {self.connection_attempts}번\n"
+                f"- 전송: {self.message_stats['sent']}개\n"
+                f"- 수신: {self.message_stats['received']}개\n"
+                f"- 오류: {self.message_stats['errors']}개\n"
+                f"마지막 오류: {self.last_error or '없음'}"
+            )
+            
         except Exception as e:
-            self.logger.error(f"웹소켓 종료 중 오류: {str(e)}")
-            raise
-
-    def set_token(self, token: str) -> None:
-        """토큰 설정
-        
-        Args:
-            token (str): 인증 토큰
-        """
-        self.config['token'] = token 
+            self.logger.error(f"웹소켓 종료 중 오류: {str(e)}\n{traceback.format_exc()}")
+        finally:
+            self.ws = None
+            self.is_connected = False
+            self._log_state_change(WebSocketState.CLOSED)
+            self.event_handlers.clear()
+            self.thread = None 
