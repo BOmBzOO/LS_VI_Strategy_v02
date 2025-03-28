@@ -396,10 +396,7 @@ class WebSocketClient(BaseWebSocket):
             self.is_connected = True
             self._log_state_change(WebSocketState.CONNECTED)
             
-            self.logger.info(
-                f"웹소켓 연결 성공 (시도 {self.connection_attempts}번째)\n"
-                f"URL: {self.config['url']}"
-            )
+            self.logger.info(f"웹소켓 연결 성공 (시도 {self.connection_attempts}번째), URL: {self.config['url']}")
             
             for handler in self.event_handlers.get("open", []):
                 try:

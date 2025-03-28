@@ -70,3 +70,5 @@
 2025-03-28 00:24:04 - __main__ - INFO - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1796)
 2025-03-28 00:24:04 - __main__ - INFO - VI 모니터링이 시작되었습니다.
 2025-03-28 00:26:31 - __main__ - ERROR - 전략 중지 중 오류 발생: CLOSED
+2025-03-28 15:12:52,579 - __main__ - ERROR - line 55 - 오류 발생: object str can't be used in 'await' expression
+2025-03-28 15:19:30,057 - __main__ - ERROR - line 76 - 오류 발생: object str can't be used in 'await' expression

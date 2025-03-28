@@ -1,0 +1,62 @@
+2025-03-28 14:45:36,001 - strategy.vi_strategy.VI_strategy - INFO - line 68 - 전략 초기화 시작...
+2025-03-28 14:45:36,005 - strategy.vi_strategy.VI_strategy - INFO - line 82 - 전략 초기화 완료
+2025-03-28 14:45:36,005 - strategy.vi_strategy.VI_strategy - INFO - line 93 - 시장 데이터 로드 시작...
+2025-03-28 14:45:37,201 - strategy.vi_strategy.VI_strategy - INFO - line 108 - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1795)
+2025-03-28 14:45:37,202 - strategy.vi_strategy.VI_strategy - INFO - line 122 - VI 모니터링 시작 중...
+2025-03-28 14:45:37,302 - strategy.vi_strategy.VI_strategy - INFO - line 144 - VI 모니터링이 시작되었습니다
+2025-03-28 14:45:37,326 - strategy.vi_strategy.VI_strategy - INFO - line 163 - VI 응답: 정상처리되었습니다
+2025-03-28 14:45:46,729 - strategy.vi_strategy.VI_strategy - INFO - line 211 - VI 해제 감지 - 종목: 219550, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 14:46:38,828 - strategy.vi_strategy.VI_strategy - INFO - line 259 - 전략이 정상적으로 종료되었습니다
+2025-03-28 14:46:40,238 - strategy.vi_strategy.VI_strategy - INFO - line 68 - 전략 초기화 시작...
+2025-03-28 14:46:40,240 - strategy.vi_strategy.VI_strategy - INFO - line 82 - 전략 초기화 완료
+2025-03-28 14:46:40,241 - strategy.vi_strategy.VI_strategy - INFO - line 93 - 시장 데이터 로드 시작...
+2025-03-28 14:46:41,438 - strategy.vi_strategy.VI_strategy - INFO - line 108 - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1795)
+2025-03-28 14:46:41,438 - strategy.vi_strategy.VI_strategy - INFO - line 122 - VI 모니터링 시작 중...
+2025-03-28 14:46:41,553 - strategy.vi_strategy.VI_strategy - INFO - line 144 - VI 모니터링이 시작되었습니다
+2025-03-28 14:46:41,571 - strategy.vi_strategy.VI_strategy - INFO - line 163 - VI 응답: 정상처리되었습니다
+2025-03-28 14:48:06,355 - strategy.vi_strategy.VI_strategy - INFO - line 259 - 전략이 정상적으로 종료되었습니다
+2025-03-28 14:48:51,528 - strategy.vi_strategy.VI_strategy - INFO - line 68 - 전략 초기화 시작...
+2025-03-28 14:48:51,531 - strategy.vi_strategy.VI_strategy - INFO - line 82 - 전략 초기화 완료
+2025-03-28 14:48:51,531 - strategy.vi_strategy.VI_strategy - INFO - line 93 - 시장 데이터 로드 시작...
+2025-03-28 14:48:52,668 - strategy.vi_strategy.VI_strategy - INFO - line 108 - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1795)
+2025-03-28 14:48:52,669 - strategy.vi_strategy.VI_strategy - INFO - line 122 - VI 모니터링 시작 중...
+2025-03-28 14:48:52,787 - strategy.vi_strategy.VI_strategy - INFO - line 144 - VI 모니터링이 시작되었습니다
+2025-03-28 14:48:52,795 - strategy.vi_strategy.VI_strategy - INFO - line 163 - VI 응답: 정상처리되었습니다
+2025-03-28 14:52:39,193 - strategy.vi_strategy.VI_strategy - ERROR - line 205 - VI 발동 처리 중 오류 발생: 'VIData' object has no attribute 'get'
+2025-03-28 14:54:54,994 - strategy.vi_strategy.VI_strategy - INFO - line 211 - VI 해제 감지 - 종목: 042040, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:00:51,377 - strategy.vi_strategy.VI_strategy - ERROR - line 205 - VI 발동 처리 중 오류 발생: 'VIData' object has no attribute 'get'
+2025-03-28 15:03:15,434 - strategy.vi_strategy.VI_strategy - INFO - line 211 - VI 해제 감지 - 종목: 043220, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:03:28,777 - strategy.vi_strategy.VI_strategy - INFO - line 259 - 전략이 정상적으로 종료되었습니다
+2025-03-28 15:03:30,536 - strategy.vi_strategy.VI_strategy - INFO - line 68 - 전략 초기화 시작...
+2025-03-28 15:03:30,540 - strategy.vi_strategy.VI_strategy - INFO - line 82 - 전략 초기화 완료
+2025-03-28 15:03:30,541 - strategy.vi_strategy.VI_strategy - INFO - line 93 - 시장 데이터 로드 시작...
+2025-03-28 15:03:31,696 - strategy.vi_strategy.VI_strategy - INFO - line 108 - 시장 데이터 로드 완료 (코스피: 2314, 코스닥: 1795)
+2025-03-28 15:03:31,696 - strategy.vi_strategy.VI_strategy - INFO - line 122 - VI 모니터링 시작 중...
+2025-03-28 15:03:31,818 - strategy.vi_strategy.VI_strategy - INFO - line 144 - VI 모니터링이 시작되었습니다
+2025-03-28 15:03:31,825 - strategy.vi_strategy.VI_strategy - INFO - line 163 - VI 응답: 정상처리되었습니다
+2025-03-28 15:07:42,196 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 001000, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:08:42,366 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 001550, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:09:16,458 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 054050, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:10:06,969 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 001000, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:11:08,788 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 001550, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:11:32,466 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 054050, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:12:49,506 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 008870, 현재가: 54000, VI유형: 동적발동
+2025-03-28 15:14:51,294 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 020180, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:15:11,018 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 008870, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:15:29,840 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 065770, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:17:00,342 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 020180, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:17:15,809 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 332290, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:17:27,122 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 043910, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:17:33,980 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 065770, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:17:47,695 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 74401B, 현재가: 650, VI유형: 동적발동
+2025-03-28 15:19:19,703 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 020180, 현재가: 0, VI유형: 정적발동
+2025-03-28 15:19:42,830 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 332290, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:19:51,189 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 043910, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:19:52,992 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 74401B, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:19:58,798 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 020180, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:30:02,807 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 340930, 현재가: 1881, VI유형: 정적&동적
+2025-03-28 15:30:22,180 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 009620, 현재가: 1909, VI유형: 동적발동
+2025-03-28 15:30:28,688 - strategy.vi_strategy.VI_strategy - INFO - line 195 - VI 발동 감지 - 종목: 744017, 현재가: 330, VI유형: 동적발동
+2025-03-28 15:32:02,895 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 340930, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:32:27,924 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 009620, 정적기준가: 0, 동적기준가: 0, 발동가: 0
+2025-03-28 15:32:56,959 - strategy.vi_strategy.VI_strategy - INFO - line 206 - VI 해제 감지 - 종목: 744017, 정적기준가: 0, 동적기준가: 0, 발동가: 0

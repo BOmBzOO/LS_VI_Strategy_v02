@@ -190,14 +190,9 @@ class VIStrategy:
             
     async def _handle_vi_activation(self, vi_data: VIData) -> None:
         """VI 발동 처리"""
-        try:
-            # # 현재가 조회
-            # price_info = self.market_service.get_stock_price(vi_data.shcode)
-            # if not price_info:
-            #     return
-                
+        try:    
             # VI 발동 시 추가 로직 구현
-            self.logger.info(f"VI 발동 감지 - 종목: {vi_data.ref_shcode}, 현재가: {vi_data.get('price', 'N/A')}, VI유형: {vi_data.vi_type}")
+            self.logger.info(f"VI 발동 감지 - 종목: {vi_data.ref_shcode}, 현재가: {vi_data.dvi_recprice}, VI유형: {vi_data.vi_type}")
             
             # 여기에 VI 발동에 대한 추가 전략 로직 구현
             

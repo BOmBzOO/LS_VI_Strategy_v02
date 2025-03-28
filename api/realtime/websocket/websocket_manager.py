@@ -199,7 +199,7 @@ class WebSocketManager(BaseWebSocket):
     async def _handle_message(self, data: Dict[str, Any]) -> None:
         """메시지 수신 처리"""
         try:
-            print(data)
+            # print(data)
             # print(self.callbacks)
             if self.callbacks:
                 for callback in self.callbacks:

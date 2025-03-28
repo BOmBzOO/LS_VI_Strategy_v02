@@ -23,3 +23,10 @@
 2025-03-28 00:24:01 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
 2025-03-28 00:24:04 - services.vi_monitor_service - INFO - VI 모니터링이 시작되었습니다.
 2025-03-28 00:26:31 - services.vi_monitor_service - ERROR - VI 모니터링 중지 중 오류 발생: CLOSED
+2025-03-28 14:45:37,302 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 14:46:38,827 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 14:46:41,552 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 14:48:06,355 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 14:48:52,787 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
+2025-03-28 15:03:28,776 - services.vi_monitor_service - INFO - line 161 - VI 모니터링이 중지되었습니다.
+2025-03-28 15:03:31,818 - services.vi_monitor_service - INFO - line 123 - VI 모니터링이 시작되었습니다.
