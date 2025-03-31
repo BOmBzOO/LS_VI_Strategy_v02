@@ -1,7 +1,7 @@
 """주식 시세/종목 정보 TR API"""
 
 from typing import Dict, Any, List, Optional
-from api.tr.base import BaseAPI
+from api.tr.tr_base import BaseAPI
 from api.constants import TRCode
 from config.logging_config import setup_logger
 

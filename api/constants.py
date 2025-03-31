@@ -24,8 +24,14 @@ class TRCode:
     # 주식 정보
     STOCK_ORDERBOOK = "t1105"   # 주식 호가 조회
     STOCK_CHART = "t8410"       # 주식 차트 조회
-    STOCK_ACCOUNT = "t0424"     # 신용거래동향
     STOCK_LIST = "t8430"  # 종목 정보 조회
+    STOCK_MINUTE_CHART = "t8412"  # N분봉 차트 조회
+    STOCK_TICK_CHART = "t8411"  # N틱 차트 조회
+    
+    # 계좌 관련
+    ACCOUNT_BALANCE = "t0424"   # 계좌 잔고
+    ACCOUNT_HISTORY = "CDPCQ04700"   # 계좌 잔고
+    ACCOUNT_DEPOSIT = "t0424"      # 예수금 상세 조회
 
 class MarketType(str, Enum):
     """시장 구분 코드"""
@@ -44,13 +50,12 @@ class URLPath:
     STOCK_PRICE = "/stock/price"
     STOCK_ORDER = "/stock/order"
     STOCK_CHART = "/stock/chart"
-    STOCK_ACCOUNT = "/stock/accno"
+    ACCOUNT_INFO = "/stock/accno"
     
     # TR 코드별 URL 매핑
     TR_URLS = {
         TRCode.STOCK_LIST: STOCK_ETC,        # 종목 정보 조회
         TRCode.STOCK_PRICE: STOCK_PRICE,     # 현재가 조회
-        TRCode.STOCK_HISTORY: STOCK_PRICE,   # 일별 주가 조회
         TRCode.ORDER_NEW: STOCK_ORDER,       # 주식 주문
         TRCode.ORDER_CANCEL: STOCK_ORDER,    # 주문 취소
         TRCode.MARKET_INDEX: STOCK_PRICE,    # 업종 현재가
@@ -58,7 +63,10 @@ class URLPath:
         TRCode.MARKET_TRADING_INFO: STOCK_PRICE,  # 투자자별 매매동향
         TRCode.STOCK_ORDERBOOK: STOCK_PRICE, # 주식 호가 조회
         TRCode.STOCK_CHART: STOCK_CHART,     # 주식 차트 조회
-        TRCode.STOCK_ACCOUNT: STOCK_ACCOUNT  # 신용거래동향
+        TRCode.STOCK_MINUTE_CHART: STOCK_CHART,  # N분봉 차트 조회
+        TRCode.STOCK_TICK_CHART: STOCK_CHART,    # N틱 차트 조회
+        TRCode.ACCOUNT_BALANCE: ACCOUNT_INFO,  # 신용거래동향
+        TRCode.ACCOUNT_HISTORY: ACCOUNT_INFO    # 신용거래동향
     }
 
 class MessageType:

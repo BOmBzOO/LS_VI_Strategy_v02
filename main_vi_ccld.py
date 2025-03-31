@@ -10,7 +10,7 @@ import os
 import signal
 import traceback
 from config.logging_config import setup_logger
-from strategy.VI_CCLD_strategy import VICCLDStrategy
+from strategy.strategy_VI_CCLD import VICCLDStrategy
 
 async def main():
     """메인 함수"""

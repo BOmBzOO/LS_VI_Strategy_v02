@@ -13,6 +13,7 @@ from api.realtime.websocket.websocket_handler import DefaultWebSocketHandler
 from api.constants import TRCode, MarketType
 from config.settings import LS_WS_URL
 import traceback
+import json
 
 class CCLDData:
     """체결 데이터 클래스"""
@@ -135,11 +136,13 @@ class CCLDMonitorService:
             # 웹소켓 매니저가 없으면 새로 생성
             if not self.ws_manager:
                 self.ws_manager = WebSocketManager(self.ws_config)
-                self.ws_manager.add_event_handler("message", self._handle_message)
+                # 에러, 종료, 연결 이벤트만 핸들러로 등록
                 self.ws_manager.add_event_handler("error", self._handle_error)
                 self.ws_manager.add_event_handler("close", self._handle_close)
                 self.ws_manager.add_event_handler("open", self._handle_open)
-                self.ws_manager.add_callback(self._handle_ccld_message)
+                # 메시지는 콜백으로만 처리 - 코스피, 코스닥 모두 등록
+                self.ws_manager.add_callback(self._handle_ccld_message, "S3_")  # 코스피 체결 메시지
+                self.ws_manager.add_callback(self._handle_ccld_message, "K3_")  # 코스닥 체결 메시지
                 await self.ws_manager.start()
             
             # 종목 구독 시작
@@ -216,16 +219,20 @@ class CCLDMonitorService:
         if callback in self.ccld_callbacks:
             self.ccld_callbacks.remove(callback)
             
-    async def _handle_message(self, message: WebSocketMessage) -> None:
-        """메시지 처리"""
-        if not self.ws_handler:
-            return
-            
-        await self.ws_handler.handle_message(message)
-        
     async def _handle_ccld_message(self, message: Dict[str, Any]) -> None:
         """체결 메시지 처리"""
         try:
+            # 메시지 타입 확인
+            header = message.get("header", {})
+            body = message.get("body", {})
+            
+            # 체결 메시지가 아닌 경우 무시
+            tr_cd = header.get("tr_cd", "") or body.get("tr_cd", "")
+            if not (tr_cd.startswith("S3_") or tr_cd.startswith("K3_")):
+                return
+                
+            self.logger.debug(f"체결 메시지 처리: {message}")
+            
             # 콜백이 있는 경우 전체 메시지를 전달
             if self.ccld_callbacks:
                 for callback in self.ccld_callbacks:
@@ -238,9 +245,8 @@ class CCLDMonitorService:
                         self.logger.error(f"콜백 함수 실행 중 오류: {str(e)}")
                 return
                 
-            # 콜백이 없는 경우 메시지 처리 및 로깅
-            header = message.get("header", {})
-            body = message.get("body", {})
+            # 콜백이 없는 경우 메시지 출력
+            self.logger.info(f"체결 메시지 수신: {json.dumps(message, ensure_ascii=False)}")
             
             # 응답 메시지 처리
             if "rsp_cd" in header:

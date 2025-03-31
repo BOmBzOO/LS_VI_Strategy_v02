@@ -7,13 +7,14 @@ from typing import Dict, List, Optional, Any, Set, Callable
 from datetime import datetime
 import asyncio
 from config.logging_config import setup_logger
-from services.vi_monitor_service import VIMonitorService, VIData
-from services.ccld_monitor_service import CCLDMonitorService, CCLDData
-from services.market_data_service import MarketService
+from services.service_monitor_vi import VIMonitorService, VIData
+from services.service_monitor_ccld import CCLDMonitorService, CCLDData
+from services.service_market_data import MarketService
 from api.constants import MarketType
 from api.realtime.websocket.websocket_base import WebSocketConfig
 from api.realtime.websocket.websocket_manager import WebSocketManager
 from config.settings import LS_WS_URL
+import json
 
 class VICCLDMonitorService:
     """VI 발동 종목 체결 모니터링 통합 서비스 클래스"""
@@ -153,15 +154,21 @@ class VICCLDMonitorService:
     async def _handle_vi_event(self, message: Dict[str, Any]) -> None:
         """VI 이벤트 처리"""
         try:
-            # VI 콜백 실행
-            for callback in self.vi_callbacks:
-                try:
-                    if asyncio.iscoroutinefunction(callback):
-                        await callback(message)
-                    else:
-                        callback(message)
-                except Exception as e:
-                    self.logger.error(f"VI 콜백 함수 실행 중 오류: {str(e)}")
+            self.logger.debug(f"VI 이벤트 처리: {message}")
+            # VI 콜백이 있는 경우 전체 메시지를 전달
+            if self.vi_callbacks:
+                for callback in self.vi_callbacks:
+                    try:
+                        if asyncio.iscoroutinefunction(callback):
+                            await callback(message)
+                        else:
+                            callback(message)
+                    except Exception as e:
+                        self.logger.error(f"VI 콜백 함수 실행 중 오류: {str(e)}")
+                return
+                
+            # 콜백이 없는 경우 메시지 출력
+            self.logger.info(f"VI 메시지 수신: {json.dumps(message, ensure_ascii=False)}")
 
             body = message.get("body", {})
             if not body:
@@ -200,15 +207,21 @@ class VICCLDMonitorService:
     async def _handle_ccld_event(self, message: Dict[str, Any]) -> None:
         """체결 이벤트 처리"""
         try:
-            # 체결 콜백 실행
-            for callback in self.ccld_callbacks:
-                try:
-                    if asyncio.iscoroutinefunction(callback):
-                        await callback(message)
-                    else:
-                        callback(message)
-                except Exception as e:
-                    self.logger.error(f"체결 콜백 함수 실행 중 오류: {str(e)}")
+            self.logger.debug(f"체결 이벤트 처리: {message}")
+            # 체결 콜백이 있는 경우 전체 메시지를 전달
+            if self.ccld_callbacks:
+                for callback in self.ccld_callbacks:
+                    try:
+                        if asyncio.iscoroutinefunction(callback):
+                            await callback(message)
+                        else:
+                            callback(message)
+                    except Exception as e:
+                        self.logger.error(f"체결 콜백 함수 실행 중 오류: {str(e)}")
+                return
+
+            # 콜백이 없는 경우 메시지 출력
+            self.logger.info(f"체결 메시지 수신: {json.dumps(message, ensure_ascii=False)}")
 
             body = message.get("body", {})
             if not body:

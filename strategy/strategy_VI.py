@@ -13,12 +13,12 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.logging_config import setup_logger
-from services.auth_token_service import TokenService
-from services.market_data_service import MarketService
-from services.vi_monitor_service import VIMonitorService, VIData
+from services.service_auth_token import TokenService
+from services.service_market_data import MarketService
+from services.service_monitor_vi import VIMonitorService, VIData
 from api.constants import MarketType, VIStatus, TRCode
 from api.realtime.websocket.websocket_base import WebSocketState
-from strategy.base_strategy import BaseStrategy
+from strategy.strategy_base import BaseStrategy
 
 class VIStrategy(BaseStrategy):
     """VI 모니터링 전략 클래스"""

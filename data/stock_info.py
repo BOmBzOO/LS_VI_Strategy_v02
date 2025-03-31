@@ -6,7 +6,7 @@
 from typing import Dict, List, Optional, Any, Set
 from datetime import datetime, timedelta
 from config.logging_config import setup_logger
-from api.tr.stock import StockTRAPI
+from api.tr.tr_stock import StockTRAPI
 from core.utils.time_utils import get_current_time, format_time
 from core.utils.validation import validate_stock_code
 

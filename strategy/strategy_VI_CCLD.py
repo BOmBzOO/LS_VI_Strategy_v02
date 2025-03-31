@@ -14,10 +14,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.logging_config import setup_logger
 from api.constants import MarketType
-from services.auth_token_service import TokenService
-from services.market_data_service import MarketService
-from strategy.base_strategy import BaseStrategy
-from services.vi_ccld_monitor_service import VICCLDMonitorService
+from services.service_auth_token import TokenService
+from services.service_market_data import MarketService
+from strategy.strategy_base import BaseStrategy
+from services.service_monitor_vi_ccld import VICCLDMonitorService
 
 class VICCLDStrategy(BaseStrategy):
     """VI 체결 모니터링 전략 클래스"""

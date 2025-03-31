@@ -14,8 +14,8 @@ from datetime import datetime
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.logging_config import setup_logger
-from services.auth_token_service import TokenService
-from services.ccld_monitor_service import CCLDMonitorService
+from services.service_auth_token import TokenService
+from services.service_monitor_ccld import CCLDMonitorService
 from api.constants import MarketType
 
 def print_ccld_data(data: Dict[str, Any]) -> None:

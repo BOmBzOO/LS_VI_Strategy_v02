@@ -29,8 +29,18 @@ class WebSocketManager(BaseWebSocket):
         self.event_task = None
         self.is_running = False
 
-        # 콜백 함수 관리
-        self.callbacks: List[Callable[[Dict[str, Any]], None]] = []
+        # 콜백 함수 관리 - 메시지 타입별로 구분
+        self.callbacks: Dict[str, List[Callable[[Dict[str, Any]], None]]] = {
+            "VI_": [],  # VI 메시지 콜백
+            "S3_": [],  # KOSPI 체결 메시지 콜백
+            "K3_": [],  # KOSDAQ 체결 메시지 콜백
+            "default": [],  # 기타 메시지 콜백
+            "SC0": [],  # 주문 접수 콜백
+            "SC1": [],  # 주문 체결 콜백
+            "SC2": [],  # 주문 정정 콜백
+            "SC3": [],  # 주문 취소 콜백
+            "SC4": []  # 주문 거부 콜백
+        }
         
         # 구독 관리
         self.subscriptions: Dict[str, Dict[str, Any]] = {}
@@ -192,23 +202,85 @@ class WebSocketManager(BaseWebSocket):
         finally:
             self.is_running = False
 
-    def add_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
-        """콜백 함수 등록"""
-        if callback not in self.callbacks:
-            self.callbacks.append(callback)
+    def add_callback(self, callback: Callable[[Dict[str, Any]], None], message_type: str = "default") -> None:
+        """콜백 함수 등록
+        
+        Args:
+            callback: 콜백 함수
+            message_type: 메시지 타입 (VI_, S3_, K3_, SC0, SC1, SC2, SC3, SC4)
+        """
+        if message_type not in self.callbacks:
+            self.callbacks[message_type] = []
+        if callback not in self.callbacks[message_type]:
+            self.callbacks[message_type].append(callback)
             
-    def remove_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
+    def remove_callback(self, callback: Callable[[Dict[str, Any]], None], message_type: str = "default") -> None:
         """콜백 함수 제거"""
-        if callback in self.callbacks:
-            self.callbacks.remove(callback)
+        if message_type in self.callbacks and callback in self.callbacks[message_type]:
+            self.callbacks[message_type].remove(callback)
+            if not self.callbacks[message_type]:  # 리스트가 비면 제거
+                del self.callbacks[message_type]
 
     async def _handle_message(self, data: Dict[str, Any]) -> None:
         """메시지 수신 처리"""
         try:
-            # print(data)
-            # print(self.callbacks)
-            if self.callbacks:
-                for callback in self.callbacks:
+            # 메시지 타입 확인
+            header = data.get("header", {}) if data else {}
+            body = data.get("body", {}) if data else {}
+            if not isinstance(header, dict):
+                header = {}
+            if not isinstance(body, dict):
+                body = {}
+                
+            tr_cd = header.get("tr_cd", "")  # 헤더에서 tr_cd 확인
+            if not tr_cd:  # 헤더에 없으면 바디에서 확인
+                tr_cd = body.get("tr_cd", "")
+            
+            # 응답 코드 확인 및 로깅
+            if "rsp_cd" in header:
+                rsp_cd = header.get("rsp_cd", "")
+                rsp_msg = header.get("rsp_msg", "알 수 없는 메시지")
+                if rsp_cd == "00000":
+                    self.logger.debug(f"응답: {rsp_msg}")
+                else:
+                    self.logger.error(f"오류 응답 (코드: {rsp_cd}): {rsp_msg}")
+                    
+                # 오류 응답도 이벤트 큐에 추가
+                await self.event_queue.put(("message", data))
+                return
+            
+            # 콜백 실행
+            callbacks_to_execute = []
+            
+            # 주식 주문 메시지 처리
+            if tr_cd.startswith("SC"):
+                if tr_cd == "SC0":  # 주문 접수
+                    callbacks_to_execute.extend(self.callbacks.get("SC0", []))
+                elif tr_cd == "SC1":  # 주문 체결
+                    callbacks_to_execute.extend(self.callbacks.get("SC1", []))
+                elif tr_cd == "SC2":  # 주문 정정
+                    callbacks_to_execute.extend(self.callbacks.get("SC2", []))
+                elif tr_cd == "SC3":  # 주문 취소
+                    callbacks_to_execute.extend(self.callbacks.get("SC3", []))
+                elif tr_cd == "SC4":  # 주문 거부
+                    callbacks_to_execute.extend(self.callbacks.get("SC4", []))
+                    
+            # VI 메시지 처리
+            elif tr_cd.startswith("VI_"):
+                callbacks_to_execute.extend(self.callbacks.get("VI_", []))
+                
+            # 체결 메시지 처리
+            elif tr_cd.startswith("S3_"):  # KOSPI 체결
+                callbacks_to_execute.extend(self.callbacks.get("S3_", []))
+            elif tr_cd.startswith("K3_"):  # KOSDAQ 체결
+                callbacks_to_execute.extend(self.callbacks.get("K3_", []))
+                
+            # 기본 콜백도 실행
+            callbacks_to_execute.extend(self.callbacks.get("default", []))
+            
+            # 콜백이 있으면 실행
+            if callbacks_to_execute:
+                for callback in callbacks_to_execute:
                     try:
                         if asyncio.iscoroutinefunction(callback):
                             await callback(data)
@@ -216,26 +288,17 @@ class WebSocketManager(BaseWebSocket):
                             callback(data)
                     except Exception as e:
                         self.logger.error(f"콜백 함수 실행 중 오류: {str(e)}\n{traceback.format_exc()}")
-                return
-
-            # 콜백이 없는 경우 메시지 출력
-            header = data.get("header", {})
-            
-            if "rsp_cd" in header:
-                rsp_msg = header.get("rsp_msg", "알 수 없는 메시지")
-                if header["rsp_cd"] == "00000":
-                    self.logger.info(f"응답: {rsp_msg}")
-                else:
-                    self.logger.error(f"오류: {rsp_msg}")
             else:
-                pass
-                # self.logger.info(f"메시지 수신: {json.dumps(data, ensure_ascii=False)}")
+                # 콜백이 없는 경우에만 메시지 출력
+                self.logger.debug(f"메시지 수신: {json.dumps(data, ensure_ascii=False)}")
             
-            # 이벤트 큐에 메시지 추가
+            # 모든 메시지를 이벤트 큐에 추가
             await self.event_queue.put(("message", data))
             
         except Exception as e:
             self.logger.error(f"메시지 처리 중 오류: {str(e)}\n{traceback.format_exc()}")
+            # 오류가 발생해도 이벤트 큐에 추가
+            await self.event_queue.put(("error", {"error": str(e), "traceback": traceback.format_exc()}))
 
     async def _handle_error(self, error: Dict[str, Any]) -> None:
         """에러 처리"""

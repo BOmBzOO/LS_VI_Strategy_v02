@@ -10,6 +10,7 @@ from api.realtime.websocket.websocket_handler import DefaultWebSocketHandler
 from api.constants import TRCode, VIStatus
 from config.settings import LS_WS_URL, VI_MONITORING_INTERVAL
 import traceback
+import json
 
 class VIData:
     """VI 데이터 클래스"""
@@ -93,34 +94,47 @@ class VIMonitorService:
     async def start(self) -> None:
         """모니터링 시작"""
         try:
-            if self.state != WebSocketState.DISCONNECTED:
-                self.logger.warning(f"잘못된 상태에서의 시작 시도: {self.state.name}")
+            # 이미 연결된 상태면 VI 구독만 시작
+            if self.state == WebSocketState.CONNECTED and self.ws_manager and self.ws_manager.is_connected():
+                self.logger.info("이미 연결된 웹소켓을 재사용합니다.")
+                await self._subscribe_vi()
                 return
                 
-            self.state = WebSocketState.CONNECTING
-            
-            # 웹소켓 핸들러 초기화
-            self.ws_handler = DefaultWebSocketHandler()
-            self.ws_handler.register_handler("VI_OCCUR", self._handle_vi_message)
-            
-            # 웹소켓 매니저 초기화
-            self.ws_manager = WebSocketManager(self.ws_config)
-            self.ws_manager.add_event_handler("message", self._handle_message)
-            self.ws_manager.add_event_handler("error", self._handle_error)
-            self.ws_manager.add_event_handler("close", self._handle_close)
-            self.ws_manager.add_event_handler("open", self._handle_open)
-
-                        # VI 데이터 처리 콜백 등록
-            self.ws_manager.add_callback(self._handle_vi_message)
-            
-            # 웹소켓 연결 시작
-            await self.ws_manager.start()
-            
-            # VI 구독 시작
-            await self._subscribe_vi()
-            
-            self.state = WebSocketState.CONNECTED
-            self.logger.info("VI 모니터링이 시작되었습니다.")
+            # 연결 중인 상태면 대기
+            if self.state == WebSocketState.CONNECTING:
+                self.logger.info("웹소켓 연결을 기다립니다...")
+                for _ in range(30):  # 최대 30초 대기
+                    if self.state == WebSocketState.CONNECTED:
+                        await self._subscribe_vi()
+                        return
+                    await asyncio.sleep(1)
+                raise TimeoutError("웹소켓 연결 대기 시간 초과")
+                
+            # 연결이 끊어진 상태면 새로 연결
+            if self.state in [WebSocketState.DISCONNECTED, WebSocketState.ERROR]:
+                self.state = WebSocketState.CONNECTING
+                
+                # 웹소켓 핸들러 초기화
+                if not self.ws_handler:
+                    self.ws_handler = DefaultWebSocketHandler()
+                    self.ws_handler.register_handler("VI_OCCUR", self._handle_vi_message)
+                
+                # 웹소켓 매니저 초기화
+                if not self.ws_manager:
+                    self.ws_manager = WebSocketManager(self.ws_config)
+                    self.ws_manager.add_event_handler("error", self._handle_error)
+                    self.ws_manager.add_event_handler("close", self._handle_close)
+                    self.ws_manager.add_event_handler("open", self._handle_open)
+                    self.ws_manager.add_callback(self._handle_vi_message, "VI_")  # VI_ 메시지 타입에 대한 콜백만 등록
+                
+                # 웹소켓 연결 시작
+                await self.ws_manager.start()
+                
+                # VI 구독 시작
+                await self._subscribe_vi()
+                
+                self.state = WebSocketState.CONNECTED
+                self.logger.info("VI 모니터링이 시작되었습니다.")
             
         except Exception as e:
             self.state = WebSocketState.ERROR
@@ -142,21 +156,13 @@ class VIMonitorService:
                     await self._unsubscribe_vi()
                 except Exception as e:
                     self.logger.warning(f"VI 구독 해제 중 오류 발생: {str(e)}")
-                
-            # 웹소켓 연결 종료
-            if self.ws_manager:
-                try:
-                    await self.ws_manager.stop()
-                except Exception as e:
-                    self.logger.warning(f"웹소켓 연결 종료 중 오류 발생: {str(e)}")
-                finally:
-                    self.ws_manager = None
                     
+            # 웹소켓은 유지하고 구독만 해제
+            self.state = WebSocketState.CONNECTED
+            
             # 자원 정리
-            self.ws_handler = None
             self.vi_callbacks.clear()
             self.vi_active_stocks.clear()
-            self.state = WebSocketState.DISCONNECTED
             
             self.logger.info("VI 모니터링이 중지되었습니다.")
             
@@ -196,17 +202,27 @@ class VIMonitorService:
         if callback in self.vi_callbacks:
             self.vi_callbacks.remove(callback)
             
-    async def _handle_message(self, message: WebSocketMessage) -> None:
-        """메시지 처리"""
-        if not self.ws_handler:
-            return
+    # async def _handle_message(self, message: WebSocketMessage) -> None:
+    #     """메시지 처리"""
+    #     if not self.ws_handler:
+    #         return
             
-        await self.ws_handler.handle_message(message)
+    #     await self.ws_handler.handle_message(message)
         
     async def _handle_vi_message(self, message: Dict[str, Any]) -> None:
         """VI 메시지 처리"""
         try:
-            self.logger.info(f"VI 메시지 처리: {message}")
+            # 메시지 타입 확인
+            header = message.get("header", {})
+            body = message.get("body", {})
+            
+            # VI 메시지가 아닌 경우 무시
+            tr_cd = header.get("tr_cd", "") or body.get("tr_cd", "")
+            if not tr_cd.startswith("VI_"):
+                return
+                
+            self.logger.debug(f"VI 메시지 처리: {message}")
+            
             # 콜백이 있는 경우 전체 메시지를 전달
             if self.vi_callbacks:
                 for callback in self.vi_callbacks:
@@ -219,9 +235,8 @@ class VIMonitorService:
                         self.logger.error(f"콜백 함수 실행 중 오류: {str(e)}")
                 return
                 
-            # 콜백이 없는 경우 메시지 처리 및 로깅
-            header = message.get("header", {})
-            body = message.get("body", {})
+            # 콜백이 없는 경우 메시지 출력
+            self.logger.info(f"VI 메시지 수신: {json.dumps(message, ensure_ascii=False)}")
             
             # 응답 메시지 처리
             if "rsp_cd" in header:
@@ -230,10 +245,6 @@ class VIMonitorService:
                     self.logger.info(f"VI 응답: {rsp_msg}")
                 else:
                     self.logger.error(f"VI 구독 오류: {rsp_msg}")
-                return
-                
-            # VI 메시지가 아닌 경우 무시
-            if header.get("tr_cd") != TRCode.VI_OCCUR:
                 return
                 
             # body가 None인 경우 무시

@@ -11,8 +11,8 @@ import signal
 from contextlib import asynccontextmanager
 
 from config.logging_config import setup_logger
-from api.tr.order import OrderTRAPI
-from api.tr.account import AccountTRAPI
+from api.tr.tr_order import OrderTRAPI
+from api.tr.tr_account import AccountTRAPI
 
 class MonitorProtocol(Protocol):
     """모니터 프로토콜"""

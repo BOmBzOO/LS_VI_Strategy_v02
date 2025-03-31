@@ -6,8 +6,8 @@
 from typing import Dict, List, Optional, Any
 from datetime import datetime
 from config.logging_config import setup_logger
-from api.tr.market import MarketTRAPI
-from api.tr.stock import StockTRAPI
+from api.tr.tr_market import MarketTRAPI
+from api.tr.tr_stock import StockTRAPI
 from api.constants import MarketType
 from core.utils.time_utils import get_current_time, format_time
 

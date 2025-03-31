@@ -22,8 +22,8 @@ class BaseAPI:
     def request_tr(
         self,
         tr_code: str,
-        tr_type: int,
         input_data: Dict[str, Any],
+        tr_type: int = 2,  # 기본값 2 (조회성 TR)
         is_continuous: bool = False,
         tr_cont_key: str = ""
     ) -> Dict[str, Any]:
@@ -31,8 +31,8 @@ class BaseAPI:
 
         Args:
             tr_code (str): TR 코드
-            tr_type (int): TR 타입 (1: 일반, 2: 조회, 3: 실시간)
             input_data (Dict[str, Any]): 입력 데이터
+            tr_type (int, optional): TR 타입 (1: 일반, 2: 조회, 3: 실시간). Defaults to 2.
             is_continuous (bool, optional): 연속 조회 여부. Defaults to False.
             tr_cont_key (str, optional): 연속 조회 키. Defaults to "".
 
