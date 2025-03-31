@@ -1,93 +1,94 @@
-"""VI 발동 종목 체결 모니터링
+"""VI 체결 모니터링 실행 스크립트
 
-VI가 발동된 종목들의 실시간 체결 데이터를 모니터링하는 예제를 제공합니다.
+VI가 발동된 종목들의 실시간 체결 데이터를 모니터링하는 프로그램을 실행합니다.
 """
 
-from typing import Dict, Any
+from datetime import datetime
 import asyncio
 import sys
 import os
 import signal
-from datetime import datetime
-
-# 프로젝트 루트 디렉토리를 Python 경로에 추가
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+import traceback
 from config.logging_config import setup_logger
-from services.auth_token_service import TokenService
-from services.vi_ccld_monitor_service import VICCLDMonitorService
-
-def print_vi_ccld_data(data: Dict[str, Any]) -> None:
-    """VI 발동 종목 체결 데이터 출력"""
-    body = data.get("body", {})
-    if not body:
-        return
-        
-    print(
-        f"[{datetime.now().strftime('%H:%M:%S')}] "
-        f"종목: {body.get('shcode', '')}, "
-        f"현재가: {body.get('price', '')} ({body.get('sign', '')}{body.get('change', '')}, {body.get('drate', '')}%), "
-        f"체결량: {body.get('cvolume', '')} ({body.get('cgubun', '')}), "
-        f"체결강도: {body.get('cpower', '')}%"
-    )
+from strategy.VI_CCLD_strategy import VICCLDStrategy
 
 async def main():
     """메인 함수"""
     logger = setup_logger(__name__)
+    strategy = VICCLDStrategy()
+    status_task = None
+    
+    def signal_handler(signum, frame):
+        """시그널 핸들러"""
+        logger.info("\n프로그램 종료 요청 - 시그널 수신: %s", signal.Signals(signum).name)
+        if status_task:
+            status_task.cancel()
+        asyncio.create_task(strategy.stop())
+        
+    # 종료 시그널 핸들러 등록
+    if sys.platform != 'win32':
+        # Unix/Linux 환경
+        for sig in (signal.SIGTERM, signal.SIGINT):
+            signal.signal(sig, signal_handler)
+            logger.info(f"시그널 핸들러 등록: {signal.Signals(sig).name}")
+    else:
+        # Windows 환경
+        signal.signal(signal.SIGINT, signal_handler)
+        logger.info("시그널 핸들러 등록: SIGINT (Windows)")
     
     try:
-        # 토큰 서비스 초기화 및 토큰 발급
-        token_service = TokenService()
-        if not token_service.check_and_refresh_token():
-            logger.error("토큰 발급 실패")
-            return
-            
-        token = token_service.get_token()
-        if not token:
-            logger.error("토큰이 없습니다.")
-            return
-            
-        # VI 발동 종목 체결 모니터링 서비스 초기화
-        monitor_service = VICCLDMonitorService(token=token)
+        logger.info("=== VI 체결 모니터링 프로그램 시작 ===")
+        logger.info(f"시작 시간: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
-        # 모니터링 시작
-        await monitor_service.start()
-        logger.info("VI 발동 종목 체결 모니터링이 시작되었습니다.")
+        # 상태 모니터링 태스크 시작
+        status_task = await strategy.start_status_monitor()
+        logger.info("상태 모니터링 태스크 시작")
         
-        # 프로그램 종료 대기
-        try:
-            while True:
-                await asyncio.sleep(1)
-                
-                # 현재 모니터링 중인 종목 확인
-                monitoring_stocks = monitor_service.get_monitoring_stocks()
-                if monitoring_stocks:
-                    logger.info(f"현재 모니터링 중인 VI 발동 종목: {monitoring_stocks}")
-                    
-                    # 각 종목의 최신 체결 데이터 확인
-                    for stock_code in monitoring_stocks:
-                        stock_data = monitor_service.get_stock_data(stock_code)
-                        if stock_data:
-                            logger.debug(f"종목 {stock_code} 체결 데이터: {stock_data}")
-                            
-        except KeyboardInterrupt:
-            logger.info("프로그램 종료 요청")
-            
+        # 전략 실행
+        await strategy.run()
+        
+    except KeyboardInterrupt:
+        logger.info("\n프로그램 종료 중... (KeyboardInterrupt)")
+        if status_task:
+            status_task.cancel()
+        await strategy.stop()
+        
     except Exception as e:
-        logger.error(f"오류 발생: {str(e)}")
+        logger.error(f"프로그램 실행 중 오류 발생: {str(e)}", exc_info=True)
+        if status_task:
+            status_task.cancel()
+        await strategy.stop()
+        
     finally:
-        if 'monitor_service' in locals():
-            await monitor_service.stop()
-            logger.info("VI 발동 종목 체결 모니터링이 종료되었습니다.")
+        # 최종 상태 출력
+        status = strategy.get_status()
+        end_time = datetime.now()
+        
+        logger.info("=== 프로그램 종료 정보 ===")
+        logger.info(f"종료 시간: {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
+        logger.info(f"총 실행 시간: {status['running_time']:.2f}초")
+        logger.info(f"총 VI 이벤트 수: {status['total_vi_events']}")
+        logger.info(f"누적 오류 횟수: {status['error_count']}")
+        if status['last_error']:
+            logger.info(f"마지막 오류: {status['last_error']}")
+        logger.info("=== VI 체결 모니터링 프로그램 종료 ===\n")
 
 if __name__ == "__main__":
-    # 프로세스 종료 시그널 핸들러 등록
-    def signal_handler(signum, frame):
-        print("\n프로그램 종료 중...")
-        sys.exit(0)
-        
-    signal.signal(signal.SIGINT, signal_handler)
-    signal.signal(signal.SIGTERM, signal_handler)
+    # 프로그램 시작 시간 기록
+    start_time = datetime.now()
+    logger = setup_logger(__name__)
+    logger.info(f"프로그램 시작 시간: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
     
-    # 메인 함수 실행
-    asyncio.run(main()) 
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        logger.info("\n프로그램이 사용자에 의해 종료되었습니다.")
+    except Exception as e:
+        logger.error(f"\n프로그램 실행 중 오류 발생: {str(e)}")
+        logger.error(traceback.format_exc())
+    finally:
+        # 프로그램 종료 시간 및 실행 시간 출력
+        end_time = datetime.now()
+        running_time = end_time - start_time
+        logger.info(f"프로그램 종료 시간: {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
+        logger.info(f"총 실행 시간: {running_time}") 

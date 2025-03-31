@@ -206,6 +206,7 @@ class VIMonitorService:
     async def _handle_vi_message(self, message: Dict[str, Any]) -> None:
         """VI 메시지 처리"""
         try:
+            self.logger.info(f"VI 메시지 처리: {message}")
             # 콜백이 있는 경우 전체 메시지를 전달
             if self.vi_callbacks:
                 for callback in self.vi_callbacks:
@@ -250,7 +251,7 @@ class VIMonitorService:
     async def _update_vi_status(self, vi_data: VIData) -> None:
         """VI 상태 업데이트"""
         try:
-            stock_code = vi_data.shcode
+            stock_code = vi_data.ref_shcode
             current_time = datetime.now()
             
             if vi_data.vi_gubun == VIStatus.RELEASE:  # VI 해제
@@ -277,7 +278,7 @@ class VIMonitorService:
             
             return (
                 f"[{data.timestamp}] "
-                f"종목: {data.shcode}, "
+                f"종목: {data.ref_shcode}, "
                 f"상태: {data.status}, "
                 f"VI유형: {data.vi_type}, "
                 f"발동가: {data.vi_trgprice}, "

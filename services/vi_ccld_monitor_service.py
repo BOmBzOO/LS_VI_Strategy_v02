@@ -142,7 +142,7 @@ class VICCLDMonitorService:
                 return
                 
             vi_data = VIData(body)
-            stock_code = vi_data.shcode
+            stock_code = vi_data.ref_shcode
             
             if vi_data.vi_type in ["정적발동", "동적발동", "정적&동적"]:  # VI 발동
                 if stock_code not in self.ccld_monitors:
