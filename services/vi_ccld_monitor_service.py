@@ -11,6 +11,9 @@ from services.vi_monitor_service import VIMonitorService, VIData
 from services.ccld_monitor_service import CCLDMonitorService, CCLDData
 from services.market_data_service import MarketService
 from api.constants import MarketType
+from api.realtime.websocket.websocket_base import WebSocketConfig
+from api.realtime.websocket.websocket_manager import WebSocketManager
+from config.settings import LS_WS_URL
 
 class VICCLDMonitorService:
     """VI 발동 종목 체결 모니터링 통합 서비스 클래스"""
@@ -29,6 +32,19 @@ class VICCLDMonitorService:
         self._market_stocks: Dict[str, str] = {}  # 종목코드: 시장구분 매핑
         self.vi_callbacks: List[Callable[[Dict[str, Any]], None]] = []  # VI 이벤트 콜백
         self.ccld_callbacks: List[Callable[[Dict[str, Any]], None]] = []  # 체결 이벤트 콜백
+        
+        # 공유 웹소켓 매니저
+        self.ws_config: WebSocketConfig = {
+            "url": LS_WS_URL,
+            "token": token,
+            "max_subscriptions": 100,
+            "max_reconnect_attempts": 5,
+            "reconnect_delay": 5,
+            "ping_interval": 30,
+            "ping_timeout": 10,
+            "connect_timeout": 30
+        }
+        self.shared_ws_manager: Optional[WebSocketManager] = None
 
     def add_vi_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
         """VI 이벤트 콜백 함수 등록
@@ -91,6 +107,11 @@ class VICCLDMonitorService:
             # 시장 종목 정보 초기화
             self._initialize_market_stocks()
             
+            # 공유 웹소켓 매니저 초기화
+            if not self.shared_ws_manager:
+                self.shared_ws_manager = WebSocketManager(self.ws_config)
+                await self.shared_ws_manager.start()
+            
             # VI 모니터링 시작
             await self.vi_monitor.start()
             
@@ -117,6 +138,11 @@ class VICCLDMonitorService:
             
             # VI 모니터링 중지
             await self.vi_monitor.stop()
+            
+            # 공유 웹소켓 매니저 중지
+            if self.shared_ws_manager:
+                await self.shared_ws_manager.stop()
+                self.shared_ws_manager = None
             
             self.logger.info("VI 발동 종목 체결 모니터링이 중지되었습니다.")
             
@@ -152,7 +178,9 @@ class VICCLDMonitorService:
                         self.logger.warning(f"알 수 없는 종목코드: {stock_code}")
                         return
 
+                    # 공유 웹소켓 매니저를 사용하여 모니터 생성
                     monitor = CCLDMonitorService(self.token, stock_code, market_type)
+                    monitor.ws_manager = self.shared_ws_manager  # 웹소켓 매니저 공유
                     monitor.add_callback(self._handle_ccld_event)
                     await monitor.start()
                     self.ccld_monitors[stock_code] = monitor

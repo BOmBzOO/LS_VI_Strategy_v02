@@ -118,29 +118,29 @@ class CCLDMonitorService:
     async def start(self) -> None:
         """모니터링 시작"""
         try:
-            if self.state != WebSocketState.DISCONNECTED:
-                self.logger.warning(f"잘못된 상태에서의 시작 시도: {self.state.name}")
-                return
-                
-            self.state = WebSocketState.CONNECTING
-            
             # 웹소켓 핸들러 초기화
-            self.ws_handler = DefaultWebSocketHandler()
-            tr_code = "S3_" if self.market_type == MarketType.KOSPI else "K3_"
-            self.ws_handler.register_handler(tr_code, self._handle_ccld_message)
+            if not self.ws_handler:
+                self.ws_handler = DefaultWebSocketHandler()
+                tr_code = "S3_" if self.market_type == MarketType.KOSPI else "K3_"
+                self.ws_handler.register_handler(tr_code, self._handle_ccld_message)
             
-            # 웹소켓 매니저 초기화
-            self.ws_manager = WebSocketManager(self.ws_config)
-            self.ws_manager.add_event_handler("message", self._handle_message)
-            self.ws_manager.add_event_handler("error", self._handle_error)
-            self.ws_manager.add_event_handler("close", self._handle_close)
-            self.ws_manager.add_event_handler("open", self._handle_open)
+            # 웹소켓 매니저가 이미 설정되어 있으면 재사용
+            if self.ws_manager and self.ws_manager.is_connected():
+                self.logger.info("기존 웹소켓 매니저를 재사용합니다.")
+                await self._subscribe()
+                self.state = WebSocketState.CONNECTED
+                self.logger.info(f"체결 모니터링 시작 - 종목: {self.stock_code}")
+                return
             
-            # 체결 데이터 처리 콜백 등록
-            self.ws_manager.add_callback(self._handle_ccld_message)
-            
-            # 웹소켓 연결 시작
-            await self.ws_manager.start()
+            # 웹소켓 매니저가 없으면 새로 생성
+            if not self.ws_manager:
+                self.ws_manager = WebSocketManager(self.ws_config)
+                self.ws_manager.add_event_handler("message", self._handle_message)
+                self.ws_manager.add_event_handler("error", self._handle_error)
+                self.ws_manager.add_event_handler("close", self._handle_close)
+                self.ws_manager.add_event_handler("open", self._handle_open)
+                self.ws_manager.add_callback(self._handle_ccld_message)
+                await self.ws_manager.start()
             
             # 종목 구독 시작
             await self._subscribe()
@@ -168,21 +168,13 @@ class CCLDMonitorService:
                     await self._unsubscribe()
                 except Exception as e:
                     self.logger.warning(f"종목 구독 해제 중 오류 발생: {str(e)}")
-                
-            # 웹소켓 연결 종료
-            if self.ws_manager:
-                try:
-                    await self.ws_manager.stop()
-                except Exception as e:
-                    self.logger.warning(f"웹소켓 연결 종료 중 오류 발생: {str(e)}")
-                finally:
-                    self.ws_manager = None
-                    
+            
+            # 웹소켓 매니저는 공유 자원이므로 종료하지 않음
+            self.state = WebSocketState.DISCONNECTED
+            
             # 자원 정리
-            self.ws_handler = None
             self.ccld_callbacks.clear()
             self.current_data = None
-            self.state = WebSocketState.DISCONNECTED
             
             self.logger.info(f"체결 모니터링 중지 - 종목: {self.stock_code}")
             

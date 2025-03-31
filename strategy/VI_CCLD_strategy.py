@@ -111,7 +111,7 @@ class VICCLDStrategy(BaseStrategy):
             return False
 
     async def _handle_vi_data(self, data: Dict[str, Any]) -> None:
-        print(f"VI 데이터 처리: {data}")
+        # print(f"VI 데이터 처리: {data}")
         """VI 데이터 처리"""
         try:
             header = data.get("header", {})
@@ -175,7 +175,7 @@ class VICCLDStrategy(BaseStrategy):
             self.logger.error(f"VI 데이터 처리 중 오류 발생: {str(e)}")
 
     async def _handle_ccld_data(self, data: Dict[str, Any]) -> None:
-        print(f"체결 데이터 처리: {data}")
+        # print(f"체결 데이터 처리: {data}")
         """체결 데이터 처리"""
         try:
             body = data.get("body", {})
@@ -337,7 +337,7 @@ class VICCLDStrategy(BaseStrategy):
         
         # 콘솔과 로그 파일에 모두 출력
         log_text = "\n".join(log_msg)
-        print(log_text)
+        # print(log_text)
         self.logger.info(log_text)
 
     async def start_status_monitor(self, interval: int = 60) -> asyncio.Task:

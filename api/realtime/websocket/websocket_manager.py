@@ -122,27 +122,33 @@ class WebSocketManager(BaseWebSocket):
             if not self.config.get("token"):
                 raise WebSocketError("인증 토큰이 설정되지 않았습니다.")
             
-            # 기존 연결 정리
-            if self.client:
+            # 기존 연결이 있고 연결된 상태면 재사용
+            if self.client and self.client.is_connected:
+                self.logger.info("기존 웹소켓 연결을 재사용합니다.")
+                return
+            
+            # 기존 연결이 있지만 연결이 끊어진 경우에만 정리
+            if self.client and not self.client.is_connected:
                 await self.client.close()
                 self.client = None
             
             # 새로운 클라이언트 생성 및 연결
-            self.client = WebSocketClient(
-                url=self.config["url"],
-                token=self.config["token"]
-            )
-            
-            # 이벤트 핸들러 등록
-            self.client.set_event_handlers({
-                "message": [self._handle_message],
-                "error": [self._handle_error],
-                "close": [self._handle_close],
-                "open": [self._handle_open]
-            })
-            
-            # 연결 시작
-            await self.client.connect()
+            if not self.client:
+                self.client = WebSocketClient(
+                    url=self.config["url"],
+                    token=self.config["token"]
+                )
+                
+                # 이벤트 핸들러 등록
+                self.client.set_event_handlers({
+                    "message": [self._handle_message],
+                    "error": [self._handle_error],
+                    "close": [self._handle_close],
+                    "open": [self._handle_open]
+                })
+                
+                # 연결 시작
+                await self.client.connect()
             
             # 기존 구독 복구
             for subscription_key, subscription_data in self.subscriptions.items():
@@ -222,7 +228,8 @@ class WebSocketManager(BaseWebSocket):
                 else:
                     self.logger.error(f"오류: {rsp_msg}")
             else:
-                self.logger.info(f"메시지 수신: {json.dumps(data, ensure_ascii=False)}")
+                pass
+                # self.logger.info(f"메시지 수신: {json.dumps(data, ensure_ascii=False)}")
             
             # 이벤트 큐에 메시지 추가
             await self.event_queue.put(("message", data))

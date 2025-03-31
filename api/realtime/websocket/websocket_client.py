@@ -162,8 +162,19 @@ class WebSocketClient(BaseWebSocket):
         """웹소켓 연결"""
         try:
             if self.is_connected:
-                self.logger.warning("이미 연결된 상태입니다.")
+                self.logger.info("이미 연결된 상태입니다.")
                 return
+                
+            # 연결 중인 상태면 대기
+            if self.state == WebSocketState.CONNECTING:
+                timeout = self.config.get("connect_timeout", 30)
+                start_time = time.time()
+                while self.state == WebSocketState.CONNECTING:
+                    if time.time() - start_time > timeout:
+                        raise WebSocketError(f"웹소켓 연결 대기 시간 초과 (timeout: {timeout}초)")
+                    await asyncio.sleep(0.1)
+                if self.is_connected:
+                    return
                 
             self.connection_attempts += 1
             self.logger.info(f"웹소켓 연결 시작 (시도 {self.connection_attempts}번째)...")
@@ -191,28 +202,30 @@ class WebSocketClient(BaseWebSocket):
             websocket.enableTrace(WS_DEBUG_MODE)
             
             # 웹소켓 객체 생성
-            self.ws = websocket.WebSocketApp(
-                url=self.config["url"],
-                header=headers,
-                on_message=self._handle_message_wrapper,
-                on_error=self._handle_error_wrapper,
-                on_close=self._handle_close_wrapper,
-                on_open=self._handle_open_wrapper,
-                on_ping=self._handle_ping,
-                on_pong=self._handle_pong
-            )
+            if not self.ws:
+                self.ws = websocket.WebSocketApp(
+                    url=self.config["url"],
+                    header=headers,
+                    on_message=self._handle_message_wrapper,
+                    on_error=self._handle_error_wrapper,
+                    on_close=self._handle_close_wrapper,
+                    on_open=self._handle_open_wrapper,
+                    on_ping=self._handle_ping,
+                    on_pong=self._handle_pong
+                )
             
             # 웹소켓 스레드 시작
-            self.thread = threading.Thread(
-                target=self._run_websocket,
-                kwargs={
-                    "sslopt": ssl_options,
-                    "ping_interval": self.config.get("ping_interval", 30),
-                    "ping_timeout": self.config.get("ping_timeout", 10)
-                }
-            )
-            self.thread.daemon = True
-            self.thread.start()
+            if not self.thread or not self.thread.is_alive():
+                self.thread = threading.Thread(
+                    target=self._run_websocket,
+                    kwargs={
+                        "sslopt": ssl_options,
+                        "ping_interval": self.config.get("ping_interval", 30),
+                        "ping_timeout": self.config.get("ping_timeout", 10)
+                    }
+                )
+                self.thread.daemon = True
+                self.thread.start()
             
             # 연결 대기
             timeout = self.config.get("connect_timeout", 30)
