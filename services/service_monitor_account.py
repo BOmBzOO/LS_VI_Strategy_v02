@@ -229,38 +229,38 @@ class AccountMonitorService:
         if not self.ws_manager or not self.ws_manager.is_connected():
             raise RuntimeError("웹소켓이 연결되지 않았습니다.")
             
-        # 주문 접수 구독
+        # 주문 접수 구독 (계좌번호 없이)
         await self.ws_manager.subscribe(
             tr_code="SC0",
-            tr_key=self.account_no,
+            tr_key="",  # 계좌번호 없이 빈 문자열로 설정
             callback=self._handle_order_message
         )
         
-        # 주문 체결 구독
+        # 주문 체결 구독 (계좌번호 없이)
         await self.ws_manager.subscribe(
             tr_code="SC1",
-            tr_key=self.account_no,
+            tr_key="",  # 계좌번호 없이 빈 문자열로 설정
             callback=self._handle_order_message
         )
         
         # 주문 정정 구독
         await self.ws_manager.subscribe(
             tr_code="SC2",
-            tr_key=self.account_no,
+            tr_key="",
             callback=self._handle_order_message
         )
         
-        # 주문 취소 구독
+        # 주문 취소 구독 (계좌번호 없이)
         await self.ws_manager.subscribe(
             tr_code="SC3",
-            tr_key=self.account_no,
+            tr_key="",  # 계좌번호 없이 빈 문자열로 설정
             callback=self._handle_order_message
         )
         
-        # 주문 거부 구독
+        # 주문 거부 구독 (계좌번호 없이)
         await self.ws_manager.subscribe(
             tr_code="SC4",
-            tr_key=self.account_no,
+            tr_key="",  # 계좌번호 없이 빈 문자열로 설정
             callback=self._handle_order_message
         )
         
@@ -272,31 +272,31 @@ class AccountMonitorService:
         # 주문 접수 구독 해제
         await self.ws_manager.unsubscribe(
             tr_code="SC0",
-            tr_key=self.account_no
+            tr_key=""  # 계좌번호 없이 빈 문자열로 설정
         )
         
         # 주문 체결 구독 해제
         await self.ws_manager.unsubscribe(
             tr_code="SC1",
-            tr_key=self.account_no
+            tr_key=""  # 계좌번호 없이 빈 문자열로 설정
         )
         
         # 주문 정정 구독 해제
         await self.ws_manager.unsubscribe(
             tr_code="SC2",
-            tr_key=self.account_no
+            tr_key=""
         )
         
-        # 주문 취소 구독 해제
+        # 주문 취소 구독 해제 (계좌번호 없이)
         await self.ws_manager.unsubscribe(
             tr_code="SC3",
-            tr_key=self.account_no
+            tr_key=""  # 계좌번호 없이 빈 문자열로 설정
         )
         
-        # 주문 거부 구독 해제
+        # 주문 거부 구독 해제 (계좌번호 없이)
         await self.ws_manager.unsubscribe(
             tr_code="SC4",
-            tr_key=self.account_no
+            tr_key=""  # 계좌번호 없이 빈 문자열로 설정
         )
         
     def add_callback(self, callback: Callable[[Dict[str, Any]], None]) -> None:
@@ -323,7 +323,7 @@ class AccountMonitorService:
                 
             self.logger.debug(f"주문 메시지 처리: {message}")
             
-            # 콜백이 있는 경우 전체 메시지를 전달
+            # 콜백이 있는 경우 전체 메시지를 전달하고 리턴
             if self.order_callbacks:
                 for callback in self.order_callbacks:
                     try:
@@ -335,7 +335,7 @@ class AccountMonitorService:
                         self.logger.error(f"콜백 함수 실행 중 오류: {str(e)}")
                 return
                 
-            # 콜백이 없는 경우 메시지 출력
+            # 콜백이 없는 경우에만 메시지 출력
             self.logger.info(f"주문 메시지 수신: {json.dumps(message, ensure_ascii=False)}")
             
             # 응답 메시지 처리
@@ -353,7 +353,13 @@ class AccountMonitorService:
                 
             # 주문 데이터 처리 및 로깅
             order_data = AccountOrderData(body)
-            if order_data.account_no == self.account_no:  # 해당 계좌의 데이터만 처리
+            
+            # SC0(주문접수), SC1(주문체결), SC2(주문정정), SC3(주문취소), SC4(주문거부)는 계좌번호 필터링 없이 처리
+            if tr_cd in ["SC0", "SC1", "SC2", "SC3", "SC4"]:
+                self.current_orders[order_data.order_no] = order_data
+                self.logger.info(self._format_order_message(order_data))
+            # 나머지는 해당 계좌의 데이터만 처리
+            elif order_data.account_no == self.account_no:
                 self.current_orders[order_data.order_no] = order_data
                 self.logger.info(self._format_order_message(order_data))
                     

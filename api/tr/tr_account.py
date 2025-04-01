@@ -145,6 +145,9 @@ class AccountTRAPI(BaseAPI):
 
             # 보유종목 정보
             for stock in response.get("t0424OutBlock1", []):
+                # 보유비중 계산
+                holding_ratio = (float(stock["appamt"]) / float(response["t0424OutBlock"]["tappamt"]) * 100) if float(response["t0424OutBlock"]["tappamt"]) > 0 else 0
+                
                 stock_info = {
                     "stock_code": stock["expcode"],           # 종목코드
                     "stock_name": stock["hname"],             # 종목명
@@ -158,6 +161,7 @@ class AccountTRAPI(BaseAPI):
                     "evaluation_amount": stock["appamt"],     # 평가금액
                     "profit_loss": stock["dtsunik"],          # 평가손익
                     "profit_loss_rate": stock["sunikrt"],     # 수익률
+                    "holding_ratio": holding_ratio,           # 보유비중
                     "fee": stock["fee"],                      # 수수료
                     "tax": stock["tax"],                      # 제세금
                     "interest": stock["sininter"],            # 신용이자

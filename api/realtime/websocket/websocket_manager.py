@@ -223,6 +223,7 @@ class WebSocketManager(BaseWebSocket):
 
     async def _handle_message(self, data: Dict[str, Any]) -> None:
         """메시지 수신 처리"""
+        # print(f"메시지 수신: {data}")/
         try:
             # 메시지 타입 확인
             header = data.get("header", {}) if data else {}
@@ -343,11 +344,18 @@ class WebSocketManager(BaseWebSocket):
         """
         subscription_key = f"{tr_code}_{tr_key}"
         
+        # tr_type 설정
+        tr_type = "1"  # 기본값: 계좌등록
+        if tr_code.startswith("SC"):  # 주문 관련 메시지
+            tr_type = "1"  # 계좌등록
+        elif tr_code.startswith("VI_"):  # VI 메시지
+            tr_type = "3"  # 실시간 시세 등록
+        
         # 구독 메시지 생성
         message = {
             "header": {
                 "token": self.config["token"],
-                "tr_type": "3"  # 실시간 시세 등록
+                "tr_type": tr_type
             },
             "body": {
                 "tr_cd": tr_code,
@@ -382,11 +390,18 @@ class WebSocketManager(BaseWebSocket):
         subscription_key = f"{tr_code}_{tr_key}"
         
         if subscription_key in self.subscriptions:
+            # tr_type 설정
+            tr_type = "2"  # 기본값: 계좌해제
+            if tr_code.startswith("SC"):  # 주문 관련 메시지
+                tr_type = "2"  # 계좌해제
+            elif tr_code.startswith("VI_"):  # VI 메시지
+                tr_type = "4"  # 실시간 시세 해제
+            
             # 구독 해제 메시지 전송
             message = {
                 "header": {
                     "token": self.config["token"],
-                    "tr_type": "4"  # 실시간 시세 해제
+                    "tr_type": tr_type
                 },
                 "body": {
                     "tr_cd": tr_code,

@@ -57,12 +57,12 @@ class AccountService:
             
             # 계좌 총괄 정보
             print(f"\n[계좌 총괄 정보]")
-            print(f"추정순자산: {balance_info['total']['estimated_assets']:,}원")
-            print(f"실현손익: {balance_info['total']['realized_profit']:,}원")
-            print(f"매입금액: {balance_info['total']['total_purchase']:,}원")
-            print(f"추정D2예수금: {balance_info['total']['estimated_d2']:,}원")
-            print(f"평가금액: {balance_info['total']['total_evaluation']:,}원")
-            print(f"평가손익: {balance_info['total']['total_profit']:,}원")
+            print(f"추정순자산: {int(float(balance_info['total']['estimated_assets'])):,}원")
+            print(f"실현손익: {int(float(balance_info['total']['realized_profit'])):,}원")
+            print(f"매입금액: {int(float(balance_info['total']['total_purchase'])):,}원")
+            print(f"추정D2예수금: {int(float(balance_info['total']['estimated_d2'])):,}원")
+            print(f"평가금액: {int(float(balance_info['total']['total_evaluation'])):,}원")
+            print(f"평가손익: {int(float(balance_info['total']['total_profit'])):,}원")
             
             # 보유종목 상세
             if balance_info['stocks']:
@@ -74,20 +74,20 @@ class AccountService:
                 
                 for stock in balance_info['stocks']:
                     # 기본 정보 출력
-                    print(f"{stock['stock_name']:20} {stock['quantity']:>8,} {stock['available_quantity']:>8,} "
-                          f"{stock['average_price']:>12,} {stock['current_price']:>12,} {stock['evaluation_amount']:>15,} "
-                          f"{stock['profit_loss']:>12,} {stock['profit_loss_rate']:>7.2f}% {stock['holding_ratio']:>7.2f}%")
+                    print(f"{stock['stock_name']:20} {int(float(stock['quantity'])):>8,} {int(float(stock['available_quantity'])):>8,} "
+                          f"{int(float(stock['average_price'])):>12,} {int(float(stock['current_price'])):>12,} {int(float(stock['evaluation_amount'])):>15,} "
+                          f"{int(float(stock['profit_loss'])):>12,} {float(stock['profit_loss_rate']):>7.2f}% {float(stock['holding_ratio']):>7.2f}%")
                     
                     # 매매 정보가 있는 경우 출력
                     if any(stock['today'].values()) or any(stock['yesterday'].values()):
-                        print(f"  ├ 당일: 매수({stock['today']['buy_amount']:,}원@{stock['today']['buy_price']:,}) "
-                              f"매도({stock['today']['sell_amount']:,}원@{stock['today']['sell_price']:,})")
-                        print(f"  ├ 전일: 매수({stock['yesterday']['buy_amount']:,}원@{stock['yesterday']['buy_price']:,}) "
-                              f"매도({stock['yesterday']['sell_amount']:,}원@{stock['yesterday']['sell_price']:,})")
+                        print(f"  ├ 당일: 매수({int(float(stock['today']['buy_amount'])):,}원@{int(float(stock['today']['buy_price'])):,}) "
+                              f"매도({int(float(stock['today']['sell_amount'])):,}원@{int(float(stock['today']['sell_price'])):,})")
+                        print(f"  ├ 전일: 매수({int(float(stock['yesterday']['buy_amount'])):,}원@{int(float(stock['yesterday']['buy_price'])):,}) "
+                              f"매도({int(float(stock['yesterday']['sell_amount'])):,}원@{int(float(stock['yesterday']['sell_price'])):,})")
                     
                     # 수수료 및 세금 정보 출력
-                    print(f"  └ 비용: 수수료({stock['fee']:,}원) 세금({stock['tax']:,}원) "
-                          f"이자({stock['interest']:,}원)")
+                    print(f"  └ 비용: 수수료({int(float(stock['fee'])):,}원) 세금({int(float(stock['tax'])):,}원) "
+                          f"이자({int(float(stock['interest'])):,}원)")
             else:
                 print("\n보유중인 종목이 없습니다.")
                 
